@@ -9,7 +9,6 @@ public class Turret : MonoBehaviour, IDamagable
     public float shootSpeed, shootDelay;
     public Shooter shooter;
     public List<Enemy> enemyList;
-    bool isUntouchable = false;
     public float ShootDelay
     {
         get { return shootDelay; }
@@ -23,7 +22,7 @@ public class Turret : MonoBehaviour, IDamagable
     }
     public void OnDamage()
     {
-            Debug.Log($"{gameObject.name} On Damage");   
+        Debug.Log($"{gameObject.name} On Damage");   
     }
     IEnumerator Shot()
     {
