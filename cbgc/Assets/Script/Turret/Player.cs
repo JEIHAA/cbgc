@@ -33,6 +33,7 @@ public class Player : MonoBehaviour, IDamagable
     {
         MoveVec = Input.GetAxis("Horizontal") * Vector3.right + Input.GetAxis("Vertical") * Vector3.up;
         rigid.velocity = MoveVec * speed;
+        Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, transform.position + Camera.main.transform.position.z * Vector3.forward, 0.0625f);
         var mouseVec = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         if (Input.GetMouseButton(0) && touchable)
         {
