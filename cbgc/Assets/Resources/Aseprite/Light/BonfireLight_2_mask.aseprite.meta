@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9137cec69830f2c4aa0ba57c3d38409c
+guid: 70a574c719e67a049b888ab0abfaed9c
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -132,7 +132,7 @@ ScriptedImporter:
       y: 4
       width: 70
       height: 70
-    spriteID: c0773522d71efff4b946c76b53236935
+    spriteID: 9accb94d58d96cd4bb92611826f2f838
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -152,7 +152,7 @@ ScriptedImporter:
       y: 82
       width: 70
       height: 70
-    spriteID: d87a0d66c7313084c82df487d3b268f5
+    spriteID: e7597d3a34c4af946bbb76ef9188e5ed
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -178,7 +178,7 @@ ScriptedImporter:
         y: 0
         width: 70
         height: 70
-      spriteId: c0773522d71efff4b946c76b53236935
+      spriteId: 9accb94d58d96cd4bb92611826f2f838
     - name: BonfireLight_2_mask_Frame_1
       frameIndex: 1
       additiveSortOrder: 0
@@ -187,7 +187,7 @@ ScriptedImporter:
         y: 0
         width: 70
         height: 70
-      spriteId: d87a0d66c7313084c82df487d3b268f5
+      spriteId: e7597d3a34c4af946bbb76ef9188e5ed
     linkedCells: []
     parentIndex: -1
   platformSettings:
