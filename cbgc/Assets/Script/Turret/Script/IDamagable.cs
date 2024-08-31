@@ -1,4 +1,0 @@
-interface IDamagable
-{
-    void OnDamage();
-}
