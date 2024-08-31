@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public class Player : MonoBehaviour, IDamagable
 {
+    SpriteRenderer sr;
     Rigidbody2D rigid;
     [SerializeField]
     Transform weapon;
@@ -15,6 +16,7 @@ public class Player : MonoBehaviour, IDamagable
         {
             if (value.magnitude > 1) moveVec = value.normalized;
             else moveVec = value;
+            if(value.x != 0) sr.flipX = value.x > 0 ? true : false;
         }
     }
     public int speed = 10;
@@ -28,6 +30,7 @@ public class Player : MonoBehaviour, IDamagable
     {
         playerTransform = transform;
         rigid = GetComponent<Rigidbody2D>();
+        sr = GetComponent<SpriteRenderer>();
     }
     void Update()
     {

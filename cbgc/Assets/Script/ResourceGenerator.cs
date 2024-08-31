@@ -15,7 +15,10 @@ public class ResourceGenerator : MonoBehaviour
     protected float randomX;
     protected float randomY;
     protected Vector2 randomPos;
-
+    private void Start()
+    {
+        RandomGanerate();
+    }
     protected void RandomGanerate()
     {
         for (int i = 0; i < maxNum; ++i) 
