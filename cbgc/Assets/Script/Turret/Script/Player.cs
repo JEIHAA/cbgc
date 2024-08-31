@@ -4,7 +4,7 @@ using UnityEngine;
 public class Player : MonoBehaviour, IDamagable
 {
     [SerializeField]
-    GameObject playerSprite;
+    GameObject playerSprite, knockbackObject;
     Animator ani;
     SpriteRenderer sr;
     Rigidbody2D rigid;
@@ -24,11 +24,7 @@ public class Player : MonoBehaviour, IDamagable
     }
     public int speed = 10;
     bool touchable = true;
-    // Update is called once per frame
-    public void OnDamage()
-    {
-        Debug.Log($"{gameObject.name} Is Dead.");
-    }
+    public void OnDamage() { Debug.Log($"{gameObject.name} Is Dead."); }
     private void Start()
     {
         playerTransform = transform;
@@ -46,26 +42,23 @@ public class Player : MonoBehaviour, IDamagable
             touchable = false;
             ani.SetTrigger("Pick");
             Invoke("Touchable", 0.5f);
+            StartCoroutine(Swing(mouseVec));
             Debug.DrawRay(transform.position, mouseVec);
             var layhit = Physics2D.Raycast(transform.position, mouseVec, AttackRange);
             layhit.collider?.gameObject.GetComponent<Enemy>()?.OnDamage();
         }
     }
-    void Touchable()
+    IEnumerator Swing(Vector2 mouseVec)
     {
-        touchable = true;
+        knockbackObject.SetActive(true);
+        knockbackObject.transform.position = transform.position + (Vector3)mouseVec.normalized * 1.5f;
+        knockbackObject.transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(mouseVec.y, mouseVec.x) * Mathf.Rad2Deg);
+        yield return new WaitForSeconds(0.125f);
+        knockbackObject.SetActive(false);
     }
+    void Touchable() { touchable = true; }
     IUsable obj;
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        collision.gameObject.TryGetComponent<IUsable>(out obj);
-    }
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.TryGetComponent<IUsable>(out obj))
-        {
-            obj = null;
-        }
-    }
+    private void OnCollisionEnter2D(Collision2D collision) { collision.gameObject.TryGetComponent<IUsable>(out obj); }
+    private void OnCollisionExit2D(Collision2D collision) { if (collision.gameObject.TryGetComponent<IUsable>(out obj)) obj = null; }
 
 }

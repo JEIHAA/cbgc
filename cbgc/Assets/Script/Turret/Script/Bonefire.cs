@@ -7,7 +7,7 @@ public class Bonefire : MonoBehaviour, IUsable
     Animator ani;
     WaitForSeconds delay;
     bool canUse = true;
-    float fireLevel, decreaseDelay = 1f;
+    float fireLevel = 10f, decreaseDelay = 1f;
     public float decreaseAmount = 1f;
     public float DecreaseDelay { set { decreaseDelay = value; delay = new WaitForSeconds(value); } }
     public float FireLevel
@@ -23,9 +23,9 @@ public class Bonefire : MonoBehaviour, IUsable
     // Start is called before the first frame update
     void Start()
     {
+        fireLevel = 10f;
         ani = GetComponent<Animator>();
         DecreaseDelay = 1f;
-        FireLevel = 10;
         StartCoroutine(FireLevelDown());
     }
     public void ChangeDelay(float _newDelay)
