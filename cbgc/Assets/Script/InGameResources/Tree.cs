@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class Tree : InteractiveObject
 {
+    [SerializeField] private int leftFirewood = 5;
+    
     private Animator animator;
     public Animator Anim => animator;
 
-    public int leftFirewood = 5;
+    private int axingCnt=0;
 
     private void Start()
     {
@@ -18,7 +20,12 @@ public class Tree : InteractiveObject
     {
         --leftFirewood;
         Debug.Log("Chop!");
-        if (leftFirewood <= 0) gameObject.SetActive(false);
+        ResourceData.LogAmount += 1;
+        if (leftFirewood <= 0) 
+        {
+            Invoke("Delay", 0.4f);
+            gameObject.SetActive(false);
+        }
     }
 
     public IEnumerator ReUseTime(float _time)
@@ -29,11 +36,22 @@ public class Tree : InteractiveObject
 
     public override void Interaction(float _time)
     {
-        if (_time > 1f)
+        if (_time > 1f) 
         {
-            Debug.Log("Tree Interaction");
             animator.SetTrigger("Hit");
+        }
+        axingCnt++;
+        if (axingCnt >= 1)
+        {
             Use();
+            axingCnt = 0;
         }
     }
+
+    private void Delay()
+    {
+        Debug.Log("Delay");
+        return;
+    }
+
 }

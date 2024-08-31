@@ -9,7 +9,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 4
-    m_ConditionEvent: FireLevel
+    m_ConditionEvent: leftTime
     m_EventTreshold: 0.1
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4142570341056399468}
@@ -34,9 +34,9 @@ AnimatorController:
   m_Name: Bonfire
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: FireLevel
+  - m_Name: leftTime
     m_Type: 1
-    m_DefaultFloat: 10
+    m_DefaultFloat: 66
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
@@ -116,8 +116,8 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 4
-    m_ConditionEvent: FireLevel
-    m_EventTreshold: 5
+    m_ConditionEvent: leftTime
+    m_EventTreshold: 65
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 5810172234704995284}
   m_Solo: 0

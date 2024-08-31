@@ -2,6 +2,7 @@ using System.Collections;
 using System.Diagnostics;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -16,7 +17,6 @@ public class UIManager : MonoBehaviour
     public void UpdateLeftTimeNextWavetUI(int amount) { leftTimeNextWave.text = $"{amount}s"; }
     public void UpdateCampFireLeftTimetUI(int amount) { campFireLeftTime.text = $"{amount}s"; }
     public void UpdateTorchLeftTimetUI(int amount) { torchLeftPercent.text = $"{amount}%"; }
-
     private void Start()
     {
         oneSec = new(1f);

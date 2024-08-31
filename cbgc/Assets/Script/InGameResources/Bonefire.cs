@@ -2,46 +2,56 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bonefire : MonoBehaviour, IUsable
+public class Bonefire : InteractiveObject, IUsable
 {
-    [SerializeField] private int leftTime = 100;
-    private WaitForSeconds delay;
-    private bool canUse = true;
+    [SerializeField] private int leftTime = 66;
+    [SerializeField] private Animator lightAnim;
+    [SerializeField] private Animator torchAnim;
+    [SerializeField] private int maxTime = 100;
 
-    private Animator ani;
+    private Animator anim;
         
     void Start()
     {
-        ani = GetComponent<Animator>();
-        delay = new WaitForSeconds(1f);
+        anim = GetComponent<Animator>();
         InvokeRepeating("TimeCount", 1, 1);
     }
 
     private void TimeCount()
-    {   
+    {
+        Debug.Log(leftTime);
         leftTime -= 1;
-        ani.SetFloat("leftTime", leftTime);
+        anim.SetFloat("leftTime", leftTime);
+        lightAnim.SetFloat("leftTime", leftTime);
+        torchAnim.SetFloat("leftTime", leftTime);
         if (leftTime <= 0)
         {
-            Debug.Log("BoneFire is Dead."); 
+            Debug.Log("BoneFire is Dead.");
         }
-    }
-
-    public IEnumerator ReUseTime(float _t)
-    {
-        canUse = false;
-        leftTime += 10;
-        yield return delay;
-        canUse = true;
     }
 
 
     public void Use()
     {
-        if (canUse)
+        Debug.Log("Use");
+        leftTime += 10;
+        if (leftTime >= maxTime) leftTime = maxTime; 
+        anim.SetFloat("leftTime", leftTime);
+        lightAnim.SetFloat("leftTime", leftTime);
+    }
+
+    public override void Interaction(float _time)
+    {
+        if (ResourceData.LogAmount >= 1)
         {
-            leftTime += 10;
-            ani.SetFloat("leftTime", leftTime);
+            Debug.Log("firewood -1");
+            Use();
         }
+        else Debug.Log("need firewood");
+    }
+
+    public IEnumerator ReUseTime(float _time)
+    {
+        throw new System.NotImplementedException();
     }
 }
