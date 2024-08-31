@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Picking : MonoBehaviour
@@ -7,6 +8,8 @@ public class Picking : MonoBehaviour
 
     private GameObject obj = null;
     public GameObject PickingObj => obj;
+
+    private InteractiveObject interactiveObj;
 
     private Stopwatch stopwatch;
     private float time;
@@ -31,6 +34,7 @@ public class Picking : MonoBehaviour
         {
             if (hit.collider.gameObject.layer == LayerMask.NameToLayer("InteractiveObject")) 
             {
+                interactiveObj = hit.collider.gameObject.GetComponent<InteractiveObject>();
                 return hit.collider.gameObject;
             }
         }
@@ -59,11 +63,12 @@ public class Picking : MonoBehaviour
         // 마우스를 누르고 있는 동안 경과 시간을 확인
         if (Input.GetMouseButton(0))
         {
-            if (!functionExecuted && stopwatch.Elapsed.TotalSeconds >= 1.0)
+            if (!functionExecuted && (stopwatch.Elapsed.TotalSeconds % stopwatch.Elapsed.TotalSeconds == 1))
             {
                 time = (float) stopwatch.Elapsed.TotalSeconds;
                 UnityEngine.Debug.Log(time);
-                obj?.GetComponent<InteractiveObject>().Interaction(time);
+                obj?.GetComponent<Tree>().Anim.SetTrigger("Hit");
+                interactiveObj.Interaction(time);
                 functionExecuted = true;
                 stopwatch.Stop();
             }

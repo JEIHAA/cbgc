@@ -4,8 +4,15 @@ using UnityEngine;
 
 public class Tree : InteractiveObject
 {
-    private const float treeChopTimeConst = 1f;
+    private Animator animator;
+    public Animator Anim => animator;
+
     public int leftFirewood = 5;
+
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
 
     public void Use()
     {
@@ -25,6 +32,7 @@ public class Tree : InteractiveObject
         if (_time > 1f)
         {
             Debug.Log("Tree Interaction");
+            animator.SetTrigger("Hit");
             Use();
         }
     }

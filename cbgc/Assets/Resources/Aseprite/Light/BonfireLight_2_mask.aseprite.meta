@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 70a574c719e67a049b888ab0abfaed9c
+guid: 90f94716ac9a4ec4b883adde42606115
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -75,7 +75,7 @@ ScriptedImporter:
     importHiddenLayers: 0
     layerImportMode: 1
     defaultPivotSpace: 0
-    defaultPivotAlignment: 0
+    defaultPivotAlignment: 7
     customPivotPosition: {x: 0.5, y: 0.5}
     mosaicPadding: 4
     spritePadding: 0
@@ -88,7 +88,7 @@ ScriptedImporter:
     importHiddenLayers: 0
     layerImportMode: 1
     defaultPivotSpace: 0
-    defaultPivotAlignment: 0
+    defaultPivotAlignment: 7
     customPivotPosition: {x: 0.5, y: 0.5}
     mosaicPadding: 4
     spritePadding: 0
@@ -97,7 +97,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638607162024202691
+  platformSettingsDirtyTick: 638607347143041165
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -123,16 +123,16 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: BonfireLight_2_mask_Frame_0
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.49999997, y: -0.25}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 70
-      height: 70
-    spriteID: 9accb94d58d96cd4bb92611826f2f838
+      width: 64
+      height: 64
+    spriteID: 6c846eb96280f724fa7658b794deae1d
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -143,16 +143,16 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 4}
   - name: BonfireLight_2_mask_Frame_1
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.49999997, y: -0.25}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 82
-      width: 70
-      height: 70
-    spriteID: e7597d3a34c4af946bbb76ef9188e5ed
+      y: 76
+      width: 64
+      height: 64
+    spriteID: d305b653692e8414bb3c5e2b278dbb47
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -160,7 +160,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 82}
+    uvTransform: {x: 4, y: 76}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -174,20 +174,20 @@ ScriptedImporter:
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 0
-        y: 0
-        width: 70
-        height: 70
-      spriteId: 9accb94d58d96cd4bb92611826f2f838
+        x: 16
+        y: 16
+        width: 64
+        height: 64
+      spriteId: 6c846eb96280f724fa7658b794deae1d
     - name: BonfireLight_2_mask_Frame_1
       frameIndex: 1
       additiveSortOrder: 0
       cellRect:
-        x: 0
-        y: 0
-        width: 70
-        height: 70
-      spriteId: e7597d3a34c4af946bbb76ef9188e5ed
+        x: 16
+        y: 16
+        width: 64
+        height: 64
+      spriteId: d305b653692e8414bb3c5e2b278dbb47
     linkedCells: []
     parentIndex: -1
   platformSettings:
@@ -242,4 +242,4 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 70, y: 70}
+  canvasSize: {x: 96, y: 96}

@@ -4,50 +4,34 @@ using UnityEngine;
 
 public class Bonefire : MonoBehaviour, IUsable
 {
-    Animator ani;
-    WaitForSeconds delay;
-    bool canUse = true;
-    float fireLevel, decreaseDelay = 1f;
-    public float decreaseAmount = 1f;
-    public float DecreaseDelay { set { decreaseDelay = value; delay = new WaitForSeconds(value); } }
-    public float FireLevel
-    {
-        get { return fireLevel; }
-        set {
-                fireLevel = value;
-                ani.SetFloat("FireLevel", value);
-                //UIManager.instance.UpdateCampFireLeftTimetUI((int)(value / decreaseAmount * decreaseDelay));
-            }
-    }
+    [SerializeField] private int leftTime = 100;
+    private WaitForSeconds delay;
+    private bool canUse = true;
+
+    private Animator ani;
         
-    // Start is called before the first frame update
     void Start()
     {
         ani = GetComponent<Animator>();
-        DecreaseDelay = 1f;
-        FireLevel = 10;
-        StartCoroutine(FireLevelDown());
+        delay = new WaitForSeconds(1f);
+        InvokeRepeating("TimeCount", 1, 1);
     }
-    public void ChangeDelay(float _newDelay)
-    {
-        DecreaseDelay = _newDelay;
-    }
-    IEnumerator FireLevelDown()
-    {
-        while (true)
+
+    private void TimeCount()
+    {   
+        leftTime -= 1;
+        ani.SetFloat("leftTime", leftTime);
+        if (leftTime <= 0)
         {
-            yield return delay;
-            FireLevel -= decreaseAmount;
-            if(FireLevel <= 0)
-            {
-                Debug.Log("BoneFire is Dead.");
-                break;
-            }
-        }        
+            Debug.Log("BoneFire is Dead."); 
+        }
     }
+
     public IEnumerator ReUseTime(float _t)
     {
-        yield return new WaitForSeconds(_t);
+        canUse = false;
+        leftTime += 10;
+        yield return delay;
         canUse = true;
     }
 
@@ -56,10 +40,8 @@ public class Bonefire : MonoBehaviour, IUsable
     {
         if (canUse)
         {
-            canUse = false;
-            StartCoroutine(ReUseTime(1f));
-            FireLevel = 4;
+            leftTime += 10;
+            ani.SetFloat("leftTime", leftTime);
         }
-
     }
 }

@@ -40,8 +40,8 @@ public class Player : MonoBehaviour, IDamagable
         if (Input.GetMouseButton(0) && touchable)
         {
             touchable = false;
-            ani.SetTrigger("Pick");
-            Invoke("Touchable", 0.5f);
+            ani.SetTrigger("Axe");
+            Invoke("Touchable", 1f);
             StartCoroutine(Swing(mouseVec));
             Debug.DrawRay(transform.position, mouseVec);
             var layhit = Physics2D.Raycast(transform.position, mouseVec, AttackRange);

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 48300abe5ec69774db8d47c0b9833f84
+guid: 04b6b0a80eab07a488615095299b5af5
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -75,7 +75,7 @@ ScriptedImporter:
     importHiddenLayers: 0
     layerImportMode: 1
     defaultPivotSpace: 0
-    defaultPivotAlignment: 7
+    defaultPivotAlignment: 0
     customPivotPosition: {x: 0.5, y: 0.5}
     mosaicPadding: 4
     spritePadding: 0
@@ -88,7 +88,7 @@ ScriptedImporter:
     importHiddenLayers: 0
     layerImportMode: 1
     defaultPivotSpace: 0
-    defaultPivotAlignment: 7
+    defaultPivotAlignment: 0
     customPivotPosition: {x: 0.5, y: 0.5}
     mosaicPadding: 4
     spritePadding: 0
@@ -97,7 +97,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638607347143041165
+  platformSettingsDirtyTick: 638607348211864293
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -121,18 +121,18 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: BonfireLight_1_mask_Frame_0
+  - name: tree_4_b_hit_Frame_0
     originalName: 
-    pivot: {x: 0.49999997, y: -1}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 32
-      height: 32
-    spriteID: fc634871096b2e646abe7902353ee7d4
+      width: 48
+      height: 64
+    spriteID: 7c7e1b42546d06943a2c59355cc36c68
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -141,18 +141,18 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
-  - name: BonfireLight_1_mask_Frame_1
+  - name: tree_4_b_hit_Frame_1
     originalName: 
-    pivot: {x: 0.49999997, y: -1}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 44
-      width: 32
-      height: 32
-    spriteID: 88ec30379fd33be4cac99998500dbe32
+      x: 60
+      y: 4
+      width: 48
+      height: 64
+    spriteID: e029c61be1abce342b0462f58553eed9
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -160,34 +160,34 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 44}
+    uvTransform: {x: 60, y: 4}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: 1496650980
-    name: BonfireLight_1_mask
+    guid: -1575782894
+    name: tree_4_b_hit
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: BonfireLight_1_mask_Frame_0
+    - name: tree_4_b_hit_Frame_0
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 32
-        y: 32
-        width: 32
-        height: 32
-      spriteId: fc634871096b2e646abe7902353ee7d4
-    - name: BonfireLight_1_mask_Frame_1
+        x: 0
+        y: 0
+        width: 48
+        height: 64
+      spriteId: 7c7e1b42546d06943a2c59355cc36c68
+    - name: tree_4_b_hit_Frame_1
       frameIndex: 1
       additiveSortOrder: 0
       cellRect:
-        x: 32
-        y: 32
-        width: 32
-        height: 32
-      spriteId: 88ec30379fd33be4cac99998500dbe32
+        x: 0
+        y: 0
+        width: 48
+        height: 64
+      spriteId: e029c61be1abce342b0462f58553eed9
     linkedCells: []
     parentIndex: -1
   platformSettings:
@@ -242,4 +242,4 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 96, y: 96}
+  canvasSize: {x: 48, y: 64}
