@@ -44,7 +44,6 @@ public class Picking : MonoBehaviour
         {
             obj = PickingProcess();
             if (obj == null) return;
-            UnityEngine.Debug.Log(obj.name);
             time = 0;
             functionExecuted = false;
             obj?.GetComponent<InteractiveObject>().Interaction(time);

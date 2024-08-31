@@ -5,13 +5,13 @@ using UnityEngine;
 public class ResourceGenerator : MonoBehaviour
 {
     [SerializeField] protected GameObject obj;
-    [SerializeField] protected int maxNum = 40;
     [SerializeField]
     protected float maxX = 9,
                     minX = -9,
                     maxY = 9,
                     minY = -9;
 
+    protected int maxNum = 40;
 
     protected float randomX;
     protected float randomY;
