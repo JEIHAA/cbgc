@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0c38de7ad3c44b84a8915ef865473529
+guid: d334d5a2c6e26fa45aa260566af9d316
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,7 +97,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638607015700318234
+  platformSettingsDirtyTick: 638607006829751243
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -121,7 +121,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: creature2_Frame_0
+  - name: campfire_1_Frame_0
     originalName: 
     pivot: {x: 0.5, y: 0}
     alignment: 9
@@ -130,9 +130,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 15
-      height: 15
-    spriteID: e0e0dec69ae2587438b9637a7e75ae73
+      width: 16
+      height: 16
+    spriteID: 3963771e79961f246a21e891ceee59a0
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -141,7 +141,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
-  - name: creature2_Frame_1
+  - name: campfire_1_Frame_1
     originalName: 
     pivot: {x: 0.5, y: 0}
     alignment: 9
@@ -149,10 +149,10 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 4
-      y: 27
-      width: 15
-      height: 15
-    spriteID: 166a0808a36358843b2f761a46088648
+      y: 28
+      width: 16
+      height: 16
+    spriteID: ed95474ae6522b24f9cb3ce137eab8e3
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -160,8 +160,8 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 27}
-  - name: creature2_Frame_2
+    uvTransform: {x: 4, y: 28}
+  - name: campfire_1_Frame_2
     originalName: 
     pivot: {x: 0.5, y: 0}
     alignment: 9
@@ -169,10 +169,10 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 4
-      y: 50
-      width: 15
-      height: 15
-    spriteID: f8904484f2bac7341a78ab513375b146
+      y: 52
+      width: 16
+      height: 16
+    spriteID: f45be9159766f2a489732e057784c1bc
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -180,8 +180,8 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 50}
-  - name: creature2_Frame_3
+    uvTransform: {x: 4, y: 52}
+  - name: campfire_1_Frame_3
     originalName: 
     pivot: {x: 0.5, y: 0}
     alignment: 9
@@ -189,10 +189,10 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 4
-      y: 73
-      width: 15
-      height: 15
-    spriteID: aad8e301010df8e4aaf06394788db33d
+      y: 76
+      width: 16
+      height: 16
+    spriteID: ac48595f77ca4424db6bef5b5aaca6c9
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -200,8 +200,8 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 73}
-  - name: creature2_Frame_4
+    uvTransform: {x: 4, y: 76}
+  - name: campfire_1_Frame_4
     originalName: 
     pivot: {x: 0.5, y: 0}
     alignment: 9
@@ -209,10 +209,10 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 4
-      y: 96
-      width: 15
-      height: 15
-    spriteID: b56f69109c2d46b4b9d85c071c998e97
+      y: 100
+      width: 16
+      height: 16
+    spriteID: acfd6ab432cab9248bc9f3ccaad3eda3
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -220,119 +220,61 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 96}
-  - name: creature2_Frame_5
-    originalName: 
-    pivot: {x: 0.5, y: 0}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 27
-      y: 4
-      width: 15
-      height: 15
-    spriteID: 0c3bfc78b885882498dfa4726b927f6a
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 27, y: 4}
-  - name: creature2_Frame_6
-    originalName: 
-    pivot: {x: 0.5, y: 0}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 27
-      y: 27
-      width: 15
-      height: 15
-    spriteID: f457c64fb20d24445ba7fb2bd7c85a82
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 27, y: 27}
+    uvTransform: {x: 4, y: 100}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: 1203128881
-    name: creature2
+    guid: 2079444617
+    name: campfire_1
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: creature2_Frame_0
+    - name: campfire_1_Frame_0
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
-        width: 15
-        height: 15
-      spriteId: e0e0dec69ae2587438b9637a7e75ae73
-    - name: creature2_Frame_1
+        width: 16
+        height: 16
+      spriteId: 3963771e79961f246a21e891ceee59a0
+    - name: campfire_1_Frame_1
       frameIndex: 1
       additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
-        width: 15
-        height: 15
-      spriteId: 166a0808a36358843b2f761a46088648
-    - name: creature2_Frame_2
+        width: 16
+        height: 16
+      spriteId: ed95474ae6522b24f9cb3ce137eab8e3
+    - name: campfire_1_Frame_2
       frameIndex: 2
       additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
-        width: 15
-        height: 15
-      spriteId: f8904484f2bac7341a78ab513375b146
-    - name: creature2_Frame_3
+        width: 16
+        height: 16
+      spriteId: f45be9159766f2a489732e057784c1bc
+    - name: campfire_1_Frame_3
       frameIndex: 3
       additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
-        width: 15
-        height: 15
-      spriteId: aad8e301010df8e4aaf06394788db33d
-    - name: creature2_Frame_4
+        width: 16
+        height: 16
+      spriteId: ac48595f77ca4424db6bef5b5aaca6c9
+    - name: campfire_1_Frame_4
       frameIndex: 4
       additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
-        width: 15
-        height: 15
-      spriteId: b56f69109c2d46b4b9d85c071c998e97
-    - name: creature2_Frame_5
-      frameIndex: 5
-      additiveSortOrder: 0
-      cellRect:
-        x: 0
-        y: 0
-        width: 15
-        height: 15
-      spriteId: 0c3bfc78b885882498dfa4726b927f6a
-    - name: creature2_Frame_6
-      frameIndex: 6
-      additiveSortOrder: 0
-      cellRect:
-        x: 0
-        y: 0
-        width: 15
-        height: 15
-      spriteId: f457c64fb20d24445ba7fb2bd7c85a82
+        width: 16
+        height: 16
+      spriteId: acfd6ab432cab9248bc9f3ccaad3eda3
     linkedCells: []
     parentIndex: -1
   platformSettings:
@@ -375,4 +317,4 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 15, y: 15}
+  canvasSize: {x: 16, y: 16}

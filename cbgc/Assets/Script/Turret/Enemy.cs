@@ -20,12 +20,13 @@ public class Enemy : MonoBehaviour, IDamagable
         while (true)
         {
             yield return checkTime;
-            rigid.velocity = (Player.playerTransform.position - transform.position).normalized * speed;
+            rigid.velocity = rigid.velocity * 0.125f + (Vector2)((Player.playerTransform.position - transform.position).normalized * speed);
         }
     }
     public void OnDamage() {
         
         --health;
+         transform.position += (transform.position - Player.playerTransform.position).normalized * 2;
         if (health <= 0) gameObject.SetActive(false);
         Debug.Log($"{gameObject.name} On Damage");
     }

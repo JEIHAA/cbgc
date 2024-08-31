@@ -4,35 +4,46 @@ using UnityEngine;
 
 public class Bonefire : MonoBehaviour, IUsable
 {
-    WaitForSeconds wait;
+    Animator ani;
+    WaitForSeconds delay;
     bool canUse = true;
-    int fireLevel = 4;
-    int FireLevel
+    float fireLevel, decreaseDelay = 1f;
+    public float decreaseAmount = 1f;
+    public float DecreaseDelay { set { decreaseDelay = value; delay = new WaitForSeconds(value); } }
+    public float FireLevel
     {
         get { return fireLevel; }
-        set { fireLevel = value; transform.localScale = Vector3.one * fireLevel; }
+        set {
+                fireLevel = value;
+                ani.SetFloat("FireLevel", value);
+                UIManager.instance.UpdateCampFireLeftTimetUI((int)(value / decreaseAmount * decreaseDelay));
+            }
     }
         
     // Start is called before the first frame update
     void Start()
     {
-        wait = new(1f);
+        ani = GetComponent<Animator>();
+        DecreaseDelay = 1f;
+        FireLevel = 10;
         StartCoroutine(FireLevelDown());
+    }
+    public void ChangeDelay(float _newDelay)
+    {
+        DecreaseDelay = _newDelay;
     }
     IEnumerator FireLevelDown()
     {
         while (true)
         {
-            yield return wait;
-            --FireLevel;
-            if(FireLevel == 0)
+            yield return delay;
+            FireLevel -= decreaseAmount;
+            if(FireLevel <= 0)
             {
                 Debug.Log("BoneFire is Dead.");
-                gameObject.SetActive(false);
                 break;
             }
-        }
-        
+        }        
     }
     public IEnumerator ReUseTime(float _t)
     {

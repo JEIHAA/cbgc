@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 public class Player : MonoBehaviour, IDamagable
 {
+    [SerializeField]
+    GameObject playerSprite;
     Animator ani;
     SpriteRenderer sr;
     Rigidbody2D rigid;
-    [SerializeField]
-    Transform weapon;
     public static Transform playerTransform;
+    public float AttackRange;
     Vector2 moveVec = Vector2.zero;
     Vector2 MoveVec
     {
@@ -32,14 +33,13 @@ public class Player : MonoBehaviour, IDamagable
     {
         playerTransform = transform;
         rigid = GetComponent<Rigidbody2D>();
-        sr = GetComponent<SpriteRenderer>();
-        ani = GetComponent<Animator>();
+        sr = playerSprite.GetComponent<SpriteRenderer>();
+        ani = playerSprite.GetComponent<Animator>();
     }
     void Update()
     {
         MoveVec = Input.GetAxis("Horizontal") * Vector3.right + Input.GetAxis("Vertical") * Vector3.up;
         rigid.velocity = MoveVec * speed;
-        Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, transform.position + Camera.main.transform.position.z * Vector3.forward, 0.0625f);
         var mouseVec = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         if (Input.GetMouseButton(0) && touchable)
         {
@@ -47,8 +47,8 @@ public class Player : MonoBehaviour, IDamagable
             ani.SetTrigger("Pick");
             Invoke("Touchable", 0.5f);
             Debug.DrawRay(transform.position, mouseVec);
-            var layhit = Physics2D.Raycast(transform.position, mouseVec,5f);
-            layhit.collider?.GetComponent<Enemy>()?.OnDamage();
+            var layhit = Physics2D.Raycast(transform.position, mouseVec, AttackRange);
+            layhit.collider?.gameObject.GetComponent<Enemy>()?.OnDamage();
         }
     }
     void Touchable()
