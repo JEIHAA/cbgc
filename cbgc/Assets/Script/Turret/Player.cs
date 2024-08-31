@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public class Player : MonoBehaviour, IDamagable
 {
+    Animator ani;
     SpriteRenderer sr;
     Rigidbody2D rigid;
     [SerializeField]
@@ -16,7 +17,8 @@ public class Player : MonoBehaviour, IDamagable
         {
             if (value.magnitude > 1) moveVec = value.normalized;
             else moveVec = value;
-            if(value.x != 0) sr.flipX = value.x > 0 ? true : false;
+            ani.SetBool("Run", value.magnitude > 0.125f);
+            if (value.x != 0) sr.flipX = value.x < 0 ? true : false;
         }
     }
     public int speed = 10;
@@ -31,6 +33,7 @@ public class Player : MonoBehaviour, IDamagable
         playerTransform = transform;
         rigid = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
+        ani = GetComponent<Animator>();
     }
     void Update()
     {
@@ -41,6 +44,7 @@ public class Player : MonoBehaviour, IDamagable
         if (Input.GetMouseButton(0) && touchable)
         {
             touchable = false;
+            ani.SetTrigger("Pick");
             Invoke("Touchable", 0.5f);
             Debug.DrawRay(transform.position, mouseVec);
             var layhit = Physics2D.Raycast(transform.position, mouseVec,5f);

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 386853d4883f89a42b5c74f83a9045ec
+guid: f118ed8de8d16f344a0e949b23bed5b3
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,7 +97,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638606932677689016
+  platformSettingsDirtyTick: 638606943857278160
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -121,18 +121,18 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: zzz1_Frame_0
+  - name: creature1_Frame_0
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.578125, y: 0.25}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 16
-      height: 16
-    spriteID: 4c6d3c1c3a7bfcb4280da24f8cc4b570
+      width: 64
+      height: 64
+    spriteID: beaa203da7e73054390562475213d476
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -141,18 +141,18 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
-  - name: zzz1_Frame_1
+  - name: creature1_Frame_1
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.5121951, y: -0.032258064}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 28
-      width: 16
-      height: 16
-    spriteID: e1147b18ae4b03d419a090947ddb35a9
+      y: 115
+      width: 41
+      height: 31
+    spriteID: 8c8745eea7374174fa65e91eb98c98f2
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -160,19 +160,39 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 28}
-  - name: zzz1_Frame_2
+    uvTransform: {x: 4, y: 115}
+  - name: creature1_Frame_2
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.5675676, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 76
+      y: 42
+      width: 37
+      height: 31
+    spriteID: c9bbae43eeea3234daa84779e18dabe0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 76, y: 42}
+  - name: creature1_Frame_3
+    originalName: 
+    pivot: {x: 0.5, y: -0.033333335}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 52
-      width: 16
-      height: 16
-    spriteID: 44e6659d0aad3b8479a00391cb947f56
+      y: 154
+      width: 42
+      height: 30
+    spriteID: 884bfb8ab2fb51f4a95bf8edd36cc6b4
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -180,19 +200,19 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 52}
-  - name: zzz1_Frame_3
+    uvTransform: {x: 4, y: 154}
+  - name: creature1_Frame_4
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.5675676, y: -0.033333335}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 76
-      width: 16
-      height: 16
-    spriteID: 5cf542f0246978f4abdd64a79a3ecd11
+      x: 76
+      y: 120
+      width: 37
+      height: 30
+    spriteID: 72d1e176dbe0cc3459e60ac48cae647f
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -200,19 +220,19 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 76}
-  - name: zzz1_Frame_4
+    uvTransform: {x: 76, y: 120}
+  - name: creature1_Frame_5
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.6, y: -0.032258064}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 100
-      width: 16
-      height: 16
-    spriteID: 8d41977ebb1999946b6cb0eecdeb6f5d
+      x: 76
+      y: 196
+      width: 35
+      height: 31
+    spriteID: 041b6296bb56ad9489bb50fcec3e0269
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -220,219 +240,19 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 100}
-  - name: zzz1_Frame_5
+    uvTransform: {x: 76, y: 196}
+  - name: creature1_Frame_6
     originalName: 
-    pivot: {x: 0.5, y: 0}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 28
-      y: 4
-      width: 16
-      height: 16
-    spriteID: 5d25793617ee894498582a49ab016e67
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 28, y: 4}
-  - name: zzz1_Frame_6
-    originalName: 
-    pivot: {x: 0.5, y: 0}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 28
-      y: 28
-      width: 16
-      height: 16
-    spriteID: 114864bfdce01ad44b88c6412ca40bde
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 28, y: 28}
-  - name: zzz1_Frame_7
-    originalName: 
-    pivot: {x: 0.5, y: 0}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 28
-      y: 52
-      width: 16
-      height: 16
-    spriteID: 0b1783ed83da01e4d9f891c1954dfbac
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 28, y: 52}
-  - name: zzz1_Frame_8
-    originalName: 
-    pivot: {x: 0.5, y: 0}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 28
-      y: 76
-      width: 16
-      height: 16
-    spriteID: d283baa3920e3fa4eafe749a141bd748
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 28, y: 76}
-  - name: zzz1_Frame_9
-    originalName: 
-    pivot: {x: 0.5, y: 0}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 28
-      y: 100
-      width: 16
-      height: 16
-    spriteID: 74d7f281dd56b1b40b834d0433fd4d27
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 28, y: 100}
-  - name: zzz1_Frame_10
-    originalName: 
-    pivot: {x: 0.5, y: 0}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 52
-      y: 4
-      width: 16
-      height: 16
-    spriteID: 0faa6009faf8af24395786aef3fe3997
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 52, y: 4}
-  - name: zzz1_Frame_11
-    originalName: 
-    pivot: {x: 0.5, y: 0}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 52
-      y: 28
-      width: 16
-      height: 16
-    spriteID: b4651460959e27e4e8f1b9722af737f0
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 52, y: 28}
-  - name: zzz1_Frame_12
-    originalName: 
-    pivot: {x: 0.5, y: 0}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 52
-      y: 52
-      width: 16
-      height: 16
-    spriteID: 87d2c309fcef6a14fbbb7a0f005bcab4
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 52, y: 52}
-  - name: zzz1_Frame_13
-    originalName: 
-    pivot: {x: 0.5, y: 0}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 52
-      y: 76
-      width: 16
-      height: 16
-    spriteID: ddbea9186b90e3e4e9d41a3f12c70526
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 52, y: 76}
-  - name: zzz1_Frame_14
-    originalName: 
-    pivot: {x: 0.5, y: 0}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 52
-      y: 100
-      width: 16
-      height: 16
-    spriteID: fb2a746661c7f57428206d84b2349624
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 52, y: 100}
-  - name: zzz1_Frame_15
-    originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.49999997, y: -0.033333335}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 76
       y: 4
-      width: 16
-      height: 16
-    spriteID: 4da69b72ecf6d614c989c145c43ceac8
+      width: 40
+      height: 30
+    spriteID: 192098fae5f808345b8b99095e6b49b2
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -441,18 +261,18 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 76, y: 4}
-  - name: zzz1_Frame_16
+  - name: creature1_Frame_7
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.5121951, y: -0.033333335}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 76
-      y: 28
-      width: 16
-      height: 16
-    spriteID: e6a752ddcfc15b0479b989b6e7f9574c
+      x: 4
+      y: 192
+      width: 41
+      height: 30
+    spriteID: 2b4715e4cf0a5b04d8a906de652eed3d
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -460,19 +280,19 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 76, y: 28}
-  - name: zzz1_Frame_17
+    uvTransform: {x: 4, y: 192}
+  - name: creature1_Frame_8
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.5675676, y: -0.033333335}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 76
-      y: 52
-      width: 16
-      height: 16
-    spriteID: 46cf16e9790af6849916adcee84a6fdd
+      y: 158
+      width: 37
+      height: 30
+    spriteID: 8b954b27e91a68349987669963d41cb2
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -480,178 +300,184 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 76, y: 52}
+    uvTransform: {x: 76, y: 158}
+  - name: creature1_Frame_9
+    originalName: 
+    pivot: {x: 0.5, y: -0.032258064}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 76
+      width: 42
+      height: 31
+    spriteID: 14a8290fd24a52c429788b6badaf6c9e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 76}
+  - name: creature1_Frame_10
+    originalName: 
+    pivot: {x: 0.5675676, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 76
+      y: 81
+      width: 37
+      height: 31
+    spriteID: 34beb1f471bd99546bdc43021d00f74a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 76, y: 81}
+  - name: creature1_Frame_11
+    originalName: 
+    pivot: {x: 0.6, y: -0.033333335}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 124
+      y: 4
+      width: 35
+      height: 30
+    spriteID: 4b4303668ba138442850fa8fdfae9d61
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 124, y: 4}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: -513232177
-    name: zzz1
+    guid: 1203127690
+    name: creature1
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: zzz1_Frame_0
+    - name: creature1_Frame_0
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 0
-        y: 0
-        width: 16
-        height: 16
-      spriteId: 4c6d3c1c3a7bfcb4280da24f8cc4b570
-    - name: zzz1_Frame_1
+        x: -16
+        y: -16
+        width: 64
+        height: 64
+      spriteId: beaa203da7e73054390562475213d476
+    - name: creature1_Frame_1
       frameIndex: 1
       additiveSortOrder: 0
       cellRect:
         x: 0
-        y: 0
-        width: 16
-        height: 16
-      spriteId: e1147b18ae4b03d419a090947ddb35a9
-    - name: zzz1_Frame_2
+        y: 1
+        width: 41
+        height: 31
+      spriteId: 8c8745eea7374174fa65e91eb98c98f2
+    - name: creature1_Frame_2
       frameIndex: 2
       additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
-        width: 16
-        height: 16
-      spriteId: 44e6659d0aad3b8479a00391cb947f56
-    - name: zzz1_Frame_3
+        width: 37
+        height: 31
+      spriteId: c9bbae43eeea3234daa84779e18dabe0
+    - name: creature1_Frame_3
       frameIndex: 3
       additiveSortOrder: 0
       cellRect:
         x: 0
-        y: 0
-        width: 16
-        height: 16
-      spriteId: 5cf542f0246978f4abdd64a79a3ecd11
-    - name: zzz1_Frame_4
+        y: 1
+        width: 42
+        height: 30
+      spriteId: 884bfb8ab2fb51f4a95bf8edd36cc6b4
+    - name: creature1_Frame_4
       frameIndex: 4
       additiveSortOrder: 0
       cellRect:
         x: 0
-        y: 0
-        width: 16
-        height: 16
-      spriteId: 8d41977ebb1999946b6cb0eecdeb6f5d
-    - name: zzz1_Frame_5
+        y: 1
+        width: 37
+        height: 30
+      spriteId: 72d1e176dbe0cc3459e60ac48cae647f
+    - name: creature1_Frame_5
       frameIndex: 5
       additiveSortOrder: 0
       cellRect:
         x: 0
-        y: 0
-        width: 16
-        height: 16
-      spriteId: 5d25793617ee894498582a49ab016e67
-    - name: zzz1_Frame_6
+        y: 1
+        width: 35
+        height: 31
+      spriteId: 041b6296bb56ad9489bb50fcec3e0269
+    - name: creature1_Frame_6
       frameIndex: 6
       additiveSortOrder: 0
       cellRect:
-        x: 0
-        y: 0
-        width: 16
-        height: 16
-      spriteId: 114864bfdce01ad44b88c6412ca40bde
-    - name: zzz1_Frame_7
+        x: 1
+        y: 1
+        width: 40
+        height: 30
+      spriteId: 192098fae5f808345b8b99095e6b49b2
+    - name: creature1_Frame_7
       frameIndex: 7
       additiveSortOrder: 0
       cellRect:
         x: 0
-        y: 0
-        width: 16
-        height: 16
-      spriteId: 0b1783ed83da01e4d9f891c1954dfbac
-    - name: zzz1_Frame_8
+        y: 1
+        width: 41
+        height: 30
+      spriteId: 2b4715e4cf0a5b04d8a906de652eed3d
+    - name: creature1_Frame_8
       frameIndex: 8
       additiveSortOrder: 0
       cellRect:
         x: 0
-        y: 0
-        width: 16
-        height: 16
-      spriteId: d283baa3920e3fa4eafe749a141bd748
-    - name: zzz1_Frame_9
+        y: 1
+        width: 37
+        height: 30
+      spriteId: 8b954b27e91a68349987669963d41cb2
+    - name: creature1_Frame_9
       frameIndex: 9
       additiveSortOrder: 0
       cellRect:
         x: 0
-        y: 0
-        width: 16
-        height: 16
-      spriteId: 74d7f281dd56b1b40b834d0433fd4d27
-    - name: zzz1_Frame_10
+        y: 1
+        width: 42
+        height: 31
+      spriteId: 14a8290fd24a52c429788b6badaf6c9e
+    - name: creature1_Frame_10
       frameIndex: 10
       additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
-        width: 16
-        height: 16
-      spriteId: 0faa6009faf8af24395786aef3fe3997
-    - name: zzz1_Frame_11
+        width: 37
+        height: 31
+      spriteId: 34beb1f471bd99546bdc43021d00f74a
+    - name: creature1_Frame_11
       frameIndex: 11
       additiveSortOrder: 0
       cellRect:
         x: 0
-        y: 0
-        width: 16
-        height: 16
-      spriteId: b4651460959e27e4e8f1b9722af737f0
-    - name: zzz1_Frame_12
-      frameIndex: 12
-      additiveSortOrder: 0
-      cellRect:
-        x: 0
-        y: 0
-        width: 16
-        height: 16
-      spriteId: 87d2c309fcef6a14fbbb7a0f005bcab4
-    - name: zzz1_Frame_13
-      frameIndex: 13
-      additiveSortOrder: 0
-      cellRect:
-        x: 0
-        y: 0
-        width: 16
-        height: 16
-      spriteId: ddbea9186b90e3e4e9d41a3f12c70526
-    - name: zzz1_Frame_14
-      frameIndex: 14
-      additiveSortOrder: 0
-      cellRect:
-        x: 0
-        y: 0
-        width: 16
-        height: 16
-      spriteId: fb2a746661c7f57428206d84b2349624
-    - name: zzz1_Frame_15
-      frameIndex: 15
-      additiveSortOrder: 0
-      cellRect:
-        x: 0
-        y: 0
-        width: 16
-        height: 16
-      spriteId: 4da69b72ecf6d614c989c145c43ceac8
-    - name: zzz1_Frame_16
-      frameIndex: 16
-      additiveSortOrder: 0
-      cellRect:
-        x: 0
-        y: 0
-        width: 16
-        height: 16
-      spriteId: e6a752ddcfc15b0479b989b6e7f9574c
-    - name: zzz1_Frame_17
-      frameIndex: 17
-      additiveSortOrder: 0
-      cellRect:
-        x: 0
-        y: 0
-        width: 16
-        height: 16
-      spriteId: 46cf16e9790af6849916adcee84a6fdd
+        y: 1
+        width: 35
+        height: 30
+      spriteId: 4b4303668ba138442850fa8fdfae9d61
     linkedCells: []
     parentIndex: -1
   platformSettings:
@@ -694,4 +520,4 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 16, y: 16}
+  canvasSize: {x: 42, y: 32}

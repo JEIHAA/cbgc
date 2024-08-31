@@ -3,16 +3,17 @@ using UnityEngine;
 public class Enemy : MonoBehaviour, IDamagable
 {
     public float speed, attackDelay;
-    float untouchableTime;
     public int health;
     Rigidbody2D rigid;
+    Animator ani;
     WaitForSeconds checkTime;
     bool freeze = true;
     // Start is called before the first frame update
     void Start()
     {
-        untouchableTime = 0.5f;
         rigid = GetComponent<Rigidbody2D>();
+        ani = GetComponent<Animator>();
+        ani.speed = Random.value * 0.25f;
     }
     IEnumerator CheckPath()
     {
@@ -25,8 +26,6 @@ public class Enemy : MonoBehaviour, IDamagable
     public void OnDamage() {
         
         --health;
-        
-        
         if (health <= 0) gameObject.SetActive(false);
         Debug.Log($"{gameObject.name} On Damage");
     }
@@ -42,6 +41,7 @@ public class Enemy : MonoBehaviour, IDamagable
         if (freeze && _collision.gameObject.tag == "Player") 
         {
             freeze = false;
+            if(ani != null) ani.speed = 2;
             checkTime = new(.25f);
             StartCoroutine(CheckPath());
         }
