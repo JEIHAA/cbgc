@@ -1993,7 +1993,7 @@ MonoBehaviour:
   playerSprite: {fileID: 1647229678}
   knockbackObject: {fileID: 312790565}
   AttackRange: 3
-  speed: 10
+  speed: 5
 --- !u!1 &1168128645
 GameObject:
   m_ObjectHideFlags: 0
@@ -2800,7 +2800,7 @@ SpriteRenderer:
   m_Size: {x: 4.375, y: 4.375}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 2
   m_SpriteSortPoint: 0
 --- !u!1 &2075241377 stripped
