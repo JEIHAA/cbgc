@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3691980747928332457}
   - component: {fileID: 6692200789408182783}
   - component: {fileID: 1535664518309181598}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Bonfire
   m_TagString: InteractiveObject
   m_Icon: {fileID: 0}
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   leftTime: 66
-  lightAnim: {fileID: 2076465826543367625}
+  maxTime: 100
 --- !u!212 &6692200789408182783
 SpriteRenderer:
   m_ObjectHideFlags: 0

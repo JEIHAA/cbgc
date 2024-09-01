@@ -17,6 +17,7 @@ public class PickingManager : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("InteractiveObject"))
         {
+            Debug.Log(collision.name);
             isClose = true;
         }
     }
@@ -25,14 +26,15 @@ public class PickingManager : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("InteractiveObject"))
         {
-            isClose = true;
+            Debug.Log(collision.name);
+            isClose = false;
         }
     }
 
     void Update()
     {
 
-        if ((isClose))
+        if (isClose)
         {
             picking.PickingAction();
         }

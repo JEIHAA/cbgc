@@ -1,6 +1,6 @@
 public class ResourceData
 {
-    static void Init()
+    public static void Init()
     {
         logAmount = 0;
         fleshAmount = 0;
@@ -10,8 +10,8 @@ public class ResourceData
     {
         get { return logAmount; }
         set {
-            logAmount = value;
-            UIManager.instance.UpdateLogAmountUI(value);
+                logAmount = value;
+                UIManager.instance.UpdateLogAmountUI(value);
             }
     }
     static int fleshAmount = 0;

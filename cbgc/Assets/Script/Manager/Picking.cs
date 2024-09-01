@@ -1,19 +1,15 @@
-using System.Collections;
-using System.Diagnostics;
-using System.Runtime.CompilerServices;
-using Unity.Burst.CompilerServices;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Picking : MonoBehaviour
 {
+    [SerializeField] private LayerMask layer;
     private Camera mainCam = null;
 
     private GameObject obj = null;
     public GameObject PickingObj => obj;
 
     private float timeElapsed = 0f;
-    public float interval = 0.3f;
+    private float interval = 1f;
 
 
     private GameObject PickingProcess()
@@ -23,13 +19,14 @@ public class Picking : MonoBehaviour
 
         // 마우스 위치에 레이를 생성
         Vector2 mousePosition = mainCam.ScreenToWorldPoint(Input.mousePosition);
-        RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero);
+        RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero, Mathf.Infinity, layer);
 
         // 충돌한 오브젝트가 있다면 반환
         if (hit.collider != null)
         {
             if (hit.collider.gameObject.CompareTag("InteractiveObject")) 
             {
+                //Debug.Log(hit.collider.gameObject.name);
                 return hit.collider.gameObject;
             }
         }
@@ -43,7 +40,8 @@ public class Picking : MonoBehaviour
         {
             obj = PickingProcess();
             if (obj == null) return;
-            obj?.GetComponent<InteractiveObject>().Interaction(timeElapsed);
+            obj?.GetComponentInParent<IInteractiveObject>().Interaction(99);
+            //Debug.Log(obj.name);
         }
 
         if (Input.GetMouseButton(0))
@@ -53,7 +51,7 @@ public class Picking : MonoBehaviour
 
             if (timeElapsed >= interval)
             {
-                obj?.GetComponent<InteractiveObject>().Interaction(timeElapsed);
+                obj?.GetComponentInParent<IInteractiveObject>().Interaction(timeElapsed);
                 timeElapsed = 0f;
             }
         }

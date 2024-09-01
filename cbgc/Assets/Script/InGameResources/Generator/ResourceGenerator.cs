@@ -24,10 +24,16 @@ public class ResourceGenerator : MonoBehaviour
     {
         for (int i = 0; i < maxNum; ++i) 
         {
-            randomX = Random.Range(maxX, minX);
-            randomY = Random.Range(maxY, minY);
-            randomPos = new Vector3(randomX, randomY);
+            randomPos = SetRendomPosValue();
             Instantiate(obj, randomPos, Quaternion.identity,transform);   
         }
+    }
+
+    protected Vector3 SetRendomPosValue()
+    {
+        randomX = Random.Range(maxX, minX);
+        randomY = Random.Range(maxY, minY);
+        randomPos = new Vector3(randomX, randomY);
+        return randomPos;
     }
 }

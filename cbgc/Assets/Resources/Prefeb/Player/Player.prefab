@@ -285,7 +285,7 @@ Transform:
   m_LocalScale: {x: 0.26, y: 2.03, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 126629853357107197}
+  m_Father: {fileID: 4390460183485686960}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &3866449715594034150
 BoxCollider2D:
@@ -369,7 +369,6 @@ Transform:
   - {fileID: 4390460183485686960}
   - {fileID: 4980909822801895892}
   - {fileID: 4684489511549266313}
-  - {fileID: 6806798824391866810}
   - {fileID: 1270599802594615632}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -412,12 +411,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1404501b826bc064f888b119fcc536f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nowCamera: {fileID: 0}
+  dirSprite: []
   playerSprite: {fileID: 6993344547636132820}
   knockbackObject: {fileID: 695712593105418444}
   sr: {fileID: 0}
   campFireCompass: {fileID: 5165069310819390616}
   campFireSR: {fileID: 0}
+  campFireDir: {fileID: 0}
   AttackRange: 3
+  camRangeWidth: 0
+  camRangeheight: 0
+  scenemanager: {fileID: 0}
   speed: 5
 --- !u!58 &3981583980593962499
 CircleCollider2D:
@@ -740,6 +745,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 6806798824391866810}
   - {fileID: 8302098456867538032}
   m_Father: {fileID: 126629853357107197}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -792,7 +798,7 @@ SpriteRenderer:
   m_Size: {x: 4, y: 4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &8157864305094279017

@@ -1,7 +1,7 @@
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
-public class Enemy : MonoBehaviour, IDamagable
+public class Enemy : ResourceGeneratorBorder, IDamagable
 {
     public float speed, attackDelay;
     float leftTime;
@@ -11,13 +11,15 @@ public class Enemy : MonoBehaviour, IDamagable
     Animator ani;
     WaitForSeconds checkTime;
     bool freeze = true;
+
+    private Vector3 freePos;
+
     // Start is called before the first frame update
     void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         ani = GetComponent<Animator>();
-        ani.speed = Random.value * 0.25f;
     }
     IEnumerator CheckPath()
     {
@@ -34,8 +36,17 @@ public class Enemy : MonoBehaviour, IDamagable
             else leftTime -= 0.25f;
         }
     }
+
+    private IEnumerator MoveFreePosition()
+    {
+        while (true)
+        {
+            rigid.velocity = rigid.velocity * 0.125f + (Vector2)((freePos - transform.position).normalized * speed);
+            sr.flipX = rigid.velocity.x < 0 ? true : false;
+            yield return checkTime;
+        }
+    }
     public void OnDamage() {
-        
         --health;
         ani.SetTrigger("Hit");
         if (health <= 0) gameObject.SetActive(false);
@@ -54,8 +65,8 @@ public class Enemy : MonoBehaviour, IDamagable
     {
         if (freeze && _collision.gameObject.tag == "Player") 
         {
+            StopCoroutine(MoveFreePosition());
             freeze = false;
-            if(ani != null) ani.speed = 2;
             checkTime = new(.25f);
             StartCoroutine(CheckPath());
         }
@@ -63,6 +74,18 @@ public class Enemy : MonoBehaviour, IDamagable
         {
             leftTime += 0.5f;
             rigid.velocity = (Vector2)(transform.position - Player.playerTransform.position).normalized * 10;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if(collision.gameObject.CompareTag("Player"))
+        {
+            StopCoroutine(CheckPath());
+            freePos = SetRendomPosValue();
+            //Debug.Log("freePos"+freePos);
+            StartCoroutine(MoveFreePosition());
+            freeze = true;
         }
     }
 }
