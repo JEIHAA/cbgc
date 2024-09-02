@@ -11,6 +11,6 @@ public class PlayTimeManager : MonoBehaviour
 
     private void Start()
     {
-        playTime.text = $"{UIManager.playTime / 60} : {UIManager.playTime % 60}";
+        playTime.text = $"{UIManager.playTime / 60:D2} : {UIManager.playTime % 60:D2}";
     }
 }

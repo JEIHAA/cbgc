@@ -31,7 +31,7 @@ public class Player : MonoBehaviour, IDamagable
         {
             if (value.magnitude > 1) moveVec = value.normalized;
             else moveVec = value;
-            ani.SetBool("Run", value.magnitude > 0.125f);
+            if(ani != null) ani.SetBool("Run", value.magnitude > 0.125f);
             if (value.x != 0) playerSprite.transform.localScale = new Vector3(value.x < 0 ? -1 : 1, 1, 1);
         }
     }
@@ -51,7 +51,7 @@ public class Player : MonoBehaviour, IDamagable
         ani?.SetTrigger("Dead");
         ani = null;
         Invoke("StopGame", 1.1f);
-        Destroy(rigid);
+        rigid.bodyType = RigidbodyType2D.Static;
         Debug.Log($"{gameObject.name} Is Dead.");
     }
     void StopGame()
@@ -144,8 +144,6 @@ public class Player : MonoBehaviour, IDamagable
                 }
                 Invoke("Touchable", 1f);
                 Debug.DrawRay(transform.position, mouseVec);
-                var layhit = Physics2D.Raycast(transform.position, mouseVec, AttackRange);
-                layhit.collider?.gameObject.GetComponent<Enemy>()?.OnDamage();
             }
         }
         if (Input.GetMouseButtonUp(0)) ani.SetBool("Axe", false);

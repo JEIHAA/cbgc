@@ -13,7 +13,7 @@ public class Enemy : ResourceGeneratorBorder, IDamagable
     bool freeze = true;
 
     private Vector3 freePos;
-
+    private Vector3 aimPos;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,20 +23,20 @@ public class Enemy : ResourceGeneratorBorder, IDamagable
     }
     IEnumerator CheckPath()
     {
-        leftTime = 0.25f;
         while (true)
         {
-            if (leftTime < 0f)
-            {
-                rigid.velocity = rigid.velocity * 0.125f + (Vector2)((Player.playerTransform.position - transform.position).normalized * speed);
-                sr.flipX = rigid.velocity.x < 0 ? true : false;
-                yield return checkTime;
-                leftTime = 0.5f;
-            }
-            else leftTime -= 0.25f;
+            rigid.velocity = rigid.velocity * 0.125f + (Vector2)((aimPos - transform.position).normalized * speed);
+            sr.flipX = rigid.velocity.x < 0 ? true : false;
+            yield return checkTime;
         }
     }
-
+    IEnumerator MoveBackToKnockBack()
+    {
+        aimPos *= -1;
+        yield return checkTime;
+        yield return checkTime;
+        aimPos *= -1;
+    }
     private IEnumerator MoveFreePosition()
     {
         while (true)
@@ -54,7 +54,6 @@ public class Enemy : ResourceGeneratorBorder, IDamagable
     }
     private void OnCollisionEnter2D(Collision2D _collision)
     {
-        
         if (_collision.gameObject.tag == "Player")
         {
             _collision.gameObject.GetComponent<Player>().OnDamage();
@@ -68,11 +67,14 @@ public class Enemy : ResourceGeneratorBorder, IDamagable
             StopCoroutine(MoveFreePosition());
             freeze = false;
             checkTime = new(.25f);
-            StartCoroutine(CheckPath());
+            aimPos = Player.playerTransform.position;
+            if (gameObject.activeSelf) StartCoroutine(CheckPath());
         }
         if (_collision.gameObject.tag == "KnockBack")
         {
-            leftTime += 0.5f;
+            OnDamage();
+            if(gameObject.activeSelf) StartCoroutine(MoveBackToKnockBack());
+            MoveBackToKnockBack();
             rigid.velocity = (Vector2)(transform.position - Player.playerTransform.position).normalized * 10;
         }
     }

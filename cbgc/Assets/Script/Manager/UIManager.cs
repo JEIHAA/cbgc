@@ -14,7 +14,7 @@ public class UIManager : MonoBehaviour
     public void UpdateLogAmountUI(int amount) { logAmountText.text = $"{amount}"; }
     public void UpdateFleshAmountUI(int amount) { fleshAmountText.text = $"{amount}"; }
     public void UpdateLeftEnemyUI(int amount) { leftEnemy.text = $"{amount} enemy is left."; }
-    public void UpdateNowTimeUI(int amount) { nowTime.text = $"{amount/60} : {amount % 60}";  playTime = amount; }
+    public void UpdateNowTimeUI(int amount) { nowTime.text = $"{amount / 60:D2}:{amount % 60:D2}"; playTime = amount; }
     public void UpdateLeftTimeNextWavetUI(int amount) { leftTimeNextWave.text = $"{amount}s"; }
     public void UpdateCampFireLeftTimetUI(int amount) { campFireLeftTime.text = $"{amount}s"; }
     public void UpdateTorchLeftTimetUI(int amount) { torchLeftPercent.text = $"{amount}%"; }
