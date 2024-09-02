@@ -2878,9 +2878,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1333126935}
     - target: {fileID: 1611567155815748211, guid: d440a7db640f45f4ba4c2502495d4362, type: 3}
+      propertyPath: AttackRange
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1611567155815748211, guid: d440a7db640f45f4ba4c2502495d4362, type: 3}
       propertyPath: campFireDir
       value: 
       objectReference: {fileID: 1728907765}
+    - target: {fileID: 1611567155815748211, guid: d440a7db640f45f4ba4c2502495d4362, type: 3}
+      propertyPath: attackObject
+      value: 
+      objectReference: {fileID: 483618729}
     - target: {fileID: 1611567155815748211, guid: d440a7db640f45f4ba4c2502495d4362, type: 3}
       propertyPath: scenemanager
       value: 

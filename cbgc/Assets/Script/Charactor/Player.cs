@@ -11,10 +11,11 @@ public class Player : MonoBehaviour, IDamagable
     [SerializeField]
     Sprite[] dirSprite;
     [SerializeField]
-    GameObject playerSprite, knockbackObject;
+    GameObject playerSprite, attackObject;
     Animator ani;
     [SerializeField]
-    SpriteRenderer sr, campFireCompass, campFireSR, campFireDir;
+    SpriteRenderer sr, campFireSR;
+    SpriteRenderer campFireCompass, campFireDir;
     Rigidbody2D rigid;
     public static Transform playerTransform;
     public float AttackRange;
@@ -31,7 +32,7 @@ public class Player : MonoBehaviour, IDamagable
         {
             if (value.magnitude > 1) moveVec = value.normalized;
             else moveVec = value;
-            if(ani != null) ani.SetBool("Run", value.magnitude > 0.125f);
+            if (ani != null) ani.SetBool("Run", value.magnitude > 0.125f);
             if (value.x != 0) playerSprite.transform.localScale = new Vector3(value.x < 0 ? -1 : 1, 1, 1);
         }
     }
@@ -41,9 +42,6 @@ public class Player : MonoBehaviour, IDamagable
     public TorchLight torchLight;
     private float deathTime = 0f;
     private float timeLimit = 2f;
-
-
-
 
     public void OnDamage() { GameOver(); }
     public void GameOver()
@@ -77,30 +75,58 @@ public class Player : MonoBehaviour, IDamagable
             deathTime = 0;
         }
     }
-
     private void Start()
     {
         Time.timeScale = 1f;
+        GetAttachedComponents();
+        MakeCompass();
+    }
+    void GetAttachedComponents()
+    {
         playerTransform = transform;
         rigid = GetComponent<Rigidbody2D>();
         sr = playerSprite.GetComponent<SpriteRenderer>();
         ani = playerSprite.GetComponent<Animator>();
-        StartCoroutine(BoolChange(.5f));
+        attackObject.transform.localScale = Vector3.one * AttackRange;
     }
-
+    void MakeCompass()
+    {
+        GameObject tmp = new GameObject("Compass");
+        tmp.transform.SetParent(transform);
+        campFireCompass = tmp.AddComponent<SpriteRenderer>();
+        tmp = new GameObject("Compass_Dir");
+        tmp.transform.SetParent(transform);
+        campFireDir = tmp.AddComponent<SpriteRenderer>();
+    }
     void Update()
     {
         CheckDarkphobia();
-
-        if (actionBlock) { return; }
+        //if (actionBlock) { return; }
+        Move();
+        CompassSet();
+        CamPositionSet();
+        AttackAndUse();
+    }
+    void CamPositionSet()
+    {
+        nowCamera.transform.position = new Vector3(
+            Mathf.Clamp(transform.position.x, -camRangeWidth / 2, camRangeWidth / 2),
+            Mathf.Clamp(transform.position.y, -camRangeheight / 2, camRangeheight / 2))
+            + Vector3.back * 20;
+    }
+    void Move()
+    {
         MoveVec = Input.GetAxis("Horizontal") * Vector3.right + Input.GetAxis("Vertical") * Vector3.up;
         rigid.velocity = MoveVec * speed;
+    }
+    void CompassSet()
+    {
         var compassPos = -transform.position;
         if (Mathf.Abs(compassPos.x) > 25 || Mathf.Abs(compassPos.y) > 12)
         {
             campFireDir.gameObject.SetActive(true);
             campFireCompass.gameObject.SetActive(true);
-                
+
             if (Mathf.Abs(compassPos.x) * 10 > Mathf.Abs(compassPos.y) * 19)
                 compassPos = compassPos / Mathf.Abs(compassPos.x) * 19;
             else
@@ -126,10 +152,11 @@ public class Player : MonoBehaviour, IDamagable
             campFireDir.gameObject.SetActive(false);
             campFireCompass.gameObject.SetActive(false);
         }
-        nowCamera.transform.position = new Vector3(Mathf.Clamp(transform.position.x, -camRangeWidth / 2, camRangeWidth / 2),
-                                                Mathf.Clamp(transform.position.y, -camRangeheight / 2, camRangeheight / 2)) + Vector3.back * 20;
+    }
+    void AttackAndUse()
+    {
         var mouseVec = nowCamera.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-        //animation off
+
         if (Input.GetMouseButton(0))
         {
             rigid.velocity = Vector2.zero;
@@ -140,7 +167,7 @@ public class Player : MonoBehaviour, IDamagable
                 if (!ani.GetBool("Axe"))
                 {
                     ani.SetBool("Axe", true);
-                    knockbackObject.SetActive(true);
+                    attackObject.SetActive(true);
                 }
                 Invoke("Touchable", 1f);
                 Debug.DrawRay(transform.position, mouseVec);
@@ -148,7 +175,7 @@ public class Player : MonoBehaviour, IDamagable
         }
         if (Input.GetMouseButtonUp(0)) ani.SetBool("Axe", false);
     }
-    void Touchable() { touchable = true; knockbackObject.SetActive(false); }
+    void Touchable() { touchable = true; attackObject.SetActive(false); }
     IUsable obj;
     private void OnCollisionEnter2D(Collision2D collision) { collision.gameObject.TryGetComponent<IUsable>(out obj); }
     private void OnCollisionExit2D(Collision2D collision) { if (collision.gameObject.TryGetComponent<IUsable>(out obj)) obj = null; }
