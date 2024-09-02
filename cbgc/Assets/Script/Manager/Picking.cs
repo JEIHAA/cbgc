@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Picking : MonoBehaviour
 {
+    [SerializeField] private Animator animator;
     [SerializeField] private LayerMask layer;
     private Camera mainCam = null;
 
@@ -51,9 +52,33 @@ public class Picking : MonoBehaviour
 
             if (timeElapsed >= interval)
             {
+                /*if (animator.GetCurrentAnimatorStateInfo(0).IsName("character_axe_Clip"))
+                {
+                    interval -= 0.1f;
+                }*/
+
                 obj?.GetComponentInParent<IInteractiveObject>().Interaction(timeElapsed);
                 timeElapsed = 0f;
             }
+            /*
+            if (animator.GetCurrentAnimatorStateInfo(0).IsName("character_axe_Clip"))
+            {
+                Debug.Log("1");
+                if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
+                {
+                    Debug.Log("2");
+                    obj?.GetComponentInParent<IInteractiveObject>().Interaction(timeElapsed);
+                }
+                timeElapsed = 0f;
+            }
+            else 
+            {
+                if(timeElapsed >= interval)
+                {
+                    obj?.GetComponentInParent<IInteractiveObject>().Interaction(timeElapsed);
+                    timeElapsed = 0f;
+                }
+            }*/
         }
 
         if (Input.GetMouseButtonUp(0))

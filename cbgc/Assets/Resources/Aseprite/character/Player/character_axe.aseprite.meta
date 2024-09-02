@@ -2,7 +2,12 @@ fileFormatVersion: 2
 guid: 18304b655cca31243890865ef790145b
 ScriptedImporter:
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: character_axe_Clip
+    second: {fileID: 7400000, guid: 0d715b65c8b52b14b869914102e0755f, type: 2}
   serializedVersion: 2
   userData: 
   assetBundleName: 
@@ -97,7 +102,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638607865341653888
+  platformSettingsDirtyTick: 638609073394999085
   textureAssetName: 
   singleSpriteImportData:
   - name: 

@@ -33,12 +33,13 @@ public class Tree : MonoBehaviour, IInteractiveObject
     public void Interaction(float _time)
     {
         if (_time > 90) return;
-        if (_time > 0.5f) 
+        if (_time > 1f)
         {
             animator.SetTrigger("Hit");
             //treeEffect.PlayRandomAnimation();
             axingCnt++;
         }
+
         if (axingCnt > 1)
         {
             Use();

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -38,6 +39,11 @@ public class Player : MonoBehaviour, IDamagable
     bool touchable = true;
 
     public TorchLight torchLight;
+    private float deathTime = 0f;
+    private float timeLimit = 2f;
+
+
+
 
     public void OnDamage() { GameOver(); }
     public void GameOver()
@@ -45,6 +51,7 @@ public class Player : MonoBehaviour, IDamagable
         ani?.SetTrigger("Dead");
         ani = null;
         Invoke("StopGame", 1.1f);
+        Destroy(rigid);
         Debug.Log($"{gameObject.name} Is Dead.");
     }
     void StopGame()
@@ -56,6 +63,21 @@ public class Player : MonoBehaviour, IDamagable
         yield return new WaitForSeconds(time);
         actionBlock = !actionBlock;
     }
+
+    private void CheckDarkphobia()
+    {
+        if (torchLight.LifeTime <= 0)
+        {
+            Debug.Log(deathTime);
+            deathTime += Time.deltaTime;
+            if (deathTime > timeLimit) GameOver();
+        }
+        else
+        {
+            deathTime = 0;
+        }
+    }
+
     private void Start()
     {
         Time.timeScale = 1f;
@@ -68,12 +90,9 @@ public class Player : MonoBehaviour, IDamagable
 
     void Update()
     {
-        if (torchLight.LifeTime <= 0)
-        {
-            Invoke("GameOver", 2);
-        }
+        CheckDarkphobia();
 
-        if(actionBlock) { return; }
+        if (actionBlock) { return; }
         MoveVec = Input.GetAxis("Horizontal") * Vector3.right + Input.GetAxis("Vertical") * Vector3.up;
         rigid.velocity = MoveVec * speed;
         var compassPos = -transform.position;

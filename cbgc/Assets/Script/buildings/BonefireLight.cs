@@ -5,7 +5,6 @@ public class Bonefire: SetLightAnimator, IInteractiveObject
     private void Start()
     {
         maxTime = 100; 
-        Debug.Log(leftTime);
         anims = GetComponentsInChildren<Animator>();
         InvokeRepeating("TimeCount", 1, 1);
     }

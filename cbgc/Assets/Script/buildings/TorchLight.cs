@@ -10,7 +10,6 @@ public class TorchLight : SetLightAnimator
     private void Start()
     {
         maxTime = 50;
-        Debug.Log(leftTime);
         anims = GetComponentsInChildren<Animator>();
         BonfireSetFloat();
         InvokeRepeating("TimeCount", 1, 1);
