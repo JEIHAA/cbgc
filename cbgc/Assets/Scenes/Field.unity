@@ -1139,6 +1139,41 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!58 &483618735
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 483618729}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 1
 --- !u!1001 &491379185
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2882,6 +2917,14 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3866449715594034150, guid: d440a7db640f45f4ba4c2502495d4362, type: 3}
+      propertyPath: m_Size.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3866449715594034150, guid: d440a7db640f45f4ba4c2502495d4362, type: 3}
+      propertyPath: m_Size.y
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3981583980593962499, guid: d440a7db640f45f4ba4c2502495d4362, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -2924,7 +2967,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6806798824391866810, guid: d440a7db640f45f4ba4c2502495d4362, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.5
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 6806798824391866810, guid: d440a7db640f45f4ba4c2502495d4362, type: 3}
       propertyPath: m_ConstrainProportionsScale
@@ -2950,7 +2993,8 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3866449715594034150, guid: d440a7db640f45f4ba4c2502495d4362, type: 3}
     m_RemovedGameObjects:
     - {fileID: 7293210027343163628, guid: d440a7db640f45f4ba4c2502495d4362, type: 3}
     - {fileID: 406423816988844265, guid: d440a7db640f45f4ba4c2502495d4362, type: 3}
@@ -2977,6 +3021,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 695712593105418444, guid: d440a7db640f45f4ba4c2502495d4362, type: 3}
       insertIndex: -1
       addedObject: {fileID: 483618733}
+    - targetCorrespondingSourceObject: {fileID: 695712593105418444, guid: d440a7db640f45f4ba4c2502495d4362, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 483618735}
   m_SourcePrefab: {fileID: 100100000, guid: d440a7db640f45f4ba4c2502495d4362, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

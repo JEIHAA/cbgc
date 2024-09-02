@@ -84,7 +84,7 @@ public class Enemy : ResourceGeneratorBorder, IDamagable
             StopCoroutine(CheckPath());
             freePos = SetRendomPosValue();
             //Debug.Log("freePos"+freePos);
-            StartCoroutine(MoveFreePosition());
+            if(gameObject.activeSelf) StartCoroutine(MoveFreePosition());
             freeze = true;
         }
     }

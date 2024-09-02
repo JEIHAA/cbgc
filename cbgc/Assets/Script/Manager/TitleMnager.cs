@@ -14,7 +14,7 @@ public class TitleMnager : MonoBehaviour
     IEnumerator BlockMouseTouch()
     {
         canTouch = false;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.25f);
         canTouch = true;
     }
     // Update is called once per frame
