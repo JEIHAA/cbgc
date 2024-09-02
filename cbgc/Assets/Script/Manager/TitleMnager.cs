@@ -10,15 +10,7 @@ public class TitleMnager : MonoBehaviour
     SceneMoveManager smm;
     bool animationShowEnd = false;
     bool canTouch = true;
-    // Start is called before the first frame update
-    private void Start()
-    {
-        Invoke("AnimationShowEnd", 3f);
-    }
-    void AnimationShowEnd()
-    {
-        animationShowEnd = true;
-    }
+    int count = 0;
     IEnumerator BlockMouseTouch()
     {
         canTouch = false;
@@ -31,9 +23,9 @@ public class TitleMnager : MonoBehaviour
         if (canTouch && Input.GetMouseButtonDown(0))
         {
             StartCoroutine(BlockMouseTouch());
-            if(animationShowEnd) smm.LoadScene();
-            if (ani.gameObject.activeSelf == false) ani.gameObject.SetActive(true);
-            else ani.SetTrigger("Click");
+            if (ani.GetCurrentAnimatorClipInfo(0)[0].clip.name == "title_3_Clip") smm.LoadScene();
+            ++count;
+            ani.SetTrigger("Click");
         }
     }
 }
