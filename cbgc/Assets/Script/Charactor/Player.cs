@@ -39,7 +39,10 @@ public class Player : MonoBehaviour, IDamagable
     public int speed = 10;
     bool touchable = true;
 
-    public TorchLight torchLight;
+    [SerializeField] 
+    private float dirArrowDistance = 15f;
+    [SerializeField]
+    private TorchLight torchLight;
     private float deathTime = 0f;
     private float timeLimit = 2f;
 
@@ -143,8 +146,8 @@ public class Player : MonoBehaviour, IDamagable
                 if (compassPos.y < -8) campFireDir.sprite = dirSprite[1];
             }
 
-            campFireCompass.transform.localPosition = compassPos;
-            campFireDir.transform.localPosition = compassPos * 0.8f;
+            campFireCompass.transform.localPosition = compassPos * dirArrowDistance;
+            campFireDir.transform.localPosition = compassPos;
             campFireCompass.sprite = campFireSR.sprite;
         }
         else
