@@ -9,39 +9,31 @@ public class Enemy : ResourceGeneratorBorder, IDamagable
     SpriteRenderer sr;
     Rigidbody2D rigid;
     Animator ani;
-    WaitForSeconds checkTime;
+    WaitForSeconds checkTime, knockBackTime;
     bool freeze = true;
-
     private Vector3 freePos;
-    private Vector3 aimPos;
+    private Vector3 addVelocity;
     // Start is called before the first frame update
     void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         ani = GetComponent<Animator>();
-    }
-    IEnumerator CheckPath()
-    {
-        while (true)
-        {
-            rigid.velocity = rigid.velocity * 0.125f + (Vector2)((aimPos - transform.position).normalized * speed);
-            sr.flipX = rigid.velocity.x < 0 ? true : false;
-            yield return checkTime;
-        }
+
+        checkTime = new(1f);
+        knockBackTime = new(0.125f);
     }
     IEnumerator MoveBackToKnockBack()
     {
-        aimPos *= -1;
-        yield return checkTime;
-        yield return checkTime;
-        aimPos *= -1;
+        addVelocity = -rigid.velocity * 10;
+        yield return knockBackTime;
+        addVelocity = Vector3.zero;
     }
     private IEnumerator MoveFreePosition()
     {
         while (true)
         {
-            rigid.velocity = rigid.velocity * 0.125f + (Vector2)((freePos - transform.position).normalized * speed);
+            rigid.velocity = (freePos - transform.position).normalized * speed;
             sr.flipX = rigid.velocity.x < 0 ? true : false;
             yield return checkTime;
         }
@@ -54,40 +46,27 @@ public class Enemy : ResourceGeneratorBorder, IDamagable
     }
     private void OnCollisionEnter2D(Collision2D _collision)
     {
+        if (_collision.gameObject.tag == "Player") _collision.gameObject.GetComponent<Player>().OnDamage();
+        if(rigid != null) rigid.velocity = Vector2.zero;
+    }
+    private void OnTriggerStay2D(Collider2D _collision)
+    {
         if (_collision.gameObject.tag == "Player")
         {
-            _collision.gameObject.GetComponent<Player>().OnDamage();
+            rigid.velocity =(Player.playerTransform.position - transform.position).normalized * speed + addVelocity;
+            sr.flipX = rigid.velocity.x < 0 ? true : false;
         }
-        if(rigid != null) rigid.velocity = Vector2.zero;
     }
     private void OnTriggerEnter2D(Collider2D _collision)
     {
-        if (freeze && _collision.gameObject.tag == "Player") 
-        {
-            StopCoroutine(MoveFreePosition());
-            freeze = false;
-            checkTime = new(.25f);
-            aimPos = Player.playerTransform.position;
-            if (gameObject.activeSelf) StartCoroutine(CheckPath());
-        }
         if (_collision.gameObject.tag == "KnockBack")
         {
             OnDamage();
             if(gameObject.activeSelf) StartCoroutine(MoveBackToKnockBack());
-            MoveBackToKnockBack();
-            rigid.velocity = (Vector2)(transform.position - Player.playerTransform.position).normalized * 10;
         }
     }
-
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.gameObject.CompareTag("Player"))
-        {
-            StopCoroutine(CheckPath());
-            freePos = SetRendomPosValue();
-            //Debug.Log("freePos"+freePos);
-            if(gameObject.activeSelf) StartCoroutine(MoveFreePosition());
-            freeze = true;
-        }
+        if (collision.gameObject.CompareTag("Player")) rigid.velocity = Vector2.zero; 
     }
 }
