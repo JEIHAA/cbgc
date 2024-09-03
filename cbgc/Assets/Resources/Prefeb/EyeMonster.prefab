@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2600653414342133247}
   - component: {fileID: 5625086725789065863}
   - component: {fileID: 7413011067179324820}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: EyeMonster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,6 +100,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 201aa8fb4ef3b6a45a8cfaa9a7be22f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  obj: {fileID: 0}
+  maxNum: 40
+  maxX: 9
+  minX: -9
+  maxY: 9
+  minY: -9
+  BorderLength: 0
+  objs: []
   speed: 2
   attackDelay: 0.5
   health: 2

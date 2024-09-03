@@ -3,7 +3,7 @@ using UnityEngine;
 public class Picking : MonoBehaviour
 {
     [SerializeField] private Animator animator;
-    [SerializeField] private LayerMask layer;
+    //[SerializeField] private LayerMask layer;
     private Camera mainCam = null;
 
     private GameObject obj = null;
@@ -20,14 +20,17 @@ public class Picking : MonoBehaviour
 
         // 마우스 위치에 레이를 생성
         Vector2 mousePosition = mainCam.ScreenToWorldPoint(Input.mousePosition);
-        RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero, Mathf.Infinity, layer);
+        RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero);
+        //RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero, Mathf.Infinity, layer);
+
 
         // 충돌한 오브젝트가 있다면 반환
         if (hit.collider != null)
         {
+            Debug.Log(hit.collider.gameObject.name);
             if (hit.collider.gameObject.CompareTag("InteractiveObject")) 
             {
-                //Debug.Log(hit.collider.gameObject.name);
+                Debug.Log(hit.collider.gameObject.name);
                 return hit.collider.gameObject;
             }
         }

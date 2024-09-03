@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FastMonster
       objectReference: {fileID: 0}
+    - target: {fileID: 1113434160653165264, guid: 3bd1b359c000be74dbc87ffc0df05c84, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1233102404248382987, guid: 3bd1b359c000be74dbc87ffc0df05c84, type: 3}
       propertyPath: m_Sprite
       value: 

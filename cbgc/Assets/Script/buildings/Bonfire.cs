@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Bonefire: SetLightAnimator, IInteractiveObject
+public class Bonfire: SetLightAnimator, IInteractiveObject
 {
     private void Start()
     {
@@ -14,7 +14,7 @@ public class Bonefire: SetLightAnimator, IInteractiveObject
         Debug.Log("Use");
         leftTime += 10;
         if (leftTime >= maxTime) leftTime = maxTime;
-        BonfireSetFloat();
+        FireLightSetFloat();
     }
 
     public void Interaction(float _time)
@@ -25,11 +25,10 @@ public class Bonefire: SetLightAnimator, IInteractiveObject
             Debug.Log("firewood -1");
             Use();
         }
-        else Debug.Log("need firewood");
     }
 
 
-    protected override void BonfireSetFloat()
+    protected override void FireLightSetFloat()
     {
         foreach (Animator anim in anims)
         {

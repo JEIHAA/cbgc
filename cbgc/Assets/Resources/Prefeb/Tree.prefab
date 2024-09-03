@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6240150177402506885}
   - component: {fileID: 7943483773688426132}
-  m_Layer: 9
-  m_Name: PickingSupporter
+  m_Layer: 7
+  m_Name: TreePickingSupporter
   m_TagString: InteractiveObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64,8 +64,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.020921052, y: -0.6136818}
-  m_Size: {x: 1.8249944, y: 2.8131504}
+  m_Offset: {x: 0, y: -0.55}
+  m_Size: {x: 2, y: 2.8}
   m_Direction: 0
 --- !u!1 &6281578544985384098
 GameObject:
@@ -80,7 +80,7 @@ GameObject:
   - component: {fileID: 5766003504843133354}
   - component: {fileID: 1155158883423467630}
   - component: {fileID: 1036469962653375688}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: Tree
   m_TagString: InteractiveObject
   m_Icon: {fileID: 0}
@@ -117,7 +117,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   leftFirewood: 5
-  animationClipNames: []
 --- !u!212 &5766003504843133354
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -236,7 +235,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4040237794224718407}
   - component: {fileID: 8885346758699713252}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: TreeEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
