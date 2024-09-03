@@ -3,7 +3,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 public class Enemy : MonoBehaviour, IDamagable
 {
-    public float speed;
+    public float speed; 
     public float health;
     SpriteRenderer sr;
     Rigidbody2D rigid;
@@ -22,7 +22,7 @@ public class Enemy : MonoBehaviour, IDamagable
         checkTime = new(1f);
         knockBackTime = new(0.125f);
 
-        if (moveCenterWhenStart) MoveCenter();
+        if (moveCenterWhenStart) Invoke("MoveCenter",0.5f);
     }
     IEnumerator MoveBackToKnockBack()
     {

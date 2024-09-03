@@ -16,6 +16,7 @@ public class BonfireOnDamage : MonoBehaviour
         {
 
             enemy = collision.gameObject.GetComponent<Enemy>();
+            if(bonfire != null)
             bonfire.LeftTime -= fireConsumption;
 
             enemy.KnockBack();
