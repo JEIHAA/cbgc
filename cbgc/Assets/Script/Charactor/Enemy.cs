@@ -67,6 +67,6 @@ public class Enemy : ResourceGeneratorBorder, IDamagable
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.gameObject.CompareTag("Player")) StopCoroutine(MoveFreePosition());
+        if (collision.gameObject.CompareTag("Player")) rigid.velocity = Vector2.zero; 
     }
 }
