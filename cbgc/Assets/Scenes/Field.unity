@@ -2463,17 +2463,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 282fd0835404ecf418d327f8cc7bf49f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnDistanceFromCampFire: 0
+  spawnDistanceFromCampFire: 10
   waveData:
   - spawnEnemy: {fileID: 1113434160653165264, guid: 3bd1b359c000be74dbc87ffc0df05c84, type: 3}
-    waveDelay: 0
-    spawnAmount: 0
-  - spawnEnemy: {fileID: 5892825325086882388, guid: fd5799f574f09d3498c9c11e50ac6dfc, type: 3}
-    waveDelay: 0
-    spawnAmount: 0
-  - spawnEnemy: {fileID: 1113434160653165264, guid: 3bd1b359c000be74dbc87ffc0df05c84, type: 3}
-    waveDelay: 0
-    spawnAmount: 0
+    waveDelay: 5
+    spawnAmount: 10
 --- !u!4 &2082086665
 Transform:
   m_ObjectHideFlags: 0
