@@ -44,7 +44,7 @@ public class Player : MonoBehaviour, IDamagable
     private TorchLight torchLight;
     private float deathTime = 0f;
     private float timeLimit = 2f;
-    public void OnDamage() { GameOver(); }
+    public void OnDamage(float _damage) { GameOver(); }
     public void GameOver()
     {
         ani?.SetTrigger("Dead");
@@ -66,7 +66,6 @@ public class Player : MonoBehaviour, IDamagable
     {
         if (torchLight.LifeTime <= 0)
         {
-            Debug.Log(deathTime);
             deathTime += Time.deltaTime;
             if (deathTime > timeLimit) GameOver();
         }

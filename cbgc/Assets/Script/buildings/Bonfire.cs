@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Bonfire: SetLightAnimator, IInteractiveObject
 {
+    private Enemy enemy;
+
     private void Start()
     {
         maxTime = 100; 
@@ -33,15 +35,6 @@ public class Bonfire: SetLightAnimator, IInteractiveObject
         foreach (Animator anim in anims)
         {
             anim.SetFloat("LeftTime", leftTime);
-        }
-    }
-
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Monster"))
-        {
-            leftTime -= 10;
         }
     }
 }

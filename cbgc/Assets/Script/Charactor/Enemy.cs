@@ -4,7 +4,7 @@ using UnityEngine;
 public class Enemy : ResourceGeneratorBorder, IDamagable
 {
     public float speed;
-    public int health;
+    public float health;
     SpriteRenderer sr;
     Rigidbody2D rigid;
     Animator ani;
@@ -39,15 +39,15 @@ public class Enemy : ResourceGeneratorBorder, IDamagable
             yield return checkTime;
         }
     }
-    public void OnDamage() {
-        --health;
+    public void OnDamage(float _damage) {
+        health -= _damage;
         ani.SetTrigger("Hit");
         if (health <= 0) gameObject.SetActive(false);
         Debug.Log($"{gameObject.name} On Damage");
     }
     private void OnCollisionEnter2D(Collision2D _collision)
     {
-        if (_collision.gameObject.tag == "Player") _collision.gameObject.GetComponent<Player>().OnDamage();
+        if (_collision.gameObject.tag == "Player") _collision.gameObject.GetComponent<Player>().OnDamage(100);
         if(rigid != null) rigid.velocity = Vector2.zero;
     }
     private void OnTriggerStay2D(Collider2D _collision)
@@ -62,8 +62,8 @@ public class Enemy : ResourceGeneratorBorder, IDamagable
     {
         if (_collision.gameObject.tag == "KnockBack")
         {
-            OnDamage();
-            if(gameObject.activeSelf) StartCoroutine(MoveBackToKnockBack());
+            OnDamage(5);
+            if(gameObject.activeSelf) KnockBack();
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -74,5 +74,10 @@ public class Enemy : ResourceGeneratorBorder, IDamagable
     {
         rigid.velocity = -transform.position.normalized * speed;
         sr.flipX = rigid.velocity.x < 0 ? true : false;
+    }
+
+    public void KnockBack() 
+    {
+        StartCoroutine(MoveBackToKnockBack());
     }
 }

@@ -5,7 +5,8 @@ using UnityEngine;
 public class SetLightAnimator : MonoBehaviour
 {
     [SerializeField] protected int leftTime = 0;
-    public int LeftTime => leftTime;
+    public int LeftTime { get => leftTime; set => leftTime = value; }
+
     [SerializeField] protected int maxTime;
 
     protected Animator[] anims;

@@ -842,6 +842,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 427302754}
   m_CullTransparentMesh: 1
+--- !u!1 &442459811 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1781833396448153954, guid: af7b71c77e05e78429c9c62f630c7321, type: 3}
+  m_PrefabInstance: {fileID: 456970982}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &456970982
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -850,9 +855,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 820832616763933183, guid: af7b71c77e05e78429c9c62f630c7321, type: 3}
+      propertyPath: m_Name
+      value: BonfireOnDamageTrigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 820832616763933183, guid: af7b71c77e05e78429c9c62f630c7321, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1781833396448153954, guid: af7b71c77e05e78429c9c62f630c7321, type: 3}
       propertyPath: m_Name
       value: Bonfire
+      objectReference: {fileID: 0}
+    - target: {fileID: 1781833396448153954, guid: af7b71c77e05e78429c9c62f630c7321, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2583912661111767741, guid: af7b71c77e05e78429c9c62f630c7321, type: 3}
       propertyPath: m_SortingOrder
@@ -898,22 +915,67 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8932579724641471298, guid: af7b71c77e05e78429c9c62f630c7321, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1781833396448153954, guid: af7b71c77e05e78429c9c62f630c7321, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 456970987}
+    - targetCorrespondingSourceObject: {fileID: 820832616763933183, guid: af7b71c77e05e78429c9c62f630c7321, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1339624710}
   m_SourcePrefab: {fileID: 100100000, guid: af7b71c77e05e78429c9c62f630c7321, type: 3}
 --- !u!114 &456970983 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2102643388437731821, guid: af7b71c77e05e78429c9c62f630c7321, type: 3}
   m_PrefabInstance: {fileID: 456970982}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 442459811}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d02532b9542e05948939584868513b45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!58 &456970987
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 442459811}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.8
 --- !u!1 &465088366
 GameObject:
   m_ObjectHideFlags: 0
@@ -1840,6 +1902,24 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.42245603}
   serializedVersion: 2
   m_Radius: 0.66672707
+--- !u!1 &1339624707 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 820832616763933183, guid: af7b71c77e05e78429c9c62f630c7321, type: 3}
+  m_PrefabInstance: {fileID: 456970982}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1339624710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1339624707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b103d9b77a6820419cd02b1be110b31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bonfire: {fileID: 456970983}
 --- !u!1001 &1485522030
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2381,17 +2461,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 282fd0835404ecf418d327f8cc7bf49f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distance: 10
+  spawnDistanceFromCampFire: 0
   waveData:
-  - enemy: {fileID: 5892825325086882388, guid: fd5799f574f09d3498c9c11e50ac6dfc, type: 3}
-    waveTime: 3
-    amount: 5
-  - enemy: {fileID: 1113434160653165264, guid: 3bd1b359c000be74dbc87ffc0df05c84, type: 3}
-    waveTime: 20
-    amount: 10
-  - enemy: {fileID: 5892825325086882388, guid: fd5799f574f09d3498c9c11e50ac6dfc, type: 3}
-    waveTime: 15
-    amount: 20
+  - spawnEnemy: {fileID: 1113434160653165264, guid: 3bd1b359c000be74dbc87ffc0df05c84, type: 3}
+    waveDelay: 0
+    spawnAmount: 0
+  - spawnEnemy: {fileID: 5892825325086882388, guid: fd5799f574f09d3498c9c11e50ac6dfc, type: 3}
+    waveDelay: 0
+    spawnAmount: 0
+  - spawnEnemy: {fileID: 1113434160653165264, guid: 3bd1b359c000be74dbc87ffc0df05c84, type: 3}
+    waveDelay: 0
+    spawnAmount: 0
 --- !u!4 &2082086665
 Transform:
   m_ObjectHideFlags: 0
@@ -2629,7 +2709,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6911645923129185327, guid: d440a7db640f45f4ba4c2502495d4362, type: 3}
       propertyPath: m_SortingOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7388570183762604913, guid: d440a7db640f45f4ba4c2502495d4362, type: 3}
       propertyPath: m_Layer

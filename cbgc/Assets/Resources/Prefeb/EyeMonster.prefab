@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7413011067179324820}
   m_Layer: 6
   m_Name: EyeMonster
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 2
   m_Sprite: {fileID: -2184997895282176688, guid: f118ed8de8d16f344a0e949b23bed5b3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -109,7 +109,7 @@ MonoBehaviour:
   BorderLength: 0
   objs: []
   speed: 2
-  health: 2
+  health: 10
   moveCenterWhenStart: 0
 --- !u!58 &2600653414342133247
 CircleCollider2D:
