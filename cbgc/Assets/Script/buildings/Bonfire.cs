@@ -36,4 +36,12 @@ public class Bonfire: SetLightAnimator, IInteractiveObject
         }
     }
 
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Monster"))
+        {
+            leftTime -= 10;
+        }
+    }
 }

@@ -8,6 +8,7 @@ TagManager:
   - KnockBack
   - InteractiveObject
   - BonfireLight
+  - Monster
   layers:
   - Default
   - TransparentFX
