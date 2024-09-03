@@ -2,13 +2,13 @@ using System.Collections;
 using UnityEngine;
 public class WaveMonsterGenerator : MonoBehaviour
 {
-    public float distance;
+    public float spawnDistanceFromCampFire;
     [System.Serializable]
     public class WaveData
     {
-        public GameObject enemy;
-        public float waveTime;
-        public int amount;
+        public GameObject spawnEnemy;
+        public float waveDelay;
+        public int spawnAmount;
     }
     public WaveData[] waveData;
     void Start()
@@ -19,12 +19,13 @@ public class WaveMonsterGenerator : MonoBehaviour
     {
         foreach (var data in waveData)
         {
-            yield return new WaitForSeconds(data.waveTime);
-            for (int i = 0; i < data.amount; i++)
-            {
-                var nowEnemy = Instantiate(data.enemy, Random.insideUnitCircle.normalized * distance, Quaternion.identity, transform).GetComponent<Enemy>();
-                nowEnemy.moveCenterWhenStart = true;
-            }
+            yield return new WaitForSeconds(data.waveDelay);
+            if(data.spawnEnemy != null)
+                for (int i = 0; i < data.spawnAmount; i++)
+                {
+                    var nowEnemy = Instantiate(data.spawnEnemy, Random.insideUnitCircle.normalized * spawnDistanceFromCampFire, Quaternion.identity, transform).GetComponent<Enemy>();
+                    nowEnemy.moveCenterWhenStart = true;
+                }
         }
     }
 }
