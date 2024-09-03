@@ -40,6 +40,14 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: 0.44
       objectReference: {fileID: 0}
+    - target: {fileID: 4624427485269744315, guid: 3bd1b359c000be74dbc87ffc0df05c84, type: 3}
+      propertyPath: speed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4624427485269744315, guid: 3bd1b359c000be74dbc87ffc0df05c84, type: 3}
+      propertyPath: moveCenterWhenStart
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6278472590945057405, guid: 3bd1b359c000be74dbc87ffc0df05c84, type: 3}
       propertyPath: m_LocalScale.x
       value: -1

@@ -3,14 +3,13 @@ using Unity.VisualScripting;
 using UnityEngine;
 public class Enemy : ResourceGeneratorBorder, IDamagable
 {
-    public float speed, attackDelay;
-    float leftTime;
+    public float speed;
     public int health;
     SpriteRenderer sr;
     Rigidbody2D rigid;
     Animator ani;
     WaitForSeconds checkTime, knockBackTime;
-    bool freeze = true;
+    public bool moveCenterWhenStart;
     private Vector3 freePos;
     private Vector3 addVelocity;
     // Start is called before the first frame update
@@ -22,6 +21,8 @@ public class Enemy : ResourceGeneratorBorder, IDamagable
 
         checkTime = new(1f);
         knockBackTime = new(0.125f);
+
+        if (moveCenterWhenStart) MoveCenter();
     }
     IEnumerator MoveBackToKnockBack()
     {
@@ -67,6 +68,11 @@ public class Enemy : ResourceGeneratorBorder, IDamagable
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player")) rigid.velocity = Vector2.zero; 
+        if (collision.gameObject.CompareTag("Player")) MoveCenter();
+    }
+    void MoveCenter()
+    {
+        rigid.velocity = -transform.position.normalized * speed;
+        sr.flipX = rigid.velocity.x < 0 ? true : false;
     }
 }
