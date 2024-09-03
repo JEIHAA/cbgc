@@ -1,7 +1,7 @@
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
-public class Enemy : ResourceGeneratorBorder, IDamagable
+public class Enemy : MonoBehaviour, IDamagable
 {
     public float speed;
     public float health;

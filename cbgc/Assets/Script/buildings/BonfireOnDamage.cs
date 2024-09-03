@@ -5,6 +5,8 @@ using UnityEngine;
 public class BonfireOnDamage : MonoBehaviour
 {
     [SerializeField] private Bonfire bonfire;
+    [SerializeField] private int fireConsumption;
+    [SerializeField] private float damage;
     private Enemy enemy;
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -14,10 +16,10 @@ public class BonfireOnDamage : MonoBehaviour
         {
 
             enemy = collision.gameObject.GetComponent<Enemy>();
-            bonfire.LeftTime -= 10;
+            bonfire.LeftTime -= fireConsumption;
 
             enemy.KnockBack();
-            enemy.OnDamage(3.5f);
+            enemy.OnDamage(damage);
         }
     }
 }

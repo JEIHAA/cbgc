@@ -1920,6 +1920,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bonfire: {fileID: 456970983}
+  fireConsumption: 10
+  damage: 3.5
 --- !u!1001 &1485522030
 PrefabInstance:
   m_ObjectHideFlags: 0
