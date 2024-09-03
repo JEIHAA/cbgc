@@ -76,7 +76,7 @@ public class Player : MonoBehaviour, IDamagable
     }
     private void Start()
     {
-        Time.timeScale = 1f;
+        ResourceData.Init();
         GetAttachedComponents();
         MakeCompass();
         canAttack = true;

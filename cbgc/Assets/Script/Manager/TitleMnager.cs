@@ -14,7 +14,7 @@ public class TitleMnager : MonoBehaviour
     IEnumerator CheckDoubleClick()
     {
         doubleClick = true;
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.2f);
         doubleClick = false;
     }
     // Update is called once per frame
