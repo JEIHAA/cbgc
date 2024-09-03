@@ -109,8 +109,8 @@ MonoBehaviour:
   BorderLength: 0
   objs: []
   speed: 2
-  attackDelay: 0.5
   health: 2
+  moveCenterWhenStart: 0
 --- !u!58 &2600653414342133247
 CircleCollider2D:
   m_ObjectHideFlags: 0
