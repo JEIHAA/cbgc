@@ -37,15 +37,13 @@ public class Player : MonoBehaviour, IDamagable
         }
     }
     public int speed = 10;
-    bool touchable = true;
-
+    bool canAttack;
     [SerializeField] 
     private float dirArrowDistance = 15f;
     [SerializeField]
     private TorchLight torchLight;
     private float deathTime = 0f;
     private float timeLimit = 2f;
-
     public void OnDamage() { GameOver(); }
     public void GameOver()
     {
@@ -83,6 +81,7 @@ public class Player : MonoBehaviour, IDamagable
         Time.timeScale = 1f;
         GetAttachedComponents();
         MakeCompass();
+        canAttack = true;
     }
     void GetAttachedComponents()
     {
@@ -145,7 +144,6 @@ public class Player : MonoBehaviour, IDamagable
                 if (compassPos.y > 8) campFireDir.sprite = dirSprite[0];
                 if (compassPos.y < -8) campFireDir.sprite = dirSprite[1];
             }
-
             campFireCompass.transform.localPosition = compassPos * dirArrowDistance;
             campFireDir.transform.localPosition = compassPos;
             campFireCompass.sprite = campFireSR.sprite;
@@ -159,26 +157,23 @@ public class Player : MonoBehaviour, IDamagable
     void AttackAndUse()
     {
         var mouseVec = nowCamera.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-
+        if (Input.GetMouseButtonDown(0)) {
+            if (canAttack) { canAttack = false; StartCoroutine(Attack()); }
+            if (!ani.GetBool("Axe")) ani.SetBool("Axe", true);
+        }
         if (Input.GetMouseButton(0))
         {
             rigid.velocity = Vector2.zero;
-            if (touchable)
-            {
-                touchable = false;
-                //animation on
-                if (!ani.GetBool("Axe"))
-                {
-                    ani.SetBool("Axe", true);
-                    attackObject.SetActive(true);
-                }
-                Invoke("Touchable", 1f);
-                Debug.DrawRay(transform.position, mouseVec);
-            }
         }
         if (Input.GetMouseButtonUp(0)) ani.SetBool("Axe", false);
     }
-    void Touchable() { touchable = true; attackObject.SetActive(false); }
+    IEnumerator Attack()
+    {
+        attackObject.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        canAttack = true;
+        attackObject.SetActive(false);
+    }
     IUsable obj;
     private void OnCollisionEnter2D(Collision2D collision) { collision.gameObject.TryGetComponent<IUsable>(out obj); }
     private void OnCollisionExit2D(Collision2D collision) { if (collision.gameObject.TryGetComponent<IUsable>(out obj)) obj = null; }
