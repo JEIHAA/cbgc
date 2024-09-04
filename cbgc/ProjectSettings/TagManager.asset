@@ -5,10 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Tree
-  - KnockBack
   - InteractiveObject
   - BonfireLight
   - Monster
+  - PlayerAttack
   layers:
   - Default
   - TransparentFX
@@ -45,4 +45,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Light
+    uniqueID: 3706560123
     locked: 0
