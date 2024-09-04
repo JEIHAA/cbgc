@@ -48,7 +48,7 @@ public class Player : MonoBehaviour, IDamagable
     public void GameOver()
     {
         ani?.SetTrigger("Dead");
-        Invoke("StopGame", 1.1f);
+        Invoke("StopGame", 1.4f);
         rigid.bodyType = RigidbodyType2D.Static;
         Debug.Log($"{gameObject.name} Is Dead.");
     }

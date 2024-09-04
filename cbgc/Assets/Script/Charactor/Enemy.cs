@@ -42,8 +42,20 @@ public class Enemy : MonoBehaviour, IDamagable
     public void OnDamage(float _damage) {
         health -= _damage;
         ani.SetTrigger("Hit");
-        if (health <= 0) gameObject.SetActive(false);
-        Debug.Log($"{gameObject.name} On Damage");
+        if (health <= 0) StartCoroutine(Dying());
+    }
+    IEnumerator Dying()
+    {
+        rigid.bodyType = RigidbodyType2D.Static;
+        GetComponent<Collider2D>().enabled = false;
+        float leftTime = 3;
+        while (leftTime > 0)
+        {
+            leftTime -= Time.deltaTime;
+            sr.color = Color.Lerp(Color.clear,Color.white,leftTime/3);
+            yield return null;
+        }
+        gameObject.SetActive(false);
     }
     private void OnCollisionEnter2D(Collision2D _collision)
     {
