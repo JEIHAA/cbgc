@@ -863,6 +863,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 820832616763933183, guid: af7b71c77e05e78429c9c62f630c7321, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1781833396448153954, guid: af7b71c77e05e78429c9c62f630c7321, type: 3}
       propertyPath: m_Name
       value: Bonfire
@@ -872,8 +876,32 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2583912661111767741, guid: af7b71c77e05e78429c9c62f630c7321, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2583912661111767741, guid: af7b71c77e05e78429c9c62f630c7321, type: 3}
       propertyPath: m_SortingOrder
       value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2583912661111767741, guid: af7b71c77e05e78429c9c62f630c7321, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3671978553058853755, guid: af7b71c77e05e78429c9c62f630c7321, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3671978553058853755, guid: af7b71c77e05e78429c9c62f630c7321, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3671978553058853755, guid: af7b71c77e05e78429c9c62f630c7321, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3671978553058853755, guid: af7b71c77e05e78429c9c62f630c7321, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7380267882733429196, guid: af7b71c77e05e78429c9c62f630c7321, type: 3}
       propertyPath: m_LocalPosition.x
@@ -915,6 +943,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7380267882733429196, guid: af7b71c77e05e78429c9c62f630c7321, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8932579724641471298, guid: af7b71c77e05e78429c9c62f630c7321, type: 3}
       propertyPath: m_Layer
       value: 0
@@ -925,10 +957,10 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1781833396448153954, guid: af7b71c77e05e78429c9c62f630c7321, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 456970987}
-    - targetCorrespondingSourceObject: {fileID: 820832616763933183, guid: af7b71c77e05e78429c9c62f630c7321, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1339624710}
+      addedObject: {fileID: 456970991}
+    - targetCorrespondingSourceObject: {fileID: 8932579724641471298, guid: af7b71c77e05e78429c9c62f630c7321, type: 3}
+      insertIndex: 4
+      addedObject: {fileID: 1586751282}
   m_SourcePrefab: {fileID: 100100000, guid: af7b71c77e05e78429c9c62f630c7321, type: 3}
 --- !u!114 &456970983 stripped
 MonoBehaviour:
@@ -941,7 +973,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d02532b9542e05948939584868513b45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!58 &456970987
+--- !u!58 &456970991
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -970,7 +1002,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -1902,26 +1934,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.42245603}
   serializedVersion: 2
   m_Radius: 0.66672707
---- !u!1 &1339624707 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 820832616763933183, guid: af7b71c77e05e78429c9c62f630c7321, type: 3}
-  m_PrefabInstance: {fileID: 456970982}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1339624710
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1339624707}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b103d9b77a6820419cd02b1be110b31, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bonfire: {fileID: 456970983}
-  fireConsumption: 10
-  damage: 3.5
 --- !u!1001 &1485522030
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2199,6 +2211,26 @@ Transform:
   m_Children: []
   m_Father: {fileID: 765072195}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1586751274 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8932579724641471298, guid: af7b71c77e05e78429c9c62f630c7321, type: 3}
+  m_PrefabInstance: {fileID: 456970982}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1586751282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586751274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b103d9b77a6820419cd02b1be110b31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bonfire: {fileID: 456970983}
+  fireConsumption: 10
+  damage: 3.5
 --- !u!1 &1761771408
 GameObject:
   m_ObjectHideFlags: 0
@@ -2463,7 +2495,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 282fd0835404ecf418d327f8cc7bf49f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnDistanceFromCampFire: 10
+  spawnDistanceFromCampFire: 40
   waveData:
   - spawnEnemy: {fileID: 5892825325086882388, guid: fd5799f574f09d3498c9c11e50ac6dfc, type: 3}
     waveDelay: 10
@@ -2691,6 +2723,18 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 60ec334883b5b8147ba33a3a8bf0c05d, type: 2}
+    - target: {fileID: 6761640434887562066, guid: d440a7db640f45f4ba4c2502495d4362, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6761640434887562066, guid: d440a7db640f45f4ba4c2502495d4362, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6761640434887562066, guid: d440a7db640f45f4ba4c2502495d4362, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6806798824391866810, guid: d440a7db640f45f4ba4c2502495d4362, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -2738,6 +2782,10 @@ PrefabInstance:
     - target: {fileID: 8028362374647739054, guid: d440a7db640f45f4ba4c2502495d4362, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8591981933706972319, guid: d440a7db640f45f4ba4c2502495d4362, type: 3}
+      propertyPath: bombRadius
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3866449715594034150, guid: d440a7db640f45f4ba4c2502495d4362, type: 3}
