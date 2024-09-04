@@ -1,13 +1,15 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-
 public class Player : MonoBehaviour, IDamagable
 {
     [SerializeField]
-    Camera nowCamera;
+    private float AttackRange;
+    const float dirArrowDistance = 0.8f;
+    private float deathTime = 0f;
+    private float timeLimit = 2f;
+    private bool canAttack = true;
+    public int speed = 10;
+
     [SerializeField]
     Sprite[] dirSprite;
     [SerializeField]
@@ -18,12 +20,10 @@ public class Player : MonoBehaviour, IDamagable
     SpriteRenderer campFireCompass, campFireDir;
     Rigidbody2D rigid;
     public static Transform playerTransform;
-    public float AttackRange;
-    [SerializeField]
-    private float camRangeWidth, camRangeheight;
     [SerializeField]
     private SceneMoveManager scenemanager;
-    private bool actionBlock = true;
+    [SerializeField]
+    private TorchLight torchLight;
     Vector2 moveVec = Vector2.zero;
     Vector2 MoveVec
     {
@@ -32,23 +32,23 @@ public class Player : MonoBehaviour, IDamagable
         {
             if (value.magnitude > 1) moveVec = value.normalized;
             else moveVec = value;
-            if (ani != null) ani.SetBool("Run", value.magnitude > 0.125f);
+            ani?.SetBool("Run", value.magnitude > 0.125f);
             if (value.x != 0) playerSprite.transform.localScale = new Vector3(value.x < 0 ? -1 : 1, 1, 1);
         }
     }
-    public int speed = 10;
-    bool canAttack;
-    [SerializeField] 
-    private float dirArrowDistance = 15f;
-    [SerializeField]
-    private TorchLight torchLight;
-    private float deathTime = 0f;
-    private float timeLimit = 2f;
     public void OnDamage(float _damage) { GameOver(); }
+    private void Start()
+    {
+        //data init
+        ResourceData.Init();
+        GetAttachedComponents();
+        MakeCompass();
+        canAttack = true;
+    }
     public void GameOver()
     {
         ani?.SetTrigger("Dead");
-        Invoke("StopGame", 1.1f);
+        Invoke("StopGame", 1.4f);
         rigid.bodyType = RigidbodyType2D.Static;
         Debug.Log($"{gameObject.name} Is Dead.");
     }
@@ -56,12 +56,6 @@ public class Player : MonoBehaviour, IDamagable
     {
         scenemanager.LoadScene(SceneMoveManager.SceneName.GameOver);
     }
-    IEnumerator BoolChange(float time)
-    {
-        yield return new WaitForSeconds(time);
-        actionBlock = !actionBlock;
-    }
-
     private void CheckDarkphobia()
     {
         if (torchLight.LifeTime <= 0)
@@ -73,13 +67,6 @@ public class Player : MonoBehaviour, IDamagable
         {
             deathTime = 0;
         }
-    }
-    private void Start()
-    {
-        ResourceData.Init();
-        GetAttachedComponents();
-        MakeCompass();
-        canAttack = true;
     }
     void GetAttachedComponents()
     {
@@ -101,37 +88,32 @@ public class Player : MonoBehaviour, IDamagable
     void Update()
     {
         CheckDarkphobia();
-        //if (actionBlock) { return; }
         Move();
         CompassSet();
-        CamPositionSet();
-        AttackAndUse();
-    }
-    void CamPositionSet()
-    {
-        nowCamera.transform.position = new Vector3(
-            Mathf.Clamp(transform.position.x, -camRangeWidth / 2, camRangeWidth / 2),
-            Mathf.Clamp(transform.position.y, -camRangeheight / 2, camRangeheight / 2))
-            + Vector3.back * 20;
+        CheckMouseClick();
     }
     void Move()
     {
-        MoveVec = Input.GetAxis("Horizontal") * Vector3.right + Input.GetAxis("Vertical") * Vector3.up;
+        MoveVec = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         rigid.velocity = MoveVec * speed;
     }
     void CompassSet()
     {
+        //to campfire dir
         var compassPos = -transform.position;
+        //close to campfire
         if (Mathf.Abs(compassPos.x) > 25 || Mathf.Abs(compassPos.y) > 12)
         {
+            //obj on
             campFireDir.gameObject.SetActive(true);
             campFireCompass.gameObject.SetActive(true);
 
+            //compass pos set
             if (Mathf.Abs(compassPos.x) * 10 > Mathf.Abs(compassPos.y) * 19)
                 compassPos = compassPos / Mathf.Abs(compassPos.x) * 19;
             else
                 compassPos = compassPos / Mathf.Abs(compassPos.y) * 10;
-
+            //compass dir pos & sprite set
             if (Mathf.Abs(compassPos.x) > 15)
             {
                 if (compassPos.x < -15) campFireDir.sprite = dirSprite[2];
@@ -146,24 +128,26 @@ public class Player : MonoBehaviour, IDamagable
             campFireDir.transform.localPosition = compassPos;
             campFireCompass.sprite = campFireSR.sprite;
         }
+        //too far
         else
         {
             campFireDir.gameObject.SetActive(false);
             campFireCompass.gameObject.SetActive(false);
         }
     }
-    void AttackAndUse()
+    void CheckMouseClick()
     {
-        var mouseVec = nowCamera.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-        if (Input.GetMouseButtonDown(0)) {
-            if (canAttack) { canAttack = false; StartCoroutine(Attack()); }
-            if (!ani.GetBool("Axe")) ani.SetBool("Axe", true);
-        }
-        if (Input.GetMouseButton(0))
-        {
+        if (Input.GetMouseButtonDown(0) && canAttack) { canAttack = false; StartCoroutine(Attack()); }
+        if (Input.GetMouseButton(0)) { 
+            //move stop
             rigid.velocity = Vector2.zero;
+            //axa animation play
+            ani.SetBool("Axe", true);
         }
-        if (Input.GetMouseButtonUp(0)) ani.SetBool("Axe", false);
+        else {
+            //axa animation stop
+            ani.SetBool("Axe", false);
+        }
     }
     IEnumerator Attack()
     {
