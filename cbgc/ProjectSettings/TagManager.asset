@@ -5,10 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Tree
-  - KnockBack
   - InteractiveObject
   - BonfireLight
   - Monster
+  - PlayerAttack
   layers:
   - Default
   - TransparentFX
