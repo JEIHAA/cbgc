@@ -39,6 +39,13 @@ public class Player : MonoBehaviour, IDamagable
     private float deathTime = 0f;
     private float timeLimit = 2f;
     public void OnDamage(float _damage) { GameOver(); }
+    private void Start()
+    {
+        ResourceData.Init();
+        GetAttachedComponents();
+        MakeCompass();
+        canAttack = true;
+    }
     public void GameOver()
     {
         ani?.SetTrigger("Dead");
@@ -68,13 +75,7 @@ public class Player : MonoBehaviour, IDamagable
             deathTime = 0;
         }
     }
-    private void Start()
-    {
-        ResourceData.Init();
-        GetAttachedComponents();
-        MakeCompass();
-        canAttack = true;
-    }
+    
     void GetAttachedComponents()
     {
         playerTransform = transform;
@@ -95,7 +96,6 @@ public class Player : MonoBehaviour, IDamagable
     void Update()
     {
         CheckDarkphobia();
-        //if (actionBlock) { return; }
         Move();
         CompassSet();
         Click();
@@ -111,6 +111,7 @@ public class Player : MonoBehaviour, IDamagable
         if (Mathf.Abs(compassPos.x) > 25 || Mathf.Abs(compassPos.y) > 12)
         {
             campFireDir.gameObject.SetActive(true);
+            campFireCompass.gameObject.SetActive(true);
             campFireCompass.gameObject.SetActive(true);
 
             if (Mathf.Abs(compassPos.x) * 10 > Mathf.Abs(compassPos.y) * 19)
@@ -141,7 +142,7 @@ public class Player : MonoBehaviour, IDamagable
     void Click()
     {
         var mouseVec = nowCamera.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-        if (Input.GetMouseButtonDown(0) && canAttack) canAttack = false; StartCoroutine(Attack());
+        if (Input.GetMouseButtonDown(0) && canAttack) { canAttack = false; StartCoroutine(Attack()); }
         if (Input.GetMouseButton(0)) { 
             rigid.velocity = Vector2.zero;
             ani.SetBool("Axe", true);
