@@ -2,38 +2,56 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class Tree : InteractiveObject
+public class Tree : MonoBehaviour, IInteractiveObject
 {
+    [SerializeField] private int leftFirewood = 5;
+    private TreeEffect treeEffect;
+    
     private Animator animator;
     public Animator Anim => animator;
 
-    public int leftFirewood = 5;
+    private int axingCnt=0;
 
     private void Start()
     {
         animator = GetComponent<Animator>();
+        treeEffect = GetComponentInChildren<TreeEffect>();
     }
 
     public void Use()
     {
         --leftFirewood;
         Debug.Log("Chop!");
-        if (leftFirewood <= 0) gameObject.SetActive(false);
-    }
-
-    public IEnumerator ReUseTime(float _time)
-    {
-        yield return new WaitForSeconds(_time);
-    }
-    
-
-    public override void Interaction(float _time)
-    {
-        if (_time > 1f)
+        ResourceData.LogAmount += 1;
+        if (leftFirewood <= 0)
         {
-            Debug.Log("Tree Interaction");
-            animator.SetTrigger("Hit");
-            Use();
+            Invoke("Delay", 0.4f);
+            gameObject.SetActive(false);
         }
     }
+
+    public void Interaction(float _time)
+    {
+        if (_time > 90) return;
+        if (_time > 1f)
+        {
+            animator.SetTrigger("Hit");
+            //treeEffect.PlayRandomAnimation();
+            axingCnt++;
+        }
+
+        if (axingCnt > 1)
+        {
+            Use();
+            axingCnt = 0;
+        }
+
+    }
+
+    private void Delay()
+    {
+        Debug.Log("Delay");
+        return;
+    }
+
 }

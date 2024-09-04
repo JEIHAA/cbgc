@@ -12,10 +12,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: FastMonster
       objectReference: {fileID: 0}
+    - target: {fileID: 1113434160653165264, guid: 3bd1b359c000be74dbc87ffc0df05c84, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1113434160653165264, guid: 3bd1b359c000be74dbc87ffc0df05c84, type: 3}
+      propertyPath: m_TagString
+      value: Monster
+      objectReference: {fileID: 0}
     - target: {fileID: 1233102404248382987, guid: 3bd1b359c000be74dbc87ffc0df05c84, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -4622881252196753179, guid: 0c38de7ad3c44b84a8915ef865473529, type: 3}
+    - target: {fileID: 1233102404248382987, guid: 3bd1b359c000be74dbc87ffc0df05c84, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2553964802453834485, guid: 3bd1b359c000be74dbc87ffc0df05c84, type: 3}
       propertyPath: speed
       value: 4
@@ -35,6 +47,18 @@ PrefabInstance:
     - target: {fileID: 2600653414342133247, guid: 3bd1b359c000be74dbc87ffc0df05c84, type: 3}
       propertyPath: m_Offset.y
       value: 0.44
+      objectReference: {fileID: 0}
+    - target: {fileID: 4624427485269744315, guid: 3bd1b359c000be74dbc87ffc0df05c84, type: 3}
+      propertyPath: speed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4624427485269744315, guid: 3bd1b359c000be74dbc87ffc0df05c84, type: 3}
+      propertyPath: moveCenterWhenStart
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278472590945057405, guid: 3bd1b359c000be74dbc87ffc0df05c84, type: 3}
+      propertyPath: m_LocalScale.x
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 6278472590945057405, guid: 3bd1b359c000be74dbc87ffc0df05c84, type: 3}
       propertyPath: m_LocalPosition.x
@@ -79,7 +103,7 @@ PrefabInstance:
     - target: {fileID: 7413011067179324820, guid: 3bd1b359c000be74dbc87ffc0df05c84, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9196803416153377406, guid: 0c38de7ad3c44b84a8915ef865473529, type: 3}
+      objectReference: {fileID: 9100000, guid: 8df71ff9a76d82f41b1c467b9c5744a5, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -1,15 +1,29 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 public class Player : MonoBehaviour, IDamagable
 {
     [SerializeField]
-    GameObject playerSprite, knockbackObject;
+    Camera nowCamera;
+    [SerializeField]
+    Sprite[] dirSprite;
+    [SerializeField]
+    GameObject playerSprite, attackObject;
     Animator ani;
-    SpriteRenderer sr;
+    [SerializeField]
+    SpriteRenderer sr, campFireSR;
+    SpriteRenderer campFireCompass, campFireDir;
     Rigidbody2D rigid;
     public static Transform playerTransform;
     public float AttackRange;
+    [SerializeField]
+    private float camRangeWidth, camRangeheight;
+    [SerializeField]
+    private SceneMoveManager scenemanager;
+    private bool actionBlock = true;
     Vector2 moveVec = Vector2.zero;
     Vector2 MoveVec
     {
@@ -18,47 +32,147 @@ public class Player : MonoBehaviour, IDamagable
         {
             if (value.magnitude > 1) moveVec = value.normalized;
             else moveVec = value;
-            ani.SetBool("Run", value.magnitude > 0.125f);
-            if (value.x != 0) sr.flipX = value.x < 0 ? true : false;
+            if (ani != null) ani.SetBool("Run", value.magnitude > 0.125f);
+            if (value.x != 0) playerSprite.transform.localScale = new Vector3(value.x < 0 ? -1 : 1, 1, 1);
         }
     }
     public int speed = 10;
-    bool touchable = true;
-    public void OnDamage() { Debug.Log($"{gameObject.name} Is Dead."); }
+    bool canAttack;
+    [SerializeField] 
+    private float dirArrowDistance = 15f;
+    [SerializeField]
+    private TorchLight torchLight;
+    private float deathTime = 0f;
+    private float timeLimit = 2f;
+    public void OnDamage(float _damage) { GameOver(); }
+    public void GameOver()
+    {
+        ani?.SetTrigger("Dead");
+        Invoke("StopGame", 1.1f);
+        rigid.bodyType = RigidbodyType2D.Static;
+        Debug.Log($"{gameObject.name} Is Dead.");
+    }
+    void StopGame()
+    {
+        scenemanager.LoadScene(SceneMoveManager.SceneName.GameOver);
+    }
+    IEnumerator BoolChange(float time)
+    {
+        yield return new WaitForSeconds(time);
+        actionBlock = !actionBlock;
+    }
+
+    private void CheckDarkphobia()
+    {
+        if (torchLight.LifeTime <= 0)
+        {
+            deathTime += Time.deltaTime;
+            if (deathTime > timeLimit) GameOver();
+        }
+        else
+        {
+            deathTime = 0;
+        }
+    }
     private void Start()
+    {
+        ResourceData.Init();
+        GetAttachedComponents();
+        MakeCompass();
+        canAttack = true;
+    }
+    void GetAttachedComponents()
     {
         playerTransform = transform;
         rigid = GetComponent<Rigidbody2D>();
         sr = playerSprite.GetComponent<SpriteRenderer>();
         ani = playerSprite.GetComponent<Animator>();
+        attackObject.transform.localScale = Vector3.one * AttackRange;
+    }
+    void MakeCompass()
+    {
+        GameObject tmp = new GameObject("Compass");
+        tmp.transform.SetParent(transform);
+        campFireCompass = tmp.AddComponent<SpriteRenderer>();
+        tmp = new GameObject("Compass_Dir");
+        tmp.transform.SetParent(transform);
+        campFireDir = tmp.AddComponent<SpriteRenderer>();
     }
     void Update()
     {
+        CheckDarkphobia();
+        //if (actionBlock) { return; }
+        Move();
+        CompassSet();
+        CamPositionSet();
+        AttackAndUse();
+    }
+    void CamPositionSet()
+    {
+        nowCamera.transform.position = new Vector3(
+            Mathf.Clamp(transform.position.x, -camRangeWidth / 2, camRangeWidth / 2),
+            Mathf.Clamp(transform.position.y, -camRangeheight / 2, camRangeheight / 2))
+            + Vector3.back * 20;
+    }
+    void Move()
+    {
         MoveVec = Input.GetAxis("Horizontal") * Vector3.right + Input.GetAxis("Vertical") * Vector3.up;
         rigid.velocity = MoveVec * speed;
-        var mouseVec = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-        if (Input.GetMouseButton(0) && touchable)
+    }
+    void CompassSet()
+    {
+        var compassPos = -transform.position;
+        if (Mathf.Abs(compassPos.x) > 25 || Mathf.Abs(compassPos.y) > 12)
         {
-            touchable = false;
-            ani.SetTrigger("Axe");
-            Invoke("Touchable", 1f);
-            StartCoroutine(Swing(mouseVec));
-            Debug.DrawRay(transform.position, mouseVec);
-            var layhit = Physics2D.Raycast(transform.position, mouseVec, AttackRange);
-            layhit.collider?.gameObject.GetComponent<Enemy>()?.OnDamage();
+            campFireDir.gameObject.SetActive(true);
+            campFireCompass.gameObject.SetActive(true);
+
+            if (Mathf.Abs(compassPos.x) * 10 > Mathf.Abs(compassPos.y) * 19)
+                compassPos = compassPos / Mathf.Abs(compassPos.x) * 19;
+            else
+                compassPos = compassPos / Mathf.Abs(compassPos.y) * 10;
+
+            if (Mathf.Abs(compassPos.x) > 15)
+            {
+                if (compassPos.x < -15) campFireDir.sprite = dirSprite[2];
+                if (compassPos.x > 15) campFireDir.sprite = dirSprite[3];
+            }
+            else
+            {
+                if (compassPos.y > 8) campFireDir.sprite = dirSprite[0];
+                if (compassPos.y < -8) campFireDir.sprite = dirSprite[1];
+            }
+            campFireCompass.transform.localPosition = compassPos * dirArrowDistance;
+            campFireDir.transform.localPosition = compassPos;
+            campFireCompass.sprite = campFireSR.sprite;
+        }
+        else
+        {
+            campFireDir.gameObject.SetActive(false);
+            campFireCompass.gameObject.SetActive(false);
         }
     }
-    IEnumerator Swing(Vector2 mouseVec)
+    void AttackAndUse()
     {
-        knockbackObject.SetActive(true);
-        knockbackObject.transform.position = transform.position + (Vector3)mouseVec.normalized * 1.5f;
-        knockbackObject.transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(mouseVec.y, mouseVec.x) * Mathf.Rad2Deg);
-        yield return new WaitForSeconds(0.125f);
-        knockbackObject.SetActive(false);
+        var mouseVec = nowCamera.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        if (Input.GetMouseButtonDown(0)) {
+            if (canAttack) { canAttack = false; StartCoroutine(Attack()); }
+            if (!ani.GetBool("Axe")) ani.SetBool("Axe", true);
+        }
+        if (Input.GetMouseButton(0))
+        {
+            rigid.velocity = Vector2.zero;
+        }
+        if (Input.GetMouseButtonUp(0)) ani.SetBool("Axe", false);
     }
-    void Touchable() { touchable = true; }
+    IEnumerator Attack()
+    {
+        attackObject.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        canAttack = true;
+        attackObject.SetActive(false);
+    }
     IUsable obj;
     private void OnCollisionEnter2D(Collision2D collision) { collision.gameObject.TryGetComponent<IUsable>(out obj); }
     private void OnCollisionExit2D(Collision2D collision) { if (collision.gameObject.TryGetComponent<IUsable>(out obj)) obj = null; }
-
 }

@@ -1,4 +1,4 @@
 interface IDamagable
 {
-    void OnDamage();
+    void OnDamage(float _damage);
 }

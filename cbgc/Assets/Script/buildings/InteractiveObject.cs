@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class InteractiveObject : MonoBehaviour
+public interface IInteractiveObject
 {
     public abstract void Interaction(float _time);
-
 }
