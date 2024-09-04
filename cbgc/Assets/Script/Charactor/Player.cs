@@ -1,9 +1,5 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-
 public class Player : MonoBehaviour, IDamagable
 {
     [SerializeField]
@@ -20,8 +16,6 @@ public class Player : MonoBehaviour, IDamagable
     public static Transform playerTransform;
     public float AttackRange;
     [SerializeField]
-    private float camRangeWidth, camRangeheight;
-    [SerializeField]
     private SceneMoveManager scenemanager;
     private bool actionBlock = true;
     Vector2 moveVec = Vector2.zero;
@@ -32,7 +26,7 @@ public class Player : MonoBehaviour, IDamagable
         {
             if (value.magnitude > 1) moveVec = value.normalized;
             else moveVec = value;
-            if (ani != null) ani.SetBool("Run", value.magnitude > 0.125f);
+            ani?.SetBool("Run", value.magnitude > 0.125f);
             if (value.x != 0) playerSprite.transform.localScale = new Vector3(value.x < 0 ? -1 : 1, 1, 1);
         }
     }
@@ -104,15 +98,7 @@ public class Player : MonoBehaviour, IDamagable
         //if (actionBlock) { return; }
         Move();
         CompassSet();
-        CamPositionSet();
-        AttackAndUse();
-    }
-    void CamPositionSet()
-    {
-        nowCamera.transform.position = new Vector3(
-            Mathf.Clamp(transform.position.x, -camRangeWidth / 2, camRangeWidth / 2),
-            Mathf.Clamp(transform.position.y, -camRangeheight / 2, camRangeheight / 2))
-            + Vector3.back * 20;
+        Click();
     }
     void Move()
     {
@@ -152,18 +138,15 @@ public class Player : MonoBehaviour, IDamagable
             campFireCompass.gameObject.SetActive(false);
         }
     }
-    void AttackAndUse()
+    void Click()
     {
         var mouseVec = nowCamera.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-        if (Input.GetMouseButtonDown(0)) {
-            if (canAttack) { canAttack = false; StartCoroutine(Attack()); }
-            if (!ani.GetBool("Axe")) ani.SetBool("Axe", true);
-        }
-        if (Input.GetMouseButton(0))
-        {
+        if (Input.GetMouseButtonDown(0) && canAttack) canAttack = false; StartCoroutine(Attack());
+        if (Input.GetMouseButton(0)) { 
             rigid.velocity = Vector2.zero;
+            ani.SetBool("Axe", true);
         }
-        if (Input.GetMouseButtonUp(0)) ani.SetBool("Axe", false);
+        else { ani.SetBool("Axe", false); }
     }
     IEnumerator Attack()
     {
