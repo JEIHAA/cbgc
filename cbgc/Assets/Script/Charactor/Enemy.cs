@@ -60,22 +60,19 @@ public class Enemy : MonoBehaviour, IDamagable
     }
     private void OnTriggerEnter2D(Collider2D _collision)
     {
-        if (_collision.gameObject.tag == "KnockBack")
+        if (_collision.gameObject.tag == "PlayerAttack")
         {
             OnDamage(5);
             if(gameObject.activeSelf) KnockBack();
         }
     }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player")) MoveCenter();
-    }
+    private void OnTriggerExit2D(Collider2D _collision)
+    { if (_collision.gameObject.CompareTag("Player")) MoveCenter(); }
     void MoveCenter()
     {
         rigid.velocity = -transform.position.normalized * speed;
         sr.flipX = rigid.velocity.x < 0 ? true : false;
     }
-
     public void KnockBack() 
     {
         StartCoroutine(MoveBackToKnockBack());

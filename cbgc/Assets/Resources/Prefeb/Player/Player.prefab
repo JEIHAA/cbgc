@@ -341,8 +341,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 126629853357107197}
-  - component: {fileID: 1689350748352755046}
   - component: {fileID: 1611567155815748211}
+  - component: {fileID: 1689350748352755046}
   - component: {fileID: 3981583980593962499}
   - component: {fileID: 823697076669567284}
   m_Layer: 2
@@ -372,6 +372,28 @@ Transform:
   - {fileID: 1270599802594615632}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1611567155815748211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1222870616580398467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1404501b826bc064f888b119fcc536f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dirSprite: []
+  playerSprite: {fileID: 6993344547636132820}
+  attackObject: {fileID: 0}
+  sr: {fileID: 0}
+  campFireSR: {fileID: 0}
+  AttackRange: 3
+  scenemanager: {fileID: 0}
+  speed: 5
+  dirArrowDistance: 15
+  torchLight: {fileID: 0}
 --- !u!50 &1689350748352755046
 Rigidbody2D:
   serializedVersion: 4
@@ -399,31 +421,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &1611567155815748211
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1222870616580398467}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1404501b826bc064f888b119fcc536f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nowCamera: {fileID: 0}
-  dirSprite: []
-  playerSprite: {fileID: 6993344547636132820}
-  knockbackObject: {fileID: 695712593105418444}
-  sr: {fileID: 0}
-  campFireCompass: {fileID: 5165069310819390616}
-  campFireSR: {fileID: 0}
-  campFireDir: {fileID: 0}
-  AttackRange: 3
-  camRangeWidth: 0
-  camRangeheight: 0
-  scenemanager: {fileID: 0}
-  speed: 5
 --- !u!58 &3981583980593962499
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -713,7 +710,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa778e4ea60f75a44b1b560122a887fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interval: 1
+  animator: {fileID: 0}
 --- !u!1 &6993344547636132820
 GameObject:
   m_ObjectHideFlags: 0
