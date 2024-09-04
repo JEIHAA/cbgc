@@ -4,7 +4,7 @@ public class Player : MonoBehaviour, IDamagable
 {
     [SerializeField]
     private float AttackRange;
-    const float dirArrowDistance = 0.8f;
+    const float dirArrowDistance = 0.9f;
     private float deathTime = 0f;
     private float timeLimit = 2f;
     private bool canAttack = true;
@@ -81,9 +81,11 @@ public class Player : MonoBehaviour, IDamagable
         GameObject tmp = new GameObject("Compass");
         tmp.transform.SetParent(transform);
         campFireCompass = tmp.AddComponent<SpriteRenderer>();
+        campFireCompass.sortingOrder = 4;
         tmp = new GameObject("Compass_Dir");
         tmp.transform.SetParent(transform);
         campFireDir = tmp.AddComponent<SpriteRenderer>();
+        campFireDir.sortingOrder = 4;
     }
     void Update()
     {
