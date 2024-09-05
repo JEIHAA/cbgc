@@ -2335,6 +2335,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 425161938}
     - target: {fileID: 76274354537668735, guid: b011c6f8826e9434cab94f163ba542db, type: 3}
+      propertyPath: attackDelay
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 76274354537668735, guid: b011c6f8826e9434cab94f163ba542db, type: 3}
+      propertyPath: attackRange
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 76274354537668735, guid: b011c6f8826e9434cab94f163ba542db, type: 3}
       propertyPath: scenemanager
       value: 
       objectReference: {fileID: 1761771410}
@@ -2400,7 +2408,7 @@ Transform:
   m_GameObject: {fileID: 991202640185627872}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -2, z: -20}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

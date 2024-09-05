@@ -3,8 +3,8 @@ using UnityEngine;
 public class Player : MonoBehaviour, IDamagable
 {
     [SerializeField]
-    private float AttackRange;
-    const float dirArrowDistance = 0.9f;
+    private float attackRange, attackDelay;
+    const float dirArrowDistance = 0.8f;
     private float deathTime = 0f;
     private float timeLimit = 2f;
     private bool canAttack = true;
@@ -33,13 +33,13 @@ public class Player : MonoBehaviour, IDamagable
             if (value.magnitude > 1) moveVec = value.normalized;
             else moveVec = value;
             ani?.SetBool("Run", value.magnitude > 0.125f);
-            if (value.x != 0) playerSprite.transform.localScale = new Vector3(value.x < 0 ? -1 : 1, 1, 1);
+            if (value.x != 0 && canAttack) playerSprite.transform.localScale = new Vector3(value.x < 0 ? -1 : 1, 1, 1);
         }
     }
     public void OnDamage(float _damage) { GameOver(); }
     private void Start()
     {
-        //data init
+        //resource init
         ResourceData.Init();
         GetAttachedComponents();
         MakeCompass();
@@ -47,8 +47,13 @@ public class Player : MonoBehaviour, IDamagable
     }
     public void GameOver()
     {
+        StopCoroutine(Attack());
+        canAttack = false;
+        //death animation
         ani?.SetTrigger("Dead");
+        //until animation end
         Invoke("StopGame", 1.4f);
+        //player can not move
         rigid.bodyType = RigidbodyType2D.Static;
         Debug.Log($"{gameObject.name} Is Dead.");
     }
@@ -74,17 +79,20 @@ public class Player : MonoBehaviour, IDamagable
         rigid = GetComponent<Rigidbody2D>();
         sr = playerSprite.GetComponent<SpriteRenderer>();
         ani = playerSprite.GetComponent<Animator>();
-        attackObject.transform.localScale = Vector3.one * AttackRange;
+        attackObject.transform.localScale = Vector3.one * attackRange;
     }
     void MakeCompass()
     {
+        //make compass
         GameObject tmp = new GameObject("Compass");
         tmp.transform.SetParent(transform);
         campFireCompass = tmp.AddComponent<SpriteRenderer>();
-        campFireCompass.sortingOrder = 4;
+        //make compass dir
         tmp = new GameObject("Compass_Dir");
         tmp.transform.SetParent(transform);
         campFireDir = tmp.AddComponent<SpriteRenderer>();
+        //set sorting order
+        campFireCompass.sortingOrder = 4;
         campFireDir.sortingOrder = 4;
     }
     void Update()
@@ -92,7 +100,8 @@ public class Player : MonoBehaviour, IDamagable
         CheckDarkphobia();
         Move();
         CompassSet();
-        CheckMouseClick();
+        //check input
+        CheckKey();
     }
     void Move()
     {
@@ -130,31 +139,37 @@ public class Player : MonoBehaviour, IDamagable
             campFireDir.transform.localPosition = compassPos;
             campFireCompass.sprite = campFireSR.sprite;
         }
-        //too far
+        //too far (off compass)
         else
         {
             campFireDir.gameObject.SetActive(false);
             campFireCompass.gameObject.SetActive(false);
         }
     }
-    void CheckMouseClick()
+    void CheckKey()
     {
-        if (Input.GetMouseButtonDown(0) && canAttack) { canAttack = false; StartCoroutine(Attack()); }
-        if (Input.GetMouseButton(0)) { 
-            //move stop
-            rigid.velocity = Vector2.zero;
-            //axa animation play
-            ani.SetBool("Axe", true);
-        }
-        else {
+        //attack
+        if (Input.GetKeyDown(KeyCode.Z) && canAttack) { canAttack = false; StartCoroutine(Attack()); }
+        //using axe
+        if (Input.GetKey(KeyCode.X)){ CutDown(); }
+        else
+        {
             //axa animation stop
             ani.SetBool("Axe", false);
         }
     }
+    void CutDown()
+    {
+        //move stop while mouse button down
+        rigid.velocity = Vector2.zero;
+        //axa animation play
+        ani.SetBool("Axe", true);
+    }
     IEnumerator Attack()
     {
+        //attack delay
         attackObject.SetActive(true);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(attackDelay);
         canAttack = true;
         attackObject.SetActive(false);
     }
