@@ -7,7 +7,7 @@ public class Player : MonoBehaviour, IDamagable
     const float dirArrowDistance = 0.8f;
     private float deathTime = 0f;
     private float timeLimit = 2f;
-    private bool canAttack = true;
+    private bool canAttack = true, isCutDown = false;
     private bool isDead = false;
     public int speed = 10;
 
@@ -34,7 +34,7 @@ public class Player : MonoBehaviour, IDamagable
             if (value.magnitude > 1) moveVec = value.normalized;
             else moveVec = value;
             ani?.SetBool("Run", value.magnitude > 0.125f);
-            if (value.x != 0 && canAttack) playerSprite.transform.localScale = new Vector3(value.x < 0 ? -1 : 1, 1, 1);
+            if (value.x != 0 && canAttack && !isCutDown) playerSprite.transform.localScale = new Vector3(value.x < 0 ? -1 : 1, 1, 1);
         }
     }
     public void OnDamage(float _damage) { GameOver(); }
@@ -151,17 +151,19 @@ public class Player : MonoBehaviour, IDamagable
     void CheckKey()
     {
         //attack
-        if (Input.GetKeyDown(KeyCode.Z) && canAttack) { canAttack = false; StartCoroutine(Attack()); }
+        if (Input.GetKeyDown(KeyCode.Z) && canAttack && !isCutDown) { canAttack = false; StartCoroutine(Attack()); }
         //using axe
         if (Input.GetKey(KeyCode.X)){ CutDown(); }
         else
         {
             //axa animation stop
+            isCutDown = false;
             ani.SetBool("Axe", false);
         }
     }
     void CutDown()
     {
+        isCutDown = true;
         //move stop while mouse button down
         rigid.velocity = Vector2.zero;
         //axa animation play
