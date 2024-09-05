@@ -23,8 +23,8 @@ public class CloseChacker : MonoBehaviour
     {
         if (collision.gameObject == nearestObject)
         {
+            SetNearestObjectValues(false);
             nearestObject = null;
-            //changer.Setdefault();
         }
     }
 
