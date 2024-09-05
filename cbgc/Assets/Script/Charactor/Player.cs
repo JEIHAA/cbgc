@@ -152,9 +152,9 @@ public class Player : MonoBehaviour, IDamagable
     }
     void CheckMouse()
     {
-        if (Input.GetMouseButtonDown(0) && canAttack && !isCutDown) { canAttack = false; StartCoroutine(Attack()); }
+        if (Input.GetMouseButtonDown(1) && canAttack && !isCutDown) { canAttack = false; StartCoroutine(Attack()); }
         //using axe
-        if (Input.GetMouseButton(1)) { CutDown(); }
+        if (Input.GetMouseButton(0)) { CutDown(); }
         //end axe
         else
         {
