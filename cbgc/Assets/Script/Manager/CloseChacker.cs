@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class CloseChacker : MonoBehaviour
 {
-    [SerializeField] private static GameObject nearestObject;
-    public static GameObject NearestObject => nearestObject;
+    [SerializeField] private GameObject nearestObject;
+    public GameObject NearestObject => nearestObject;
+
+    private SpriteChanger spriteChanger;
 
     private float distance;
     private float minDistance = float.MaxValue;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject != nearestObject && collision.gameObject.CompareTag("InteractiveObject"))
+        if (collision.gameObject.CompareTag("InteractiveObject"))
         {
             GetNearestInteractiveObject(collision.gameObject);
             SetNearestObjectValues(true);
@@ -39,7 +41,9 @@ public class CloseChacker : MonoBehaviour
 
     private void SetNearestObjectValues(bool _value)
     {
-        nearestObject.GetComponent<SpriteChanger>().IsNearest = _value;
+        spriteChanger = nearestObject.GetComponent<SpriteChanger>();
+        if (spriteChanger == null) return;
+        spriteChanger.IsNearest = _value;
     }
 
 }

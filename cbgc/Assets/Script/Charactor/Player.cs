@@ -1,7 +1,12 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 public class Player : MonoBehaviour, IDamagable
 {
+    [SerializeField] private int health;
+    [SerializeField] private int defense = 0;
+    public int Defense { get => defense; set => defense = value; }
+
     [SerializeField]
     private float attackRange, attackDelay;
     const float dirArrowDistance = 0.8f;
@@ -37,7 +42,13 @@ public class Player : MonoBehaviour, IDamagable
             if (value.x != 0 && canAttack && !isCutDown) playerSprite.transform.localScale = new Vector3(value.x < 0 ? -1 : 1, 1, 1);
         }
     }
-    public void OnDamage(float _damage) { GameOver(); }
+
+    public void OnDamage(float _damage) 
+    {
+        health -= (int)_damage - defense;
+        if(health <= 0) GameOver(); 
+    }
+
     private void Start()
     {
         //resource init
@@ -65,7 +76,7 @@ public class Player : MonoBehaviour, IDamagable
     }
     private void CheckDarkphobia()
     {
-        if (torchLight.LifeTime <= 0)
+        if (torchLight.LeftTime <= 0)
         {
             deathTime += Time.deltaTime;
             if (deathTime > timeLimit) GameOver();

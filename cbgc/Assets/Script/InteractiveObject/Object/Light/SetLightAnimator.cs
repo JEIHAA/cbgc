@@ -11,10 +11,10 @@ public class SetLightAnimator : MonoBehaviour
 
     protected Animator[] anims;
 
-
     protected void TimeCount()
     {
         if (leftTime > 0) leftTime -= 1;
+        if (leftTime < 0) leftTime = 0;
         FireLightSetFloat();
     }
 

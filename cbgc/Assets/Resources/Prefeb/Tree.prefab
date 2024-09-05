@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 5766003504843133354}
   - component: {fileID: 1155158883423467630}
   - component: {fileID: 1036469962653375688}
-  - component: {fileID: 6032560872231473131}
   m_Layer: 7
   m_Name: Tree
   m_TagString: InteractiveObject
@@ -56,7 +55,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 5e70e475e98b93143b0f37712d1a62f7, type: 3}
   defaultAnimController: {fileID: 9100000, guid: d483cdd11164a6f4a8fc64c804c7c14b, type: 2}
   outlineAnimController: {fileID: 9100000, guid: d483cdd11164a6f4a8fc64c804c7c14b, type: 2}
-  canInteraction: 0
   isNearest: 0
 --- !u!114 &2953835870317000475
 MonoBehaviour:
@@ -178,41 +176,6 @@ CapsuleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0.09589687, y: -1.3401513}
   m_Size: {x: 0.7425993, y: 1.2921028}
-  m_Direction: 0
---- !u!70 &6032560872231473131
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6281578544985384098}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.55}
-  m_Size: {x: 2, y: 2.8}
   m_Direction: 0
 --- !u!1 &7659450126054836022
 GameObject:

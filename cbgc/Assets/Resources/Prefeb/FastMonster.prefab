@@ -38,19 +38,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2600653414342133247, guid: 3bd1b359c000be74dbc87ffc0df05c84, type: 3}
       propertyPath: m_Radius
-      value: 0.48
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2600653414342133247, guid: 3bd1b359c000be74dbc87ffc0df05c84, type: 3}
       propertyPath: m_Offset.x
-      value: 0.01
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2600653414342133247, guid: 3bd1b359c000be74dbc87ffc0df05c84, type: 3}
       propertyPath: m_Offset.y
-      value: 0.44
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4624427485269744315, guid: 3bd1b359c000be74dbc87ffc0df05c84, type: 3}
       propertyPath: speed
-      value: 2
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4624427485269744315, guid: 3bd1b359c000be74dbc87ffc0df05c84, type: 3}
+      propertyPath: health
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4624427485269744315, guid: 3bd1b359c000be74dbc87ffc0df05c84, type: 3}
+      propertyPath: fireConsumption
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4624427485269744315, guid: 3bd1b359c000be74dbc87ffc0df05c84, type: 3}
       propertyPath: moveCenterWhenStart
@@ -62,7 +70,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6278472590945057405, guid: 3bd1b359c000be74dbc87ffc0df05c84, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11.16
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6278472590945057405, guid: 3bd1b359c000be74dbc87ffc0df05c84, type: 3}
       propertyPath: m_LocalPosition.y
