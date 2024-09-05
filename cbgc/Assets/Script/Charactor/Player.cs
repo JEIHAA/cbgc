@@ -8,6 +8,7 @@ public class Player : MonoBehaviour, IDamagable
     private float deathTime = 0f;
     private float timeLimit = 2f;
     private bool canAttack = true;
+    private bool isDead = false;
     public int speed = 10;
 
     [SerializeField]
@@ -47,8 +48,9 @@ public class Player : MonoBehaviour, IDamagable
     }
     public void GameOver()
     {
-        StopCoroutine(Attack());
-        canAttack = false;
+        if(isDead) return;
+        isDead = true;
+        ani.SetBool("Axe", false);
         //death animation
         ani?.SetTrigger("Dead");
         //until animation end
@@ -97,6 +99,7 @@ public class Player : MonoBehaviour, IDamagable
     }
     void Update()
     {
+        if (isDead) return;
         CheckDarkphobia();
         Move();
         CompassSet();
