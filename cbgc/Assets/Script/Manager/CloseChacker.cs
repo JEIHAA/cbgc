@@ -34,6 +34,7 @@ public class CloseChacker : MonoBehaviour
         distance = Vector2.Distance(transform.position, _go.transform.position);
         if (distance < minDistance)
         {
+            if(nearestObject != null) SetNearestObjectValues(false);
             nearestObject = _go;
         }
     }

@@ -25,9 +25,7 @@ public class SpriteChanger : MonoBehaviour
             // 값이 변경될 때만 로직 실행
             if (isNearest != value)
             {
-                Debug.Log($"Changing from {isNearest} to {value}");
                 isNearest = value;
-                Debug.Log($"New value: {isNearest}");
                 DrawOutline();
             }
         }
@@ -47,12 +45,10 @@ public class SpriteChanger : MonoBehaviour
     {
         if (isNearest)
         {
-            Debug.Log("outlineSprites");
             spriteRenderer.sprite = outlineSprites[spriteNum];
         }
         else
         {
-            Debug.Log("defaultSprite");
             spriteRenderer.sprite = defaultSprite;
         }
     }
