@@ -8,6 +8,7 @@ public class Player : MonoBehaviour, IDamagable
     private float deathTime = 0f;
     private float timeLimit = 2f;
     private bool canAttack = true;
+    private bool isDead = false;
     public int speed = 10;
 
     [SerializeField]
@@ -16,7 +17,7 @@ public class Player : MonoBehaviour, IDamagable
     GameObject playerSprite, attackObject;
     Animator ani;
     [SerializeField]
-    SpriteRenderer sr, campFireSR;
+    SpriteRenderer campFireSR;
     SpriteRenderer campFireCompass, campFireDir;
     Rigidbody2D rigid;
     public static Transform playerTransform;
@@ -47,8 +48,9 @@ public class Player : MonoBehaviour, IDamagable
     }
     public void GameOver()
     {
-        StopCoroutine(Attack());
-        canAttack = false;
+        if(isDead) return;
+        isDead = true;
+        ani.SetBool("Axe", false);
         //death animation
         ani?.SetTrigger("Dead");
         //until animation end
@@ -77,7 +79,6 @@ public class Player : MonoBehaviour, IDamagable
     {
         playerTransform = transform;
         rigid = GetComponent<Rigidbody2D>();
-        sr = playerSprite.GetComponent<SpriteRenderer>();
         ani = playerSprite.GetComponent<Animator>();
         attackObject.transform.localScale = Vector3.one * attackRange;
     }
@@ -97,6 +98,7 @@ public class Player : MonoBehaviour, IDamagable
     }
     void Update()
     {
+        if (isDead) return;
         CheckDarkphobia();
         Move();
         CompassSet();
