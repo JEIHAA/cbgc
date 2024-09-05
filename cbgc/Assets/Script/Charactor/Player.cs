@@ -17,7 +17,7 @@ public class Player : MonoBehaviour, IDamagable
     GameObject playerSprite, attackObject;
     Animator ani;
     [SerializeField]
-    SpriteRenderer sr, campFireSR;
+    SpriteRenderer campFireSR;
     SpriteRenderer campFireCompass, campFireDir;
     Rigidbody2D rigid;
     public static Transform playerTransform;
@@ -79,7 +79,6 @@ public class Player : MonoBehaviour, IDamagable
     {
         playerTransform = transform;
         rigid = GetComponent<Rigidbody2D>();
-        sr = playerSprite.GetComponent<SpriteRenderer>();
         ani = playerSprite.GetComponent<Animator>();
         attackObject.transform.localScale = Vector3.one * attackRange;
     }
