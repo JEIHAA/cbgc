@@ -40,7 +40,7 @@ public class Picking : MonoBehaviour
 
     public void PickingAction()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(1))
         {
             obj = PickingProcess();
             if (obj == null) return;
@@ -48,7 +48,7 @@ public class Picking : MonoBehaviour
             //Debug.Log(obj.name);
         }
 
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(1))
         {
             timeElapsed += Time.deltaTime;
             //UnityEngine.Debug.Log(timeElapsed);
@@ -84,7 +84,7 @@ public class Picking : MonoBehaviour
             }*/
         }
 
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(1))
         {
             obj = null;
             timeElapsed = 0f;
