@@ -8,6 +8,7 @@ public class PickingManager : MonoBehaviour
     [SerializeField] private Picking picking;
     [SerializeField] private bool isClose = false;
     [SerializeField] private float bombRadius = 15;
+    [SerializeField] private GameObject dark;
 
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -34,13 +35,17 @@ public class PickingManager : MonoBehaviour
         {
             picking.PickingAction();
         }
-        if (Input.GetKey(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F))
         {
-            ResourceData.LogAmount += 1;
+            ResourceData.LogAmount += 10;
         }
-        if (Input.GetKey(KeyCode.G))
+        if (Input.GetKeyDown(KeyCode.G))
         {
             Bomb();
+        }
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            LightOn();
         }
     }
 
@@ -54,5 +59,11 @@ public class PickingManager : MonoBehaviour
                 coll.gameObject.GetComponent<Enemy>().OnDamage(9999);
             }
         }
+    }
+
+    private void LightOn()
+    {
+        if (dark.activeSelf) dark.SetActive(false);
+        else dark.SetActive(true);
     }
 }
