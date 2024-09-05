@@ -104,6 +104,8 @@ public class Player : MonoBehaviour, IDamagable
         CompassSet();
         //check input
         CheckKey();
+        CheckMouse();
+
     }
     void Move()
     {
@@ -148,12 +150,26 @@ public class Player : MonoBehaviour, IDamagable
             campFireCompass.gameObject.SetActive(false);
         }
     }
+    void CheckMouse()
+    {
+        if (Input.GetMouseButtonDown(0) && canAttack && !isCutDown) { canAttack = false; StartCoroutine(Attack()); }
+        //using axe
+        if (Input.GetMouseButton(1)) { CutDown(); }
+        //end axe
+        else
+        {
+            //axa animation stop
+            isCutDown = false;
+            ani.SetBool("Axe", false);
+        }
+    }
     void CheckKey()
     {
         //attack
         if (Input.GetKeyDown(KeyCode.Z) && canAttack && !isCutDown) { canAttack = false; StartCoroutine(Attack()); }
         //using axe
         if (Input.GetKey(KeyCode.X)){ CutDown(); }
+        //end axe
         else
         {
             //axa animation stop
