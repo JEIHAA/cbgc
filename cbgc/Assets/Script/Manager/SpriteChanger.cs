@@ -14,8 +14,6 @@ public class SpriteChanger : MonoBehaviour
     [SerializeField] private RuntimeAnimatorController defaultAnimController; // 첫 번째 애니메이터 컨트롤러
     [SerializeField] private RuntimeAnimatorController outlineAnimController; // 두 번째 애니메이터 컨트롤러
 
-    [SerializeField] private bool canInteraction = false;
-    public bool CanInteraction { get => canInteraction; set => canInteraction = value; }
     [SerializeField] private bool isNearest = false;
     public bool IsNearest
     {
@@ -30,10 +28,10 @@ public class SpriteChanger : MonoBehaviour
             }
         }
     }
-    // -- 변수
-
+    
     private SpriteRenderer spriteRenderer;
     private int spriteNum = 0;
+    // -- 변수
 
     private void DrawOutline()
     {
@@ -63,13 +61,6 @@ public class SpriteChanger : MonoBehaviour
         {
             animator.runtimeAnimatorController = defaultAnimController;
         }
-    }
-
-    public void Setdefault()
-    {
-        Debug.Log("false");
-        isNearest = false;
-        canInteraction = false;
     }
 
     private void Start()
