@@ -33,7 +33,7 @@ public class Player : MonoBehaviour, IDamagable
             if (value.magnitude > 1) moveVec = value.normalized;
             else moveVec = value;
             ani?.SetBool("Run", value.magnitude > 0.125f);
-            if (value.x != 0) playerSprite.transform.localScale = new Vector3(value.x < 0 ? -1 : 1, 1, 1);
+            if (value.x != 0 && canAttack) playerSprite.transform.localScale = new Vector3(value.x < 0 ? -1 : 1, 1, 1);
         }
     }
     public void OnDamage(float _damage) { GameOver(); }
@@ -91,6 +91,7 @@ public class Player : MonoBehaviour, IDamagable
         Move();
         CompassSet();
         CheckMouseClick();
+        CheckKeyClick();
     }
     void Move()
     {
@@ -135,9 +136,13 @@ public class Player : MonoBehaviour, IDamagable
             campFireCompass.gameObject.SetActive(false);
         }
     }
+    void CheckKeyClick()
+    {
+        if (Input.GetKeyDown(KeyCode.Z) && canAttack) { canAttack = false; StartCoroutine(Attack()); }
+    }
     void CheckMouseClick()
     {
-        if (Input.GetMouseButtonDown(0) && canAttack) { canAttack = false; StartCoroutine(Attack()); }
+        
         if (Input.GetMouseButton(0)) { 
             //move stop
             rigid.velocity = Vector2.zero;
