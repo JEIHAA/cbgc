@@ -5,10 +5,10 @@ public class Enemy : MonoBehaviour, IDamagable
 {
     public float speed; 
     public float health;
-    SpriteRenderer sr;
-    Rigidbody2D rigid;
-    Animator ani;
-    WaitForSeconds knockBackTime;
+    private SpriteRenderer sr;
+    private Rigidbody2D rigid;
+    private Animator ani;
+    private WaitForSeconds knockBackTime;
     public bool isUpdate;
     private Vector2 addVelocity;
     private Vector2 Velocity

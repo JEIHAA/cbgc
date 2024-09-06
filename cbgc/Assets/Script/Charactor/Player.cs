@@ -7,7 +7,7 @@ public class Player : MonoBehaviour, IDamagable
     private float attackRange, attackDelay;
     private float deathTime = 0f, timeLimit = 2f;
     private bool canAttack = true, isCutDown = false, isDead = false;
-    Rigidbody2D rigid;
+    private Rigidbody2D rigid;
     [SerializeField] Animator ani;
     [SerializeField] GameObject attackObject;
     [SerializeField] private SceneMoveManager scenemanager;
