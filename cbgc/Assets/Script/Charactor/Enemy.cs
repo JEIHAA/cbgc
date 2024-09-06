@@ -14,7 +14,7 @@ public class Enemy : MonoBehaviour, IDamagable
     private Vector2 Velocity
     {
         get => rigid.velocity;
-        set { rigid.velocity = value + addVelocity; sr.flipX = value.x < 0 ? true : false; }
+        set { if(rigid.bodyType != RigidbodyType2D.Static) rigid.velocity = value + addVelocity; sr.flipX = value.x < 0 ? true : false; }
     }
     void Start()
     {
