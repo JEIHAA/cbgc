@@ -1859,6 +1859,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 765072195}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1703147169 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8780473694811044767, guid: b011c6f8826e9434cab94f163ba542db, type: 3}
+  m_PrefabInstance: {fileID: 5191860226224175374}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c24112eb48c26584d9b722ef3d54f2ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1761771408
 GameObject:
   m_ObjectHideFlags: 0
@@ -1869,6 +1880,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1761771409}
   - component: {fileID: 1761771410}
+  - component: {fileID: 1761771411}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1906,6 +1918,20 @@ MonoBehaviour:
   moveButton: {fileID: 0}
   moveScene: 3
   moveDelay: 0
+--- !u!114 &1761771411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1761771408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eedadaa39b975ee49aa60366fb6a5191, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  torchLight: {fileID: 1703147169}
+  bonfire: {fileID: 456970983}
 --- !u!1 &1795661002
 GameObject:
   m_ObjectHideFlags: 0
@@ -2276,6 +2302,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 521519113179472606, guid: b011c6f8826e9434cab94f163ba542db, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 881888685802700847, guid: b011c6f8826e9434cab94f163ba542db, type: 3}
       propertyPath: m_Offset.y
       value: 0
@@ -2286,6 +2316,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2889580183903875888, guid: b011c6f8826e9434cab94f163ba542db, type: 3}
       propertyPath: m_Offset.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3771907737244827058, guid: b011c6f8826e9434cab94f163ba542db, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4789418666011421503, guid: b011c6f8826e9434cab94f163ba542db, type: 3}
@@ -2352,6 +2386,10 @@ PrefabInstance:
       propertyPath: dark
       value: 
       objectReference: {fileID: 9219439483629285840}
+    - target: {fileID: 7982791916705894826, guid: b011c6f8826e9434cab94f163ba542db, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8051876528930282152, guid: b011c6f8826e9434cab94f163ba542db, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

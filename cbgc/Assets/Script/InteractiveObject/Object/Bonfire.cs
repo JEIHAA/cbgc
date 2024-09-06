@@ -3,7 +3,7 @@ using UnityEngine;
 public class Bonfire: SetLightAnimator, IInteractiveObject
 {
     private Enemy enemy;
-
+    public int MaxTime => maxTime;
     private void Start()
     {
         maxTime = 100; 

@@ -9,9 +9,14 @@ public class Enemy : MonoBehaviour, IDamagable
     Rigidbody2D rigid;
     Animator ani;
     WaitForSeconds checkTime, knockBackTime;
-    public bool moveCenterWhenStart;
+    public bool isUpdate;
     private Vector3 freePos;
     private Vector3 addVelocity;
+    private Vector3 Velocity
+    {
+        get => rigid.velocity;
+        set { rigid.velocity = value + addVelocity; sr.flipX = value.x < 0 ? true : false; }
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +27,17 @@ public class Enemy : MonoBehaviour, IDamagable
         checkTime = new(1f);
         knockBackTime = new(0.125f);
 
-        if (moveCenterWhenStart) Invoke("MoveCenter",0.5f);
+        if (isUpdate) StartCoroutine(ControlableUpdate());
+    }
+    IEnumerator ControlableUpdate()
+    {
+        yield return new WaitForSeconds(0.125f);
+        while (gameObject.activeSelf)
+        {
+            if (LightData.TorchIsBrightest) MoveToPlayer();
+            else MoveToCenter();
+            yield return null;
+        }
     }
     IEnumerator MoveBackToKnockBack()
     {
@@ -30,15 +45,9 @@ public class Enemy : MonoBehaviour, IDamagable
         yield return knockBackTime;
         addVelocity = Vector3.zero;
     }
-    private IEnumerator MoveFreePosition()
-    {
-        while (true)
-        {
-            rigid.velocity = (freePos - transform.position).normalized * speed;
-            sr.flipX = rigid.velocity.x < 0 ? true : false;
-            yield return checkTime;
-        }
-    }
+    void MoveFreePosition() => Velocity = (freePos - transform.position).normalized * speed;
+    void MoveToPlayer() => Velocity = (Player.playerTransform.position - transform.position).normalized * speed;
+    void MoveToCenter() => Velocity = -transform.position.normalized * speed;
     public void OnDamage(float _damage) {
         health -= _damage;
         ani.SetTrigger("Hit");
@@ -59,34 +68,21 @@ public class Enemy : MonoBehaviour, IDamagable
     }
     private void OnCollisionEnter2D(Collision2D _collision)
     {
-        if (_collision.gameObject.tag == "Player") _collision.gameObject.GetComponent<Player>().OnDamage(100);
-        if(rigid != null) rigid.velocity = Vector2.zero;
-    }
-    private void OnTriggerStay2D(Collider2D _collision)
-    {
         if (_collision.gameObject.tag == "Player")
-        {
-            rigid.velocity =(Player.playerTransform.position - transform.position).normalized * speed + addVelocity;
-            sr.flipX = rigid.velocity.x < 0 ? true : false;
-        }
+            _collision.gameObject.GetComponent<Player>().OnDamage(100);
+        if(rigid != null) rigid.velocity = Vector2.zero;
     }
     private void OnTriggerEnter2D(Collider2D _collision)
     {
+        if (_collision.gameObject.tag == "Player" && !isUpdate)
+        {
+            StartCoroutine(ControlableUpdate());
+        }
         if (_collision.gameObject.tag == "PlayerAttack")
         {
             OnDamage(5);
             if(gameObject.activeSelf) KnockBack();
         }
     }
-    private void OnTriggerExit2D(Collider2D _collision)
-    { if (_collision.gameObject.CompareTag("Player")) MoveCenter(); }
-    void MoveCenter()
-    {
-        rigid.velocity = -transform.position.normalized * speed;
-        sr.flipX = rigid.velocity.x < 0 ? true : false;
-    }
-    public void KnockBack() 
-    {
-        StartCoroutine(MoveBackToKnockBack());
-    }
+    public void KnockBack() => StartCoroutine(MoveBackToKnockBack());
 }
