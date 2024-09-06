@@ -18,7 +18,7 @@ public class Intertaction : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             if (closeChecker.NearestObject == null) return;
-            closeChecker.NearestObject.GetComponentInParent<IInteractiveObject>().Interaction(99);
+            closeChecker?.NearestObject?.GetComponentInParent<IInteractiveObject>().Interaction(99);
         }
 
         if (Input.GetMouseButtonUp(0))
@@ -32,7 +32,8 @@ public class Intertaction : MonoBehaviour
 
             if (timeElapsed >= interval)
             {
-                closeChecker.NearestObject?.GetComponentInParent<IInteractiveObject>().Interaction(timeElapsed);
+                if (closeChecker.NearestObject == null) return;
+                closeChecker?.NearestObject?.GetComponentInParent<IInteractiveObject>().Interaction(timeElapsed);
                 timeElapsed = 0f;
                 /*if (animator.GetCurrentAnimatorStateInfo(0).IsName("character_axe_Clip"))
                 {
