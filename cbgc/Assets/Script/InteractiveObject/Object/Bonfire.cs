@@ -1,12 +1,21 @@
 using UnityEngine;
 
-public class Bonfire: SetLightAnimator, IInteractiveObject, IDamagable
+public class Bonfire: SetLightAnimator, IInteractiveObject
 {
+    private Enemy enemy;
+    public int MaxTime => maxTime;
     private void Start()
     {
         maxTime = 100; 
         anims = GetComponentsInChildren<Animator>();
         InvokeRepeating("TimeCount", 1, 1);
+    }
+
+    private void Use()
+    {
+        Debug.Log("Use");
+        leftTime += 10;
+        if (leftTime >= maxTime) leftTime = maxTime;
         FireLightSetFloat();
     }
 
@@ -15,16 +24,11 @@ public class Bonfire: SetLightAnimator, IInteractiveObject, IDamagable
         if (ResourceData.LogAmount >= 1)
         {
             ResourceData.LogAmount -= 1;
-            leftTime += 10;
-            if (leftTime >= maxTime) leftTime = maxTime;
-            FireLightSetFloat();
+            Debug.Log("firewood -1");
+            Use();
         }
     }
 
-    public void OnDamage(float _damage)
-    {
-        leftTime -= (int)_damage;
-    }
 
     protected override void FireLightSetFloat()
     {
@@ -33,5 +37,4 @@ public class Bonfire: SetLightAnimator, IInteractiveObject, IDamagable
             anim.SetFloat("LeftTime", leftTime);
         }
     }
-
 }
