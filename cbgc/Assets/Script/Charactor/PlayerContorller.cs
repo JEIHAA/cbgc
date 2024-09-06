@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerContorller : MonoBehaviour
 {
     private Rigidbody2D rigid;
-    [SerializeField]
+    [SerializeField, Range(1,10)]
     private float speed;
     public bool canMove;
     void Start()

@@ -6,7 +6,6 @@ public class Player : MonoBehaviour, IDamagable
     [SerializeField] private int health;
     [SerializeField] private int defense = 0;
     public int Defense { get => defense; set => defense = value; }
-    public int speed = 10;
     [SerializeField]
     private float attackRange, attackDelay;
     private float deathTime = 0f, timeLimit = 2f;
