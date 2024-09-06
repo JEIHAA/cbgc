@@ -57,7 +57,7 @@ public class Enemy : MonoBehaviour, IDamagable
     public void OnDamage(float _damage) {
         health -= _damage;
         ani.SetTrigger("Hit");
-        if (health <= 0) StartCoroutine(Dying());
+        if (health <= 0 && gameObject.activeSelf) StartCoroutine(Dying());
     }
     IEnumerator Dying()
     {
@@ -74,22 +74,16 @@ public class Enemy : MonoBehaviour, IDamagable
     }
     private void OnCollisionEnter2D(Collision2D _collision)
     {
-        if (_collision.gameObject.tag == "Player")
+        if (_collision.gameObject.CompareTag("Player"))
             _collision.gameObject.GetComponent<Player>().OnDamage(100);
     }
     private void OnTriggerEnter2D(Collider2D _collision)
     {
-        switch (_collision.gameObject.tag)
+        if (_collision.gameObject.CompareTag("Player") && !isUpdate) StartCoroutine(ControlableUpdate());
+        if (_collision.gameObject.CompareTag("PlayerAttack"))
         {
-            case "Player":
-                if(!isUpdate) StartCoroutine(ControlableUpdate());
-                break;
-            case "PlayerAttack":
-                OnDamage(5);
-                if (gameObject.activeSelf) KnockBack(true);
-                break;
-            default:
-                break;
+            OnDamage(5);
+            if (gameObject.activeSelf) KnockBack(true);
         }
         if (_collision.gameObject.layer == LayerMask.NameToLayer("Bonfire"))
         {
