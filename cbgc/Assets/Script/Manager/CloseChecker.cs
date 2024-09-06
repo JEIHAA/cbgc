@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CloseChacker : MonoBehaviour
+public class CloseChecker : MonoBehaviour
 {
     [SerializeField] private GameObject nearestObject;
     public GameObject NearestObject => nearestObject;
