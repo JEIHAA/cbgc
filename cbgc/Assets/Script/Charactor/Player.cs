@@ -82,7 +82,7 @@ public class Player : MonoBehaviour, IDamagable
     {
         //dir
         var dir = Input.GetAxis("Horizontal");
-        if(dir != 0) ani.gameObject.transform.localScale = new Vector3(dir < 0 ? -1 : 1, 1, 1);
+        if(dir != 0 && canAttack && !isCutDown) ani.gameObject.transform.localScale = new Vector3(dir < 0 ? -1 : 1, 1, 1);
         //attack
         if (Input.GetKeyDown(KeyCode.Z) && canAttack && !isCutDown) { canAttack = false; StartCoroutine(Attack()); }
         //using axe
