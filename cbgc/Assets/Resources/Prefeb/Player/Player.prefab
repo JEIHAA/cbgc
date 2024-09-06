@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7120179776450460374}
   - component: {fileID: 76274354537668735}
+  - component: {fileID: 2937960842581754279}
   - component: {fileID: 1318558482367169569}
   - component: {fileID: 5994877828121486558}
   - component: {fileID: 2889580183903875888}
@@ -50,19 +51,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1404501b826bc064f888b119fcc536f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 100
+  defense: 0
+  speed: 6
   attackRange: 2
   attackDelay: 0.5
-  speed: 6
+  ani: {fileID: 2480413221930324047}
+  attackObject: {fileID: 3771907737244827058}
+  scenemanager: {fileID: 0}
+--- !u!114 &2937960842581754279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 142145132805335866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f5d5ea75379e384e852323d2d249da6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  campFireSR: {fileID: 0}
   dirSprite:
   - {fileID: 21300000, guid: 6efd802a6affb1449b066bcd33cbb6d0, type: 3}
   - {fileID: 21300000, guid: bef7e9d1297189e4a8c5a899d3de26a6, type: 3}
   - {fileID: 21300000, guid: f51534f831da92d47beb2faf4902e7a1, type: 3}
   - {fileID: 21300000, guid: 04924dd0083d5224587f8ae9ff67d5c8, type: 3}
-  playerSprite: {fileID: 3875552605487113877}
-  attackObject: {fileID: 3771907737244827058}
-  campFireSR: {fileID: 0}
-  scenemanager: {fileID: 0}
-  torchLight: {fileID: 8780473694811044767}
 --- !u!50 &1318558482367169569
 Rigidbody2D:
   serializedVersion: 4
@@ -283,7 +297,7 @@ Transform:
   m_GameObject: {fileID: 2821326621356752173}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.45, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -390,7 +404,7 @@ Transform:
   m_GameObject: {fileID: 3771907737244827058}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -850,7 +864,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4773179892451345277, guid: 1eedf8540ddc87a40ba22d02a7a214d9, type: 3}
       propertyPath: m_Size.x
-      value: 1.5
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 4773179892451345277, guid: 1eedf8540ddc87a40ba22d02a7a214d9, type: 3}
       propertyPath: m_Size.y
@@ -858,7 +872,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4773179892451345277, guid: 1eedf8540ddc87a40ba22d02a7a214d9, type: 3}
       propertyPath: m_Offset.x
-      value: 0.6
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4875743608486291811, guid: 1eedf8540ddc87a40ba22d02a7a214d9, type: 3}
+      propertyPath: m_Name
+      value: CloseChecker
       objectReference: {fileID: 0}
     - target: {fileID: 6694563380812963231, guid: 1eedf8540ddc87a40ba22d02a7a214d9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -945,6 +963,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e16b5040fb7a0c42a33bf2833c1bc3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  closeChecker: {fileID: 4919039495572226797}
 --- !u!114 &4919039495572226797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -957,6 +976,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e25f47bd17334bb4e94c65f2d6e27318, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nearestObject: {fileID: 0}
 --- !u!114 &4850673548123485908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -969,8 +989,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1388647ed480fee41981a20768227e78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 76274354537668735}
   bonfire: {fileID: 0}
-  bombRadius: 15
+  bombRadius: 50
   dark: {fileID: 0}
 --- !u!4 &8051876528930282152 stripped
 Transform:
