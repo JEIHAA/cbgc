@@ -865,6 +865,10 @@ PrefabInstance:
       propertyPath: delay
       value: 0.8
       objectReference: {fileID: 0}
+    - target: {fileID: 4608298080798076066, guid: af7b71c77e05e78429c9c62f630c7321, type: 3}
+      propertyPath: outlineSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: -8072403580185637467, guid: f781169bced50e64ea00b1766c9e341a, type: 3}
     - target: {fileID: 5914840963163503025, guid: af7b71c77e05e78429c9c62f630c7321, type: 3}
       propertyPath: delay
       value: 0.8

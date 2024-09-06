@@ -35,8 +35,8 @@ public class SpriteChanger : MonoBehaviour
 
     private void DrawOutline()
     {
-        ChangeSprite();
-        //ChangeAnimController(isNearest);
+        //ChangeSprite();
+        ChangeAnimController(isNearest);
     }
 
     private void ChangeSprite()
