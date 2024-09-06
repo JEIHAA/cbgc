@@ -3,12 +3,15 @@ using Unity.VisualScripting;
 using UnityEngine;
 public class Enemy : MonoBehaviour, IDamagable
 {
-    public float speed; 
-    public float health;
+    [SerializeField] private float speed;
+    [SerializeField] private float health;
+    [SerializeField] private float damage;
+    [SerializeField] private float delay = 0.8f;
+
     private SpriteRenderer sr;
     private Rigidbody2D rigid;
     private Animator ani;
-    private WaitForSeconds knockBackTime;
+    private WaitForSeconds knockBackTime, attackCycle;
     public bool isUpdate;
     private Vector2 addVelocity;
     private Vector2 Velocity
@@ -24,6 +27,7 @@ public class Enemy : MonoBehaviour, IDamagable
         ani = GetComponent<Animator>();
 
         knockBackTime = new(0.125f);
+        attackCycle = new WaitForSeconds(damage);
 
         if (isUpdate) StartCoroutine(ControlableUpdate());
     }
@@ -87,6 +91,17 @@ public class Enemy : MonoBehaviour, IDamagable
             default:
                 break;
         }
+        if (_collision.gameObject.layer == LayerMask.NameToLayer("Bonfire"))
+        {
+            StartCoroutine(AttackingBonfire(_collision.gameObject));
+        }
+    }
+
+    private IEnumerator AttackingBonfire(GameObject _go)
+    {
+        _go.GetComponent<Bonfire>()?.OnDamage(damage);
+        KnockBack();
+        yield return attackCycle;
     }
     public void KnockBack(bool isPlayer = false) => StartCoroutine(MoveBackToKnockBack(isPlayer));
 }

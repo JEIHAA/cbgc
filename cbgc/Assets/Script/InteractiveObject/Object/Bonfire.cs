@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Bonfire: SetLightAnimator, IInteractiveObject
+public class Bonfire: SetLightAnimator, IInteractiveObject, IDamagable
 {
     private void Start()
     {
@@ -8,7 +8,6 @@ public class Bonfire: SetLightAnimator, IInteractiveObject
         anims = GetComponentsInChildren<Animator>();
         InvokeRepeating("TimeCount", 1, 1);
     }
-
 
     public void Interaction(float _time)
     {
@@ -20,6 +19,11 @@ public class Bonfire: SetLightAnimator, IInteractiveObject
             if (leftTime >= maxTime) leftTime = maxTime;
             FireLightSetFloat();
         }
+    }
+
+    public void OnDamage(float _damage)
+    {
+        leftTime -= (int)_damage;
     }
 
     protected override void FireLightSetFloat()
