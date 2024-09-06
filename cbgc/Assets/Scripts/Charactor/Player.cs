@@ -6,33 +6,25 @@ public class Player : MonoBehaviour, IDamagable
     [SerializeField] private int health;
     [SerializeField] private int defense = 0;
     public int Defense { get => defense; set => defense = value; }
-    public int speed = 10;
     [SerializeField]
     private float attackRange, attackDelay;
     private float deathTime = 0f, timeLimit = 2f;
     private bool canAttack = true, isCutDown = false, isDead = false;
-    private Rigidbody2D rigid;
+    
     [SerializeField] Animator ani;
     [SerializeField] GameObject attackObject;
     [SerializeField] private SceneMoveManager scenemanager;
     public static Transform playerTransform;
+    private PlayerContorller contorller;
 
-    Vector2 Velocity
-    {
-        set
-        {
-            rigid.velocity = value;
-            ani?.SetBool("Run", value.magnitude > 0.125f);
-            if (value.x != 0 && canAttack && !isCutDown) ani.gameObject.transform.localScale = new Vector3(value.x < 0 ? -1 : 1, 1, 1);
-        }
-    }
     public void OnDamage(float _damage) { GameOver(); }
     private void Start()
     {
         //resource init
         ResourceData.Init();
         playerTransform = transform;
-        rigid = GetComponent<Rigidbody2D>();
+
+        contorller = GetComponent<PlayerContorller>();
         attackObject.transform.localScale = Vector3.one * attackRange;
         canAttack = true;
     }
@@ -46,7 +38,7 @@ public class Player : MonoBehaviour, IDamagable
         //until animation end
         Invoke("StopGame", 1.4f);
         //player can not move
-        rigid.bodyType = RigidbodyType2D.Static;
+        contorller.canMove = false;
         Debug.Log($"{gameObject.name} Is Dead.");
     }
     void StopGame() => scenemanager.LoadScene(SceneMoveManager.SceneName.GameOver);
@@ -67,32 +59,38 @@ public class Player : MonoBehaviour, IDamagable
     {
         if (isDead) return;
         CheckDarkphobia();
-        Move();
         //check input
         CheckKey();
         CheckMouse();
     }
-    void Move() => Velocity = (new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"))).normalized * speed;
+    
     void CheckMouse()
     {
-        if (Input.GetMouseButtonDown(1) && canAttack && !isCutDown) { canAttack = false; StartCoroutine(Attack()); }
         //using axe
         if (Input.GetMouseButton(0)) { CutDown(); }
         //end axe
         else
         {
             //axa animation stop
+            contorller.canMove = true;
             isCutDown = false;
             ani.SetBool("Axe", false);
         }
+        if (Input.GetMouseButtonDown(1) && canAttack && !isCutDown) { Debug.Log(isCutDown); canAttack = false; StartCoroutine(Attack()); }
+        
     }
     void CheckKey()
     {
+        //dir
+        var dir = Input.GetAxis("Horizontal");
+        if(dir != 0 && canAttack && !isCutDown) ani.gameObject.transform.localScale = new Vector3(dir < 0 ? -1 : 1, 1, 1);
+
         //attack
         if (Input.GetKeyDown(KeyCode.Z) && canAttack && !isCutDown) { canAttack = false; StartCoroutine(Attack()); }
+        
         //using axe
         if (Input.GetKey(KeyCode.X)) { CutDown(); }
-        //end axe
+        //end using
         else
         {
             //axa animation stop
@@ -103,8 +101,7 @@ public class Player : MonoBehaviour, IDamagable
     void CutDown()
     {
         isCutDown = true;
-        //move stop while mouse button down
-        Velocity = Vector2.zero;
+        contorller.canMove = false;
         //axa animation play
         ani.SetBool("Axe", true);
     }
