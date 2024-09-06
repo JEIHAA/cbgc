@@ -35,7 +35,15 @@ public class TorchLight : SetLightAnimator
     {
         if (onFire && HasLeftTime()) 
         {
-            leftTime = maxTime;
+            if (bonfire.LeftTime > leftTime)
+            {
+                if (bonfire.LeftTime > maxTime)
+                {
+                    leftTime = maxTime;
+                    return;
+                }
+                leftTime = bonfire.LeftTime;
+            }
         }
     }
 

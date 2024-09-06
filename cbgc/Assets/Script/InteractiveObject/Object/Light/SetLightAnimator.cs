@@ -8,6 +8,7 @@ public class SetLightAnimator : MonoBehaviour
     public int LeftTime { get => leftTime; set => leftTime = value; }
 
     [SerializeField] protected int maxTime;
+    public int MaxTime => maxTime;
 
     protected Animator[] anims;
 
