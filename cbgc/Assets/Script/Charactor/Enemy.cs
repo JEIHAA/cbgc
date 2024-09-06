@@ -41,9 +41,10 @@ public class Enemy : MonoBehaviour, IDamagable
         }
     }
     //add speed for knockback
-    IEnumerator MoveBackToKnockBack()
+    IEnumerator MoveBackToKnockBack(bool isPlayer = false)
     {
-        addVelocity = -Velocity * 10;
+        if(isPlayer) addVelocity = -(Player.playerTransform.position - transform.position).normalized * 10;
+        else addVelocity = -Velocity * 10;
         yield return knockBackTime;
         addVelocity = Vector3.zero;
     }
@@ -81,11 +82,11 @@ public class Enemy : MonoBehaviour, IDamagable
                 break;
             case "PlayerAttack":
                 OnDamage(5);
-                if (gameObject.activeSelf) KnockBack();
+                if (gameObject.activeSelf) KnockBack(true);
                 break;
             default:
                 break;
         }
     }
-    public void KnockBack() => StartCoroutine(MoveBackToKnockBack());
+    public void KnockBack(bool isPlayer = false) => StartCoroutine(MoveBackToKnockBack(isPlayer));
 }
