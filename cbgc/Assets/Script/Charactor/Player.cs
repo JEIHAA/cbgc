@@ -66,7 +66,6 @@ public class Player : MonoBehaviour, IDamagable
     
     void CheckMouse()
     {
-        if (Input.GetMouseButtonDown(1) && canAttack && !isCutDown) { canAttack = false; StartCoroutine(Attack()); }
         //using axe
         if (Input.GetMouseButton(0)) { CutDown(); }
         //end axe
@@ -77,17 +76,21 @@ public class Player : MonoBehaviour, IDamagable
             isCutDown = false;
             ani.SetBool("Axe", false);
         }
+        if (Input.GetMouseButtonDown(1) && canAttack && !isCutDown) { Debug.Log(isCutDown); canAttack = false; StartCoroutine(Attack()); }
+        
     }
     void CheckKey()
     {
         //dir
         var dir = Input.GetAxis("Horizontal");
         if(dir != 0 && canAttack && !isCutDown) ani.gameObject.transform.localScale = new Vector3(dir < 0 ? -1 : 1, 1, 1);
+
         //attack
         if (Input.GetKeyDown(KeyCode.Z) && canAttack && !isCutDown) { canAttack = false; StartCoroutine(Attack()); }
+        
         //using axe
         if (Input.GetKey(KeyCode.X)) { CutDown(); }
-        //end axe
+        //end using
         else
         {
             //axa animation stop

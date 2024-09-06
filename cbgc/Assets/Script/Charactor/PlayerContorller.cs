@@ -7,7 +7,7 @@ public class PlayerContorller : MonoBehaviour
 {
     private Rigidbody2D rigid;
     [SerializeField, Range(1,15)]
-    private float speed;
+    private int speed;
     public bool canMove;
     void Start()
     {
