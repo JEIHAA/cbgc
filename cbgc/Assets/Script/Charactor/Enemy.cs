@@ -5,47 +5,49 @@ public class Enemy : MonoBehaviour, IDamagable
 {
     public float speed; 
     public float health;
-    SpriteRenderer sr;
-    Rigidbody2D rigid;
-    Animator ani;
-    WaitForSeconds checkTime, knockBackTime;
+    private SpriteRenderer sr;
+    private Rigidbody2D rigid;
+    private Animator ani;
+    private WaitForSeconds knockBackTime;
     public bool isUpdate;
-    private Vector3 freePos;
-    private Vector3 addVelocity;
-    private Vector3 Velocity
+    private Vector2 addVelocity;
+    private Vector2 Velocity
     {
         get => rigid.velocity;
-        set { rigid.velocity = value + addVelocity; sr.flipX = value.x < 0 ? true : false; }
+        set { if(rigid.bodyType != RigidbodyType2D.Static) rigid.velocity = value + addVelocity; sr.flipX = value.x < 0 ? true : false; }
     }
-    // Start is called before the first frame update
     void Start()
     {
+        //component
         rigid = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         ani = GetComponent<Animator>();
 
-        checkTime = new(1f);
         knockBackTime = new(0.125f);
 
         if (isUpdate) StartCoroutine(ControlableUpdate());
     }
+    //Update
     IEnumerator ControlableUpdate()
     {
+        //delay
         yield return new WaitForSeconds(0.125f);
         while (gameObject.activeSelf)
         {
+            //chase more bright light
             if (LightData.TorchIsBrightest) MoveToPlayer();
             else MoveToCenter();
             yield return null;
         }
     }
-    IEnumerator MoveBackToKnockBack()
+    //add speed for knockback
+    IEnumerator MoveBackToKnockBack(bool isPlayer = false)
     {
-        addVelocity = -rigid.velocity * 10;
+        if(isPlayer) addVelocity = -(Player.playerTransform.position - transform.position).normalized * 10;
+        else addVelocity = -Velocity * 10;
         yield return knockBackTime;
         addVelocity = Vector3.zero;
     }
-    void MoveFreePosition() => Velocity = (freePos - transform.position).normalized * speed;
     void MoveToPlayer() => Velocity = (Player.playerTransform.position - transform.position).normalized * speed;
     void MoveToCenter() => Velocity = -transform.position.normalized * speed;
     public void OnDamage(float _damage) {
@@ -70,19 +72,21 @@ public class Enemy : MonoBehaviour, IDamagable
     {
         if (_collision.gameObject.tag == "Player")
             _collision.gameObject.GetComponent<Player>().OnDamage(100);
-        if(rigid != null) rigid.velocity = Vector2.zero;
     }
     private void OnTriggerEnter2D(Collider2D _collision)
     {
-        if (_collision.gameObject.tag == "Player" && !isUpdate)
+        switch (_collision.gameObject.tag)
         {
-            StartCoroutine(ControlableUpdate());
-        }
-        if (_collision.gameObject.tag == "PlayerAttack")
-        {
-            OnDamage(5);
-            if(gameObject.activeSelf) KnockBack();
+            case "Player":
+                if(!isUpdate) StartCoroutine(ControlableUpdate());
+                break;
+            case "PlayerAttack":
+                OnDamage(5);
+                if (gameObject.activeSelf) KnockBack(true);
+                break;
+            default:
+                break;
         }
     }
-    public void KnockBack() => StartCoroutine(MoveBackToKnockBack());
+    public void KnockBack(bool isPlayer = false) => StartCoroutine(MoveBackToKnockBack(isPlayer));
 }
