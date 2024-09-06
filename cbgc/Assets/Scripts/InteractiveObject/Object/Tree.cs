@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class Tree : MonoBehaviour, IInteractiveObject
 {
-    [SerializeField] private int leftFirewood = 5;
+    [SerializeField] private int leftFirewood = 6;
     private TreeEffect treeEffect;
     
     private Animator animator;
     public Animator Anim => animator;
 
     private int axingCnt=0;
+    private int treeLevel = 3;
 
     private void Start()
     {
@@ -43,6 +44,8 @@ public class Tree : MonoBehaviour, IInteractiveObject
         if (axingCnt > 1)
         {
             Use();
+            treeLevel -= 1;
+            animator.SetInteger("TreeLevel", treeLevel);
             axingCnt = 0;
         }
 

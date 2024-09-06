@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7c2757af7ee0bb64f8bfb5c0e31e0927
+guid: 42371060f3345234a9eecaf90ac6f7e4
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,7 +97,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638612384139624631
+  platformSettingsDirtyTick: 638612409110315195
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -121,7 +121,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: tree_4_b_Frame_0
+  - name: OutlineTree_3-2_Frame_0
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 9
@@ -132,7 +132,7 @@ ScriptedImporter:
       y: 4
       width: 48
       height: 64
-    spriteID: 866a840ac99d14a4cb9cdbf0c2750c23
+    spriteID: 47dcd05b7124ab44d9bfe3e2e84e7445
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -141,7 +141,47 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
-  - name: tree_4_b_Frame_1
+  - name: OutlineTree_3-2_Frame_1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 76
+      width: 48
+      height: 64
+    spriteID: 3894fafeac319f14394a805c8e4168f4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 76}
+  - name: OutlineTree_3-2_Frame_2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 148
+      width: 48
+      height: 64
+    spriteID: e274fc4405b2215438afd1c283a3b825
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 148}
+  - name: OutlineTree_3-2_Frame_3
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 9
@@ -152,7 +192,7 @@ ScriptedImporter:
       y: 4
       width: 48
       height: 64
-    spriteID: c46fa59a4b6c93b45bc511de01619a8e
+    spriteID: 49ea764f6efbf914c9d7e5c8a9c8af3a
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -161,16 +201,96 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 60, y: 4}
+  - name: OutlineTree_3-2_Frame_4
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 60
+      y: 76
+      width: 48
+      height: 64
+    spriteID: 056a58e67cca8af4386ef3ae9ace01f1
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 60, y: 76}
+  - name: OutlineTree_3-2_Frame_5
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 60
+      y: 148
+      width: 48
+      height: 64
+    spriteID: 06df5f6eeae0a0c43a81d55efac52dc3
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 60, y: 148}
+  - name: OutlineTree_3-2_Frame_6
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 116
+      y: 4
+      width: 48
+      height: 64
+    spriteID: 3328d414739df534a81b7315f13a4d6c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 116, y: 4}
+  - name: OutlineTree_3-2_Frame_7
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 116
+      y: 76
+      width: 48
+      height: 64
+    spriteID: a9c94d95e9268f8438c7e32ca86c7ed4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 116, y: 76}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: 2028697448
-    name: tree_4_b
+    guid: -206897339
+    name: OutlineTree_3-2
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: tree_4_b_Frame_0
+    - name: OutlineTree_3-2_Frame_0
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
@@ -178,8 +298,8 @@ ScriptedImporter:
         y: 0
         width: 48
         height: 64
-      spriteId: 866a840ac99d14a4cb9cdbf0c2750c23
-    - name: tree_4_b_Frame_1
+      spriteId: 47dcd05b7124ab44d9bfe3e2e84e7445
+    - name: OutlineTree_3-2_Frame_1
       frameIndex: 1
       additiveSortOrder: 0
       cellRect:
@@ -187,7 +307,61 @@ ScriptedImporter:
         y: 0
         width: 48
         height: 64
-      spriteId: c46fa59a4b6c93b45bc511de01619a8e
+      spriteId: 3894fafeac319f14394a805c8e4168f4
+    - name: OutlineTree_3-2_Frame_2
+      frameIndex: 2
+      additiveSortOrder: 0
+      cellRect:
+        x: 0
+        y: 0
+        width: 48
+        height: 64
+      spriteId: e274fc4405b2215438afd1c283a3b825
+    - name: OutlineTree_3-2_Frame_3
+      frameIndex: 3
+      additiveSortOrder: 0
+      cellRect:
+        x: 0
+        y: 0
+        width: 48
+        height: 64
+      spriteId: 49ea764f6efbf914c9d7e5c8a9c8af3a
+    - name: OutlineTree_3-2_Frame_4
+      frameIndex: 4
+      additiveSortOrder: 0
+      cellRect:
+        x: 0
+        y: 0
+        width: 48
+        height: 64
+      spriteId: 056a58e67cca8af4386ef3ae9ace01f1
+    - name: OutlineTree_3-2_Frame_5
+      frameIndex: 5
+      additiveSortOrder: 0
+      cellRect:
+        x: 0
+        y: 0
+        width: 48
+        height: 64
+      spriteId: 06df5f6eeae0a0c43a81d55efac52dc3
+    - name: OutlineTree_3-2_Frame_6
+      frameIndex: 6
+      additiveSortOrder: 0
+      cellRect:
+        x: 0
+        y: 0
+        width: 48
+        height: 64
+      spriteId: 3328d414739df534a81b7315f13a4d6c
+    - name: OutlineTree_3-2_Frame_7
+      frameIndex: 7
+      additiveSortOrder: 0
+      cellRect:
+        x: 0
+        y: 0
+        width: 48
+        height: 64
+      spriteId: a9c94d95e9268f8438c7e32ca86c7ed4
     linkedCells: []
     parentIndex: -1
   platformSettings:
@@ -216,18 +390,6 @@ ScriptedImporter:
     allowsAlphaSplitting: 0
     androidETC2FallbackOverride: 0
   - name: Standalone
-    overridden: 0
-    ignorePlatformSupport: 0
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    androidETC2FallbackOverride: 0
-  - name: Windows Store Apps
     overridden: 0
     ignorePlatformSupport: 0
     maxTextureSize: 2048

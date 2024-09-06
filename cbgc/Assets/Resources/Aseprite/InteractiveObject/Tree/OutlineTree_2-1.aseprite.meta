@@ -1,13 +1,8 @@
 fileFormatVersion: 2
-guid: 890117f502d366743bfc39699ef641f4
+guid: 2ba4913a9c7e81e42b8aba92a3cda3a8
 ScriptedImporter:
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:AnimationClip
-      assembly: UnityEngine.AnimationModule
-      name: BonfireLight_3_mask_Clip
-    second: {fileID: 7400000, guid: b5873e7f2c6a8764d806fb31694bec51, type: 2}
+  externalObjects: {}
   serializedVersion: 2
   userData: 
   assetBundleName: 
@@ -102,7 +97,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638612564664787128
+  platformSettingsDirtyTick: 638612409169309593
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -126,7 +121,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: BonfireLight_3_mask_Frame_0
+  - name: OutlineTree_2-1_Frame_0
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 9
@@ -135,9 +130,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 96
-      height: 96
-    spriteID: 578f0a38487e09c4daa8cf7fb1c0cae3
+      width: 48
+      height: 64
+    spriteID: d266a30fdbdfdac499dd8592f173d557
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -146,7 +141,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
-  - name: BonfireLight_3_mask_Frame_1
+  - name: OutlineTree_2-1_Frame_1
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 9
@@ -154,10 +149,10 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 4
-      y: 108
-      width: 96
-      height: 96
-    spriteID: 8a93a60a65fc55a4fa78792afd7d1965
+      y: 76
+      width: 48
+      height: 64
+    spriteID: 96b2e38f1361f8b46902bfcdbf34e9d2
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -165,34 +160,208 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 108}
+    uvTransform: {x: 4, y: 76}
+  - name: OutlineTree_2-1_Frame_2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 148
+      width: 48
+      height: 64
+    spriteID: 25c889cdb9398e94ebad7ec58aab67fd
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 148}
+  - name: OutlineTree_2-1_Frame_3
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 60
+      y: 4
+      width: 48
+      height: 64
+    spriteID: 617705b56fb862345b1b446c6681c27c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 60, y: 4}
+  - name: OutlineTree_2-1_Frame_4
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 60
+      y: 76
+      width: 48
+      height: 64
+    spriteID: 5fba1410f3bd3724794185525a08be15
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 60, y: 76}
+  - name: OutlineTree_2-1_Frame_5
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 60
+      y: 148
+      width: 48
+      height: 64
+    spriteID: 27dc9146dcd1a6946812678286d13c79
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 60, y: 148}
+  - name: OutlineTree_2-1_Frame_6
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 116
+      y: 4
+      width: 48
+      height: 64
+    spriteID: a93a9beeebfd0f84e8c48e7df28abb46
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 116, y: 4}
+  - name: OutlineTree_2-1_Frame_7
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 116
+      y: 76
+      width: 48
+      height: 64
+    spriteID: 455124a7a970886418f2cde21a41de68
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 116, y: 76}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: -1462274398
-    name: BonfireLight_3_mask
+    guid: -206858433
+    name: OutlineTree_2-1
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: BonfireLight_3_mask_Frame_0
+    - name: OutlineTree_2-1_Frame_0
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
-        width: 96
-        height: 96
-      spriteId: 578f0a38487e09c4daa8cf7fb1c0cae3
-    - name: BonfireLight_3_mask_Frame_1
+        width: 48
+        height: 64
+      spriteId: d266a30fdbdfdac499dd8592f173d557
+    - name: OutlineTree_2-1_Frame_1
       frameIndex: 1
       additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
-        width: 96
-        height: 96
-      spriteId: 8a93a60a65fc55a4fa78792afd7d1965
+        width: 48
+        height: 64
+      spriteId: 96b2e38f1361f8b46902bfcdbf34e9d2
+    - name: OutlineTree_2-1_Frame_2
+      frameIndex: 2
+      additiveSortOrder: 0
+      cellRect:
+        x: 0
+        y: 0
+        width: 48
+        height: 64
+      spriteId: 25c889cdb9398e94ebad7ec58aab67fd
+    - name: OutlineTree_2-1_Frame_3
+      frameIndex: 3
+      additiveSortOrder: 0
+      cellRect:
+        x: 0
+        y: 0
+        width: 48
+        height: 64
+      spriteId: 617705b56fb862345b1b446c6681c27c
+    - name: OutlineTree_2-1_Frame_4
+      frameIndex: 4
+      additiveSortOrder: 0
+      cellRect:
+        x: 0
+        y: 0
+        width: 48
+        height: 64
+      spriteId: 5fba1410f3bd3724794185525a08be15
+    - name: OutlineTree_2-1_Frame_5
+      frameIndex: 5
+      additiveSortOrder: 0
+      cellRect:
+        x: 0
+        y: 0
+        width: 48
+        height: 64
+      spriteId: 27dc9146dcd1a6946812678286d13c79
+    - name: OutlineTree_2-1_Frame_6
+      frameIndex: 6
+      additiveSortOrder: 0
+      cellRect:
+        x: 0
+        y: 0
+        width: 48
+        height: 64
+      spriteId: a93a9beeebfd0f84e8c48e7df28abb46
+    - name: OutlineTree_2-1_Frame_7
+      frameIndex: 7
+      additiveSortOrder: 0
+      cellRect:
+        x: 0
+        y: 0
+        width: 48
+        height: 64
+      spriteId: 455124a7a970886418f2cde21a41de68
     linkedCells: []
     parentIndex: -1
   platformSettings:
@@ -232,19 +401,7 @@ ScriptedImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     androidETC2FallbackOverride: 0
-  - name: Windows Store Apps
-    overridden: 0
-    ignorePlatformSupport: 0
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    androidETC2FallbackOverride: 0
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 96, y: 96}
+  canvasSize: {x: 48, y: 64}
