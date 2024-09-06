@@ -24,7 +24,7 @@ public class WaveMonsterGenerator : MonoBehaviour
                 for (int i = 0; i < data.spawnAmount; i++)
                 {
                     var nowEnemy = Instantiate(data.spawnEnemy, Random.insideUnitCircle.normalized * spawnDistanceFromCampFire, Quaternion.identity, transform).GetComponent<Enemy>();
-                    nowEnemy.moveCenterWhenStart = true;
+                    nowEnemy.MoveCenterWhenStart = true;
                 }
         }
     }

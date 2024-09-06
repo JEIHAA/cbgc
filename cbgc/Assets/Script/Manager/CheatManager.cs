@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CheatManager : MonoBehaviour
 {
+    [SerializeField] private Player player;
     [SerializeField] private Bonfire bonfire;
     [SerializeField] private float bombRadius = 15;
     [SerializeField] private GameObject dark;
@@ -15,6 +16,7 @@ public class CheatManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.L)) DarkSwitch();
         if (Input.GetKeyDown(KeyCode.P)) Pyromania();
         if (Input.GetKeyDown(KeyCode.O)) Pyrophobia();
+        if (Input.GetKeyDown(KeyCode.I)) Invulnerability();
     }
 
     private void Bomb()
@@ -43,5 +45,11 @@ public class CheatManager : MonoBehaviour
     private void Pyrophobia()
     {
         bonfire.LeftTime = 0;
+    }
+
+    private void Invulnerability()
+    {
+        if (player.Defense <= 0) player.Defense = 999;
+        else player.Defense = 0;
     }
 }

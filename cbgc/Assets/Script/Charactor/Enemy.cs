@@ -3,15 +3,21 @@ using Unity.VisualScripting;
 using UnityEngine;
 public class Enemy : MonoBehaviour, IDamagable
 {
-    public float speed; 
-    public float health;
+    [SerializeField] private bool moveCenterWhenStart;
+    public bool MoveCenterWhenStart { get => moveCenterWhenStart; set => moveCenterWhenStart = value; }
+    [SerializeField] private float speed;
+    [SerializeField] private float health;
+    [SerializeField] private float damage;
+    [SerializeField] private float delay = 0.8f;
+    private bool isAttacking = false;
+
     SpriteRenderer sr;
     Rigidbody2D rigid;
     Animator ani;
-    WaitForSeconds checkTime, knockBackTime;
-    public bool moveCenterWhenStart;
+    WaitForSeconds checkTime, knockBackTime, attackCycle;
     private Vector3 freePos;
     private Vector3 addVelocity;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +27,7 @@ public class Enemy : MonoBehaviour, IDamagable
 
         checkTime = new(1f);
         knockBackTime = new(0.125f);
+        attackCycle = new WaitForSeconds(damage);
 
         if (moveCenterWhenStart) Invoke("MoveCenter",0.5f);
     }
@@ -61,6 +68,7 @@ public class Enemy : MonoBehaviour, IDamagable
     {
         if (_collision.gameObject.tag == "Player") _collision.gameObject.GetComponent<Player>().OnDamage(100);
         if(rigid != null) rigid.velocity = Vector2.zero;
+
     }
     private void OnTriggerStay2D(Collider2D _collision)
     {
@@ -70,6 +78,7 @@ public class Enemy : MonoBehaviour, IDamagable
             sr.flipX = rigid.velocity.x < 0 ? true : false;
         }
     }
+
     private void OnTriggerEnter2D(Collider2D _collision)
     {
         if (_collision.gameObject.tag == "PlayerAttack")
@@ -77,7 +86,19 @@ public class Enemy : MonoBehaviour, IDamagable
             OnDamage(5);
             if(gameObject.activeSelf) KnockBack();
         }
+        if (_collision.gameObject.layer == LayerMask.NameToLayer("Bonfire"))
+        {
+            StartCoroutine(AttackingBonfire(_collision.gameObject));
+        }
     }
+
+    private IEnumerator AttackingBonfire(GameObject _go)
+    {
+        _go.GetComponent<Bonfire>()?.OnDamage(damage);
+        KnockBack();
+        yield return attackCycle;
+    }
+
     private void OnTriggerExit2D(Collider2D _collision)
     { if (_collision.gameObject.CompareTag("Player")) MoveCenter(); }
     void MoveCenter()
