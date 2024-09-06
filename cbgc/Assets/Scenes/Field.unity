@@ -1064,6 +1064,59 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1168128648}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &681278341
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 681278342}
+  - component: {fileID: 681278343}
+  m_Layer: 0
+  m_Name: TreeGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &681278342
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 681278341}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.5809019, y: 0.9926597, z: 4.4341598}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 837399494}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &681278343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 681278341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 497d65015d8222d41bbbc02b8102e74d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obj: {fileID: 0}
+  maxNum: 200
+  maxX: 80
+  minX: -80
+  maxY: 80
+  minY: -80
+  BorderLength: 77
+  objs:
+  - {fileID: 6281578544985384098, guid: e472b6fd2f0a7eb41a96541e1bc74702, type: 3}
 --- !u!1 &765072192
 GameObject:
   m_ObjectHideFlags: 0
@@ -1226,6 +1279,7 @@ Transform:
   m_Children:
   - {fileID: 2082086665}
   - {fileID: 1536463749}
+  - {fileID: 681278342}
   - {fileID: 1761771409}
   - {fileID: 1925520321}
   m_Father: {fileID: 0}
@@ -1877,9 +1931,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1536463749}
   - component: {fileID: 1536463748}
-  - component: {fileID: 1536463750}
   m_Layer: 0
-  m_Name: ResourceGenerator
+  m_Name: MonsterGenerator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1922,27 +1975,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 837399494}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1536463750
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1536463747}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 497d65015d8222d41bbbc02b8102e74d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  obj: {fileID: 0}
-  maxNum: 200
-  maxX: 80
-  minX: -80
-  maxY: 80
-  minY: -80
-  BorderLength: 77
-  objs:
-  - {fileID: 6281578544985384098, guid: e472b6fd2f0a7eb41a96541e1bc74702, type: 3}
 --- !u!1 &1540144354
 GameObject:
   m_ObjectHideFlags: 0

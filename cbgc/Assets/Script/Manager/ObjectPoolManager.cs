@@ -3,7 +3,7 @@ using UnityEngine.Pool;
 
 public class ObjectPoolManager : MonoBehaviour
 {
-    public GameObject prefab;
+    public GameObject fastMonsterPrefeb, eyeMonsterPrefeb, treePrefeb;
     public int initialPoolSize = 10;
     private ObjectPool<GameObject> objectPool;
 
@@ -16,7 +16,7 @@ public class ObjectPoolManager : MonoBehaviour
         initialPoolSize,
         initialPoolSize
     );
-    private GameObject CreatePooledObject() => Instantiate(prefab);
+    private GameObject CreatePooledObject() => Instantiate(fastMonsterPrefeb);
     private void OnTakeFromPool(GameObject obj) => obj.SetActive(true);
     private void OnReturnToPool(GameObject obj) => obj.SetActive(false);
     private void OnDestroyPoolObject(GameObject obj) => Destroy(obj);
