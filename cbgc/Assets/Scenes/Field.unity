@@ -2548,6 +2548,10 @@ PrefabInstance:
       propertyPath: m_Offset.x
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 5757450862496961429, guid: b011c6f8826e9434cab94f163ba542db, type: 3}
+      propertyPath: m_Name
+      value: CloseChecker
+      objectReference: {fileID: 0}
     - target: {fileID: 7120179776450460374, guid: b011c6f8826e9434cab94f163ba542db, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2590,6 +2594,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7519519545705136502, guid: b011c6f8826e9434cab94f163ba542db, type: 3}
       propertyPath: closeChacker
+      value: 
+      objectReference: {fileID: 1499675974}
+    - target: {fileID: 7519519545705136502, guid: b011c6f8826e9434cab94f163ba542db, type: 3}
+      propertyPath: closeChecker
       value: 
       objectReference: {fileID: 1499675974}
     - target: {fileID: 7982791916705894826, guid: b011c6f8826e9434cab94f163ba542db, type: 3}

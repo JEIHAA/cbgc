@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Intertaction : MonoBehaviour
 {
-    [SerializeField] private CloseChacker closeChacker;
+    [SerializeField] private CloseChecker closeChecker;
     private float timeElapsed = 0f;
     private float interval = 1f;
 
@@ -17,8 +17,8 @@ public class Intertaction : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if (closeChacker.NearestObject == null) return;
-            closeChacker.NearestObject.GetComponentInParent<IInteractiveObject>().Interaction(99);
+            if (closeChecker.NearestObject == null) return;
+            closeChecker.NearestObject.GetComponentInParent<IInteractiveObject>().Interaction(99);
         }
 
         if (Input.GetMouseButtonUp(0))
@@ -32,7 +32,7 @@ public class Intertaction : MonoBehaviour
 
             if (timeElapsed >= interval)
             {
-                closeChacker.NearestObject?.GetComponentInParent<IInteractiveObject>().Interaction(timeElapsed);
+                closeChecker.NearestObject?.GetComponentInParent<IInteractiveObject>().Interaction(timeElapsed);
                 timeElapsed = 0f;
                 /*if (animator.GetCurrentAnimatorStateInfo(0).IsName("character_axe_Clip"))
                 {
