@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class Bonfire: SetLightAnimator, IInteractiveObject
 {
-    private Enemy enemy;
-    public int MaxTime => maxTime;
     private void Start()
     {
         maxTime = 100; 
@@ -11,13 +9,6 @@ public class Bonfire: SetLightAnimator, IInteractiveObject
         InvokeRepeating("TimeCount", 1, 1);
     }
 
-    private void Use()
-    {
-        Debug.Log("Use");
-        leftTime += 10;
-        if (leftTime >= maxTime) leftTime = maxTime;
-        FireLightSetFloat();
-    }
 
     public void Interaction(float _time)
     {
@@ -25,10 +16,11 @@ public class Bonfire: SetLightAnimator, IInteractiveObject
         {
             ResourceData.LogAmount -= 1;
             Debug.Log("firewood -1");
-            Use();
+            leftTime += 10;
+            if (leftTime >= maxTime) leftTime = maxTime;
+            FireLightSetFloat();
         }
     }
-
 
     protected override void FireLightSetFloat()
     {

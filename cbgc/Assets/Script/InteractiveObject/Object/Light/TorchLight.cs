@@ -5,9 +5,6 @@ using UnityEngine;
 
 public class TorchLight : SetLightAnimator
 {
-    private int lifeTime;
-    public int LifeTime=>lifeTime;
-
     [SerializeField] private Bonfire bonfire;
     private bool onFire = false;
 
@@ -15,7 +12,6 @@ public class TorchLight : SetLightAnimator
     {
         maxTime = 50;
         anims = GetComponentsInChildren<Animator>();
-        FireLightSetFloat();
         InvokeRepeating("TimeCount", 1, 1);
     }
     
@@ -39,7 +35,15 @@ public class TorchLight : SetLightAnimator
     {
         if (onFire && HasLeftTime()) 
         {
-            leftTime = maxTime;
+            if (bonfire.LeftTime > leftTime)
+            {
+                if (bonfire.LeftTime > maxTime)
+                {
+                    leftTime = maxTime;
+                    return;
+                }
+                leftTime = bonfire.LeftTime;
+            }
         }
     }
 
@@ -48,7 +52,6 @@ public class TorchLight : SetLightAnimator
         foreach (Animator anim in anims)
         {
             anim.SetFloat("LeftTime", leftTime);
-            lifeTime = leftTime;
         }
     }
 

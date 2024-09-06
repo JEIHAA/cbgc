@@ -8,13 +8,14 @@ public class SetLightAnimator : MonoBehaviour
     public int LeftTime { get => leftTime; set => leftTime = value; }
 
     [SerializeField] protected int maxTime;
+    public int MaxTime => maxTime;
 
     protected Animator[] anims;
-
 
     protected void TimeCount()
     {
         if (leftTime > 0) leftTime -= 1;
+        if (leftTime < 0) leftTime = 0;
         FireLightSetFloat();
     }
 
