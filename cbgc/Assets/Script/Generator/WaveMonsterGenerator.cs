@@ -1,14 +1,20 @@
+using System;
 using System.Collections;
 using UnityEngine;
 public class WaveMonsterGenerator : MonoBehaviour
 {
     public float spawnDistanceFromCampFire;
-    [System.Serializable]
-    public class WaveData
+    [Serializable]
+    public class EnemySpawnInfo
     {
         public ObjectPoolManager.Pool spawnEnemy;
-        public float waveDelay;
         public int spawnAmount;
+    }
+    [Serializable]
+    public class WaveData
+    {
+        public float waveDelay;
+        public EnemySpawnInfo[] enemyInfo;
     }
     public WaveData[] waveData;
     void Start()
@@ -23,12 +29,15 @@ public class WaveMonsterGenerator : MonoBehaviour
         {
             Debug.Log($"Now wave is {nowWave}");
             yield return new WaitForSeconds(waveData[nowWave].waveDelay);
-            for (int i = 0; i < waveData[nowWave].spawnAmount; i++)
-            {
-                randomPos = Random.insideUnitCircle.normalized * spawnDistanceFromCampFire;
-                var nowEnemy = ObjectPoolManager.instance.GetPool(waveData[nowWave].spawnEnemy).Get();
-                nowEnemy.transform.position = randomPos;
-                nowEnemy.GetComponent<Enemy>().isUpdate = true;
+            foreach (var nowEnemy in waveData[nowWave].enemyInfo)
+            {   
+                for (int i = 0; i < nowEnemy.spawnAmount; i++)
+                {
+                    randomPos = UnityEngine.Random.insideUnitCircle.normalized * spawnDistanceFromCampFire;
+                    var nowEnemySpawned = ObjectPoolManager.instance.GetPool(nowEnemy.spawnEnemy).Get();
+                    nowEnemySpawned.transform.position = randomPos;
+                    nowEnemySpawned.GetComponent<Enemy>().isUpdate = true;
+                }
             }
             loopCount += ++nowWave / waveData.Length;
             nowWave %= waveData.Length;
