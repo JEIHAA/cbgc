@@ -50,11 +50,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1155158883423467630}
-  defaultSprite: {fileID: -2675805710684464318, guid: 7c2757af7ee0bb64f8bfb5c0e31e0927, type: 3}
-  outlineSprites:
-  - {fileID: 21300000, guid: f6f8723ac28325340b165fbc177963de, type: 3}
-  defaultAnimController: {fileID: 9100000, guid: d483cdd11164a6f4a8fc64c804c7c14b, type: 2}
-  outlineAnimController: {fileID: 9100000, guid: 4f583a9bf227f554fbaf4d97c2c79617, type: 2}
   isNearest: 0
 --- !u!114 &2953835870317000475
 MonoBehaviour:
@@ -111,12 +106,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 4860211026649661608, guid: 7c2757af7ee0bb64f8bfb5c0e31e0927, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 861a7310f388f1d4c8e3590292a8b9f2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 3, y: 4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -132,7 +127,7 @@ Animator:
   m_GameObject: {fileID: 6281578544985384098}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d483cdd11164a6f4a8fc64c804c7c14b, type: 2}
+  m_Controller: {fileID: 9100000, guid: 4f583a9bf227f554fbaf4d97c2c79617, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

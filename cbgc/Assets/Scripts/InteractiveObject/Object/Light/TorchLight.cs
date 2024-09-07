@@ -47,14 +47,6 @@ public class TorchLight : SetLightAnimator
         }
     }
 
-    protected override void FireLightSetFloat()
-    {
-        foreach (Animator anim in anims)
-        {
-            anim.SetFloat("LeftTime", leftTime);
-        }
-    }
-
     private bool HasLeftTime()
     {
         if (bonfire.LeftTime >= 1) return true;

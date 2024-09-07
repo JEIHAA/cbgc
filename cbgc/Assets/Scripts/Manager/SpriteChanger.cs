@@ -9,10 +9,10 @@ public class SpriteChanger : MonoBehaviour
     // 변수 --
     [SerializeField] private Animator animator;
 
-    [SerializeField] private Sprite defaultSprite;
-    [SerializeField] private Sprite[] outlineSprites;
-    [SerializeField] private RuntimeAnimatorController defaultAnimController; // 첫 번째 애니메이터 컨트롤러
-    [SerializeField] private RuntimeAnimatorController outlineAnimController; // 두 번째 애니메이터 컨트롤러
+    //[SerializeField] private Sprite defaultSprite;
+    //[SerializeField] private Sprite[] outlineSprites;
+    //[SerializeField] private RuntimeAnimatorController defaultAnimController; // 첫 번째 애니메이터 컨트롤러
+    //[SerializeField] private RuntimeAnimatorController outlineAnimController; // 두 번째 애니메이터 컨트롤러
 
     [SerializeField] private bool isNearest = false;
     public bool IsNearest
@@ -35,11 +35,12 @@ public class SpriteChanger : MonoBehaviour
 
     private void DrawOutline()
     {
+        animator.SetBool("IsNearest", isNearest);
         //ChangeSprite();
-        ChangeAnimController(isNearest);
+        //ChangeAnimController(isNearest);
     }
 
-    private void ChangeSprite()
+    /*private void ChangeSprite()
     {
         if (isNearest)
         {
@@ -51,7 +52,7 @@ public class SpriteChanger : MonoBehaviour
         }
     }
 
-    private void ChangeAnimController(bool _isNearest)
+    //private void ChangeAnimController(bool _isNearest)
     {
         if (isNearest)
         {
@@ -61,12 +62,12 @@ public class SpriteChanger : MonoBehaviour
         {
             animator.runtimeAnimatorController = defaultAnimController;
         }
-    }
+    }*/
 
     private void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
-        animator.runtimeAnimatorController = defaultAnimController;
+        //spriteRenderer = GetComponent<SpriteRenderer>();
+        //animator.runtimeAnimatorController = defaultAnimController;
     }
 }

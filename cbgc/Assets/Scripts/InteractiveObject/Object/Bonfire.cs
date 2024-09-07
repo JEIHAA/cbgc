@@ -25,12 +25,4 @@ public class Bonfire: SetLightAnimator, IInteractiveObject, IDamagable
     {
         leftTime -= (int)_damage;
     }
-
-    protected override void FireLightSetFloat()
-    {
-        foreach (Animator anim in anims)
-        {
-            anim.SetFloat("LeftTime", leftTime);
-        }
-    }
 }

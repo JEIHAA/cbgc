@@ -18,7 +18,7 @@ public class Intertaction : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             if (closeChecker.NearestObject == null) return;
-            closeChecker?.NearestObject?.GetComponentInParent<IInteractiveObject>().Interaction(99);
+            closeChecker?.NearestObject?.GetComponentInParent<IInteractiveObject>().Interaction(0);
         }
 
         if (Input.GetMouseButtonUp(0))
