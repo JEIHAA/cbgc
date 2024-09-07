@@ -18,16 +18,20 @@ public class WaveMonsterGenerator : MonoBehaviour
     IEnumerator WaveAppear()
     {
         Vector2 randomPos;
-        foreach (var data in waveData)
+        int loopCount = 0, nowWave = 0;
+        while (true)
         {
-            yield return new WaitForSeconds(data.waveDelay);
-            for (int i = 0; i < data.spawnAmount; i++)
+            Debug.Log($"Now wave is {nowWave}");
+            yield return new WaitForSeconds(waveData[nowWave].waveDelay);
+            for (int i = 0; i < waveData[nowWave].spawnAmount; i++)
             {
                 randomPos = Random.insideUnitCircle.normalized * spawnDistanceFromCampFire;
-                var nowEnemy = ObjectPoolManager.instance.GetPool(data.spawnEnemy).Get();
+                var nowEnemy = ObjectPoolManager.instance.GetPool(waveData[nowWave].spawnEnemy).Get();
                 nowEnemy.transform.position = randomPos;
                 nowEnemy.GetComponent<Enemy>().isUpdate = true;
             }
+            loopCount += ++nowWave / waveData.Length;
+            nowWave %= waveData.Length;
         }
     }
 }
