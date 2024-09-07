@@ -566,7 +566,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canAttack: 1
-  attackRange: 2
+  attackRange: 1
   attackDelay: 0.5
 --- !u!1 &251067317
 GameObject:
@@ -2378,16 +2378,16 @@ MonoBehaviour:
     spawnAmount: 10
   - spawnEnemy: 1
     waveDelay: 10
-    spawnAmount: 10
+    spawnAmount: 7
   - spawnEnemy: 1
-    waveDelay: 15
-    spawnAmount: 10
-  - spawnEnemy: 0
-    waveDelay: 0
-    spawnAmount: 10
-  - spawnEnemy: 0
     waveDelay: 20
+    spawnAmount: 12
+  - spawnEnemy: 0
+    waveDelay: 25
     spawnAmount: 20
+  - spawnEnemy: 0
+    waveDelay: 30
+    spawnAmount: 15
 --- !u!4 &2082086665
 Transform:
   m_ObjectHideFlags: 0
