@@ -548,6 +548,26 @@ MonoBehaviour:
   leftTimeNextWave: {fileID: 1175236083}
   campFireLeftTime: {fileID: 0}
   torchLeftPercent: {fileID: 0}
+--- !u!1 &217882904 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3771907737244827058, guid: b011c6f8826e9434cab94f163ba542db, type: 3}
+  m_PrefabInstance: {fileID: 5191860226224175374}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &217882909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 217882904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7efaa8635d8ce0343bf77f9041e70eb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canAttack: 1
+  attackRange: 2
+  attackDelay: 0.5
 --- !u!1 &251067317
 GameObject:
   m_ObjectHideFlags: 0
@@ -2424,6 +2444,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 76274354537668735, guid: b011c6f8826e9434cab94f163ba542db, type: 3}
+      propertyPath: playerAttack
+      value: 
+      objectReference: {fileID: 217882909}
+    - target: {fileID: 76274354537668735, guid: b011c6f8826e9434cab94f163ba542db, type: 3}
       propertyPath: scenemanager
       value: 
       objectReference: {fileID: 1761771410}
@@ -2494,6 +2518,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 142145132805335866, guid: b011c6f8826e9434cab94f163ba542db, type: 3}
       insertIndex: 2
       addedObject: {fileID: 685669101750771498}
+    - targetCorrespondingSourceObject: {fileID: 3771907737244827058, guid: b011c6f8826e9434cab94f163ba542db, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 217882909}
   m_SourcePrefab: {fileID: 100100000, guid: b011c6f8826e9434cab94f163ba542db, type: 3}
 --- !u!4 &6375364614103149352
 Transform:

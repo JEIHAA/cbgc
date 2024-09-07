@@ -6,13 +6,12 @@ public class Player : MonoBehaviour, IDamagable
     [SerializeField] private int health;
     [SerializeField] private int defense = 0;
     public int Defense { get => defense; set => defense = value; }
-    [SerializeField]
-    private float attackRange, attackDelay;
+    
     private float deathTime = 0f, timeLimit = 2f;
-    private bool canAttack = true, isCutDown = false, isDead = false;
+    private bool isCutDown = false, isDead = false;
     
     [SerializeField] Animator ani;
-    [SerializeField] GameObject attackObject;
+    [SerializeField] PlayerAttack playerAttack;
     [SerializeField] private SceneMoveManager scenemanager;
     public static Transform playerTransform;
     private PlayerContorller contorller;
@@ -23,10 +22,7 @@ public class Player : MonoBehaviour, IDamagable
         //resource init
         ResourceData.Init();
         playerTransform = transform;
-
         contorller = GetComponent<PlayerContorller>();
-        attackObject.transform.localScale = Vector3.one * attackRange;
-        canAttack = true;
     }
     public void GameOver()
     {
@@ -76,7 +72,7 @@ public class Player : MonoBehaviour, IDamagable
             isCutDown = false;
             ani.SetBool("Axe", false);
         }
-        if (Input.GetMouseButtonDown(1) && canAttack && !isCutDown) { Debug.Log(isCutDown); canAttack = false; StartCoroutine(Attack()); }
+        if (Input.GetMouseButtonDown(1) && playerAttack.canAttack && !isCutDown) { playerAttack.Attack(); }
         
     }
     void CheckKey()
@@ -87,13 +83,13 @@ public class Player : MonoBehaviour, IDamagable
         //not move
         if (xDir == 0 && yDir == 0) ani.SetBool("Run", false);
         //move
-        else if (canAttack && !isCutDown)
+        else if (playerAttack.canAttack && !isCutDown)
         {
             ani.SetBool("Run", true);
             if(xDir != 0) ani.gameObject.transform.localScale = new Vector3(xDir < 0 ? -1 : 1, 1, 1);
         }
         //attack
-        if (Input.GetKeyDown(KeyCode.Z) && canAttack && !isCutDown) { canAttack = false; StartCoroutine(Attack()); }
+        if (Input.GetKeyDown(KeyCode.Z) && playerAttack.canAttack && !isCutDown) { playerAttack.Attack(); }
         
         //using axe
         if (Input.GetKey(KeyCode.X)) { CutDown(); }
@@ -112,14 +108,7 @@ public class Player : MonoBehaviour, IDamagable
         //axa animation play
         ani.SetBool("Axe", true);
     }
-    IEnumerator Attack()
-    {
-        //attack delay
-        attackObject.SetActive(true);
-        yield return new WaitForSeconds(attackDelay);
-        canAttack = true;
-        attackObject.SetActive(false);
-    }
+    
     IUsable obj;
     private void OnCollisionEnter2D(Collision2D collision) { collision.gameObject.TryGetComponent<IUsable>(out obj); }
     private void OnCollisionExit2D(Collision2D collision) { if (collision.gameObject.TryGetComponent<IUsable>(out obj)) obj = null; }
