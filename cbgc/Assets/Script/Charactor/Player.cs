@@ -82,9 +82,16 @@ public class Player : MonoBehaviour, IDamagable
     void CheckKey()
     {
         //dir
-        var dir = Input.GetAxis("Horizontal");
-        if(dir != 0 && canAttack && !isCutDown) ani.gameObject.transform.localScale = new Vector3(dir < 0 ? -1 : 1, 1, 1);
-
+        var xDir = Input.GetAxis("Horizontal");
+        var yDir = Input.GetAxis("Vertical");
+        //not move
+        if (xDir == 0 && yDir == 0) ani.SetBool("Run", false);
+        //move
+        else if (canAttack && !isCutDown)
+        {
+            ani.SetBool("Run", true);
+            if(xDir != 0) ani.gameObject.transform.localScale = new Vector3(xDir < 0 ? -1 : 1, 1, 1);
+        }
         //attack
         if (Input.GetKeyDown(KeyCode.Z) && canAttack && !isCutDown) { canAttack = false; StartCoroutine(Attack()); }
         
