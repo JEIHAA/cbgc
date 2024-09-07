@@ -15,7 +15,7 @@ public class ResourceGenerator : MonoBehaviour
     protected float randomX;
     protected float randomY;
     protected Vector2 randomPos;
-    private void Start() => Invoke("RandomGanerate",0.125f);
+    private void Start() => RandomGanerate();//Invoke("RandomGanerate",0.125f);
     protected void RandomGanerate()
     {
         foreach (var pool in pools)

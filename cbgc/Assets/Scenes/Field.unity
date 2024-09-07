@@ -2420,7 +2420,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pools: 02000000
-  maxNum: 200
+  maxNum: 300
   maxX: 80
   minX: -80
   maxY: 80
