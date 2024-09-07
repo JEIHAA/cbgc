@@ -31,7 +31,7 @@ public class ObjectPoolManager : MonoBehaviour
         instance = this;
         //I dont know why using "for loop" makes index out error... :(
         poolsInfo[0].objectPools = new ObjectPool<GameObject>(
-            () => Instantiate(poolsInfo[0].prefeb),
+            () => Instantiate(poolsInfo[0].prefeb,transform),
             (GameObject obj) => obj.SetActive(true),
             (GameObject obj) => obj.SetActive(false),
             (GameObject obj) => Destroy(obj),
@@ -40,7 +40,7 @@ public class ObjectPoolManager : MonoBehaviour
             poolsInfo[0].initialPoolSize
             );
         poolsInfo[1].objectPools = new ObjectPool<GameObject>(
-            () => Instantiate(poolsInfo[1].prefeb),
+            () => Instantiate(poolsInfo[1].prefeb, transform),
             (GameObject obj) => obj.SetActive(true),
             (GameObject obj) => obj.SetActive(false),
             (GameObject obj) => Destroy(obj),
@@ -49,7 +49,7 @@ public class ObjectPoolManager : MonoBehaviour
             poolsInfo[1].initialPoolSize
             );
         poolsInfo[2].objectPools = new ObjectPool<GameObject>(
-            () => Instantiate(poolsInfo[2].prefeb),
+            () => Instantiate(poolsInfo[2].prefeb, transform),
             (GameObject obj) => obj.SetActive(true),
             (GameObject obj) => obj.SetActive(false),
             (GameObject obj) => Destroy(obj),
