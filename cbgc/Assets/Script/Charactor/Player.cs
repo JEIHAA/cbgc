@@ -72,7 +72,7 @@ public class Player : MonoBehaviour, IDamagable
             isCutDown = false;
             ani.SetBool("Axe", false);
         }
-        if (Input.GetMouseButtonDown(1) && playerAttack.canAttack && !isCutDown) { playerAttack.Attack(); }
+        if (Input.GetMouseButtonDown(1) && playerAttack.canAttack && !isCutDown) { ani.SetTrigger("Attack"); playerAttack.Attack(); }
         
     }
     void CheckKey()
