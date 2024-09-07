@@ -63,6 +63,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68335e8be2d961d43a8ec492bb265f32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pool: 2
   leftFirewood: 5
 --- !u!212 &5766003504843133354
 SpriteRenderer:

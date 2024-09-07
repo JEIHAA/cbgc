@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour, IDamagable
     [SerializeField] private float health;
     [SerializeField] private float damage;
     [SerializeField] private float delay = 0.8f;
-
+    [SerializeField] private ObjectPoolManager.Pool pool;
     private SpriteRenderer sr;
     private Rigidbody2D rigid;
     private Animator ani;
@@ -70,7 +70,7 @@ public class Enemy : MonoBehaviour, IDamagable
             sr.color = Color.Lerp(Color.clear,Color.white,leftTime/3);
             yield return null;
         }
-        gameObject.SetActive(false);
+        ObjectPoolManager.instance.GetPool(pool).Release(gameObject);
     }
     private void OnCollisionEnter2D(Collision2D _collision)
     {

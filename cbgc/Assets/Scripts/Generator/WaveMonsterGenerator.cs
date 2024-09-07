@@ -1,14 +1,20 @@
+using System;
 using System.Collections;
 using UnityEngine;
 public class WaveMonsterGenerator : MonoBehaviour
 {
     public float spawnDistanceFromCampFire;
-    [System.Serializable]
+    [Serializable]
+    public class EnemySpawnInfo
+    {
+        public ObjectPoolManager.Pool spawnEnemy;
+        public int spawnAmount;
+    }
+    [Serializable]
     public class WaveData
     {
-        public GameObject spawnEnemy;
         public float waveDelay;
-        public int spawnAmount;
+        public EnemySpawnInfo[] enemyInfo;
     }
     public WaveData[] waveData;
     void Start()
@@ -17,15 +23,24 @@ public class WaveMonsterGenerator : MonoBehaviour
     }
     IEnumerator WaveAppear()
     {
-        foreach (var data in waveData)
+        Vector2 randomPos;
+        int loopCount = 0, nowWave = 0;
+        while (true)
         {
-            yield return new WaitForSeconds(data.waveDelay);
-            if(data.spawnEnemy != null)
-                for (int i = 0; i < data.spawnAmount; i++)
+            Debug.Log($"Now wave is {nowWave}");
+            yield return new WaitForSeconds(waveData[nowWave].waveDelay);
+            foreach (var nowEnemy in waveData[nowWave].enemyInfo)
+            {   
+                for (int i = 0; i < nowEnemy.spawnAmount; i++)
                 {
-                    var nowEnemy = Instantiate(data.spawnEnemy, Random.insideUnitCircle.normalized * spawnDistanceFromCampFire, Quaternion.identity, transform).GetComponent<Enemy>();
-                    nowEnemy.isUpdate = true;
+                    randomPos = UnityEngine.Random.insideUnitCircle.normalized * spawnDistanceFromCampFire;
+                    var nowEnemySpawned = ObjectPoolManager.instance.GetPool(nowEnemy.spawnEnemy).Get();
+                    nowEnemySpawned.transform.position = randomPos;
+                    nowEnemySpawned.GetComponent<Enemy>().isUpdate = true;
                 }
+            }
+            loopCount += ++nowWave / waveData.Length;
+            nowWave %= waveData.Length;
         }
     }
 }

@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class Tree : MonoBehaviour, IInteractiveObject
 {
-    [SerializeField] private int leftFirewood = 6;
+    [SerializeField] private ObjectPoolManager.Pool pool;
+
+    [SerializeField] private int leftFirewood = 5;
     private TreeEffect treeEffect;
     
     private Animator animator;
     public Animator Anim => animator;
 
     private int axingCnt=0;
-    private int treeLevel = 3;
 
     private void Start()
     {
@@ -27,7 +28,7 @@ public class Tree : MonoBehaviour, IInteractiveObject
         if (leftFirewood <= 0)
         {
             Invoke("Delay", 0.4f);
-            gameObject.SetActive(false);
+            ObjectPoolManager.instance.GetPool(pool).Release(gameObject);
         }
     }
 
@@ -44,8 +45,6 @@ public class Tree : MonoBehaviour, IInteractiveObject
         if (axingCnt > 1)
         {
             Use();
-            treeLevel -= 1;
-            animator.SetInteger("TreeLevel", treeLevel);
             axingCnt = 0;
         }
 
