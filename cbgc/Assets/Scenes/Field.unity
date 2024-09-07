@@ -566,7 +566,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canAttack: 1
-  attackRange: 2
+  attackRange: 1
   attackDelay: 0.5
 --- !u!1 &251067317
 GameObject:
@@ -2378,16 +2378,16 @@ MonoBehaviour:
     spawnAmount: 10
   - spawnEnemy: 1
     waveDelay: 10
-    spawnAmount: 10
+    spawnAmount: 7
   - spawnEnemy: 1
-    waveDelay: 15
-    spawnAmount: 10
-  - spawnEnemy: 0
-    waveDelay: 0
-    spawnAmount: 10
-  - spawnEnemy: 0
     waveDelay: 20
+    spawnAmount: 12
+  - spawnEnemy: 0
+    waveDelay: 25
     spawnAmount: 20
+  - spawnEnemy: 0
+    waveDelay: 30
+    spawnAmount: 15
 --- !u!4 &2082086665
 Transform:
   m_ObjectHideFlags: 0
@@ -2534,10 +2534,54 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1925854393082396676, guid: b011c6f8826e9434cab94f163ba542db, type: 3}
+      propertyPath: m_Radius
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1925854393082396676, guid: b011c6f8826e9434cab94f163ba542db, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2937960842581754279, guid: b011c6f8826e9434cab94f163ba542db, type: 3}
       propertyPath: campFireSR
       value: 
       objectReference: {fileID: 425161938}
+    - target: {fileID: 3039047177713758087, guid: b011c6f8826e9434cab94f163ba542db, type: 3}
+      propertyPath: m_Size.x
+      value: 2.0625
+      objectReference: {fileID: 0}
+    - target: {fileID: 3039047177713758087, guid: b011c6f8826e9434cab94f163ba542db, type: 3}
+      propertyPath: m_Size.y
+      value: 2.0625
+      objectReference: {fileID: 0}
+    - target: {fileID: 3039047177713758087, guid: b011c6f8826e9434cab94f163ba542db, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 5308656953177035924, guid: 30e629d502be56a4ebb4138a7ea2afbb, type: 3}
+    - target: {fileID: 3039047177713758087, guid: b011c6f8826e9434cab94f163ba542db, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3039047177713758087, guid: b011c6f8826e9434cab94f163ba542db, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3039047177713758087, guid: b011c6f8826e9434cab94f163ba542db, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3039047177713758087, guid: b011c6f8826e9434cab94f163ba542db, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3771907737244827058, guid: b011c6f8826e9434cab94f163ba542db, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4367261297034113230, guid: b011c6f8826e9434cab94f163ba542db, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: -4845561069093444403, guid: 30e629d502be56a4ebb4138a7ea2afbb, type: 3}
     - target: {fileID: 4850673548123485908, guid: b011c6f8826e9434cab94f163ba542db, type: 3}
       propertyPath: dark
       value: 
