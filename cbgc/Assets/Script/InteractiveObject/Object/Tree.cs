@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Tree : MonoBehaviour, IInteractiveObject
 {
+    [SerializeField] private ObjectPoolManager.Pool pool;
+
     [SerializeField] private int leftFirewood = 5;
     private TreeEffect treeEffect;
     
@@ -26,7 +28,7 @@ public class Tree : MonoBehaviour, IInteractiveObject
         if (leftFirewood <= 0)
         {
             Invoke("Delay", 0.4f);
-            gameObject.SetActive(false);
+            ObjectPoolManager.instance.GetPool(pool).Release(gameObject);
         }
     }
 

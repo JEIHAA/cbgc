@@ -1,25 +1,61 @@
+using System;
+using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Pool;
 
 public class ObjectPoolManager : MonoBehaviour
 {
-    public GameObject prefab;
-    public int initialPoolSize = 10;
-    private ObjectPool<GameObject> objectPool;
-
-    void Start() => objectPool = new ObjectPool<GameObject>(
-        CreatePooledObject,
-        OnTakeFromPool,
-        OnReturnToPool,
-        OnDestroyPoolObject,
-        false,
-        initialPoolSize,
-        initialPoolSize
-    );
-    private GameObject CreatePooledObject() => Instantiate(prefab);
-    private void OnTakeFromPool(GameObject obj) => obj.SetActive(true);
-    private void OnReturnToPool(GameObject obj) => obj.SetActive(false);
-    private void OnDestroyPoolObject(GameObject obj) => Destroy(obj);
-    public GameObject GetObject() => objectPool.Get();
-    public void ReturnObject(GameObject obj) => objectPool.Release(obj);
+    public static ObjectPoolManager instance;
+    [SerializeField]
+    private ObjectInPool[] poolsInfo;
+    [Serializable]
+    private class ObjectInPool
+    {
+        public GameObject prefeb;
+        public int initialPoolSize;
+        public ObjectPool<GameObject> objectPools;
+    }
+    public enum Pool
+    {
+        FastMonster,
+        EyeMonster,
+        Tree,
+    }
+    public ObjectPool<GameObject> GetPool(Pool pool)
+    {
+        return poolsInfo[(int)pool].objectPools;
+    }
+    private void Start()
+    {
+        instance = this;
+        //I dont know why using "for loop" makes index out error... :(
+        poolsInfo[0].objectPools = new ObjectPool<GameObject>(
+            () => Instantiate(poolsInfo[0].prefeb,transform),
+            (GameObject obj) => obj.SetActive(true),
+            (GameObject obj) => obj.SetActive(false),
+            (GameObject obj) => Destroy(obj),
+            false,
+            poolsInfo[0].initialPoolSize,
+            poolsInfo[0].initialPoolSize
+            );
+        poolsInfo[1].objectPools = new ObjectPool<GameObject>(
+            () => Instantiate(poolsInfo[1].prefeb, transform),
+            (GameObject obj) => obj.SetActive(true),
+            (GameObject obj) => obj.SetActive(false),
+            (GameObject obj) => Destroy(obj),
+            false,
+            poolsInfo[1].initialPoolSize,
+            poolsInfo[1].initialPoolSize
+            );
+        poolsInfo[2].objectPools = new ObjectPool<GameObject>(
+            () => Instantiate(poolsInfo[2].prefeb, transform),
+            (GameObject obj) => obj.SetActive(true),
+            (GameObject obj) => obj.SetActive(false),
+            (GameObject obj) => Destroy(obj),
+            false,
+            poolsInfo[2].initialPoolSize,
+            poolsInfo[2].initialPoolSize
+            );
+    }
 }

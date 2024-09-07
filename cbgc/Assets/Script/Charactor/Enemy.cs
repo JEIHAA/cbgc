@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour, IDamagable
     [SerializeField] private float health;
     [SerializeField] private float damage;
     [SerializeField] private float delay = 0.8f;
-
+    [SerializeField] private ObjectPoolManager.Pool pool;
     private SpriteRenderer sr;
     private Rigidbody2D rigid;
     private Animator ani;
@@ -57,7 +57,7 @@ public class Enemy : MonoBehaviour, IDamagable
     public void OnDamage(float _damage) {
         health -= _damage;
         ani.SetTrigger("Hit");
-        if (health <= 0) StartCoroutine(Dying());
+        if (health <= 0 && gameObject.activeSelf) StartCoroutine(Dying());
     }
     IEnumerator Dying()
     {
@@ -70,26 +70,20 @@ public class Enemy : MonoBehaviour, IDamagable
             sr.color = Color.Lerp(Color.clear,Color.white,leftTime/3);
             yield return null;
         }
-        gameObject.SetActive(false);
+        ObjectPoolManager.instance.GetPool(pool).Release(gameObject);
     }
     private void OnCollisionEnter2D(Collision2D _collision)
     {
-        if (_collision.gameObject.tag == "Player")
+        if (_collision.gameObject.CompareTag("Player"))
             _collision.gameObject.GetComponent<Player>().OnDamage(100);
     }
     private void OnTriggerEnter2D(Collider2D _collision)
     {
-        switch (_collision.gameObject.tag)
+        if (_collision.gameObject.CompareTag("Player") && !isUpdate) StartCoroutine(ControlableUpdate());
+        if (_collision.gameObject.CompareTag("PlayerAttack"))
         {
-            case "Player":
-                if(!isUpdate) StartCoroutine(ControlableUpdate());
-                break;
-            case "PlayerAttack":
-                OnDamage(5);
-                if (gameObject.activeSelf) KnockBack(true);
-                break;
-            default:
-                break;
+            OnDamage(5);
+            if (gameObject.activeSelf) KnockBack(true);
         }
         if (_collision.gameObject.layer == LayerMask.NameToLayer("Bonfire"))
         {
