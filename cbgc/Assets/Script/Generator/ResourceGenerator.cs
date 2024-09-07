@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ResourceGenerator : MonoBehaviour
 {
-    [SerializeField] protected GameObject obj;
+    [SerializeField] protected ObjectPoolManager.Pool[] pools;
     [SerializeField] protected int maxNum = 40;
     [SerializeField]
     protected float maxX = 9,
@@ -12,24 +12,21 @@ public class ResourceGenerator : MonoBehaviour
                     maxY = 9,
                     minY = -9;
 
-
     protected float randomX;
     protected float randomY;
     protected Vector2 randomPos;
-    private void Start()
-    {
-        RandomGanerate();
-    }
+    private void Start() => Invoke("RandomGanerate",0.125f);
     protected void RandomGanerate()
     {
-        for (int i = 0; i < maxNum; ++i) 
+        foreach (var pool in pools)
         {
-            randomPos = SetRendomPosValue();
-            Instantiate(obj, randomPos, Quaternion.identity,transform);   
+            for (int i = 0; i < maxNum; ++i)
+            {
+                ObjectPoolManager.instance.GetPool(pool).Get().transform.position = SetRendomPosValue();
+            }
         }
     }
-
-    protected Vector3 SetRendomPosValue()
+    protected virtual Vector3 SetRendomPosValue()
     {
         randomX = Random.Range(maxX, minX);
         randomY = Random.Range(maxY, minY);

@@ -6,7 +6,7 @@ public class WaveMonsterGenerator : MonoBehaviour
     [System.Serializable]
     public class WaveData
     {
-        public GameObject spawnEnemy;
+        public ObjectPoolManager.Pool spawnEnemy;
         public float waveDelay;
         public int spawnAmount;
     }
@@ -17,15 +17,17 @@ public class WaveMonsterGenerator : MonoBehaviour
     }
     IEnumerator WaveAppear()
     {
+        Vector2 randomPos;
         foreach (var data in waveData)
         {
             yield return new WaitForSeconds(data.waveDelay);
-            if(data.spawnEnemy != null)
-                for (int i = 0; i < data.spawnAmount; i++)
-                {
-                    var nowEnemy = Instantiate(data.spawnEnemy, Random.insideUnitCircle.normalized * spawnDistanceFromCampFire, Quaternion.identity, transform).GetComponent<Enemy>();
-                    nowEnemy.isUpdate = true;
-                }
+            for (int i = 0; i < data.spawnAmount; i++)
+            {
+                randomPos = Random.insideUnitCircle.normalized * spawnDistanceFromCampFire;
+                var nowEnemy = ObjectPoolManager.instance.GetPool(data.spawnEnemy).Get();
+                nowEnemy.transform.position = randomPos;
+                nowEnemy.GetComponent<Enemy>().isUpdate = true;
+            }
         }
     }
 }
