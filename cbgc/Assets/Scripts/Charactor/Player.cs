@@ -1,5 +1,7 @@
 using System.Collections;
+using System.Security.Cryptography;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 public class Player : MonoBehaviour, IDamagable
 {
@@ -64,6 +66,7 @@ public class Player : MonoBehaviour, IDamagable
     void CheckMouse()
     {
         //using axe
+        if (Input.GetMouseButtonDown(0)) { StartCoroutine(CheckTree()); }
         if (Input.GetMouseButton(0)) { CutDown(); }
         //end axe
         else
@@ -73,8 +76,25 @@ public class Player : MonoBehaviour, IDamagable
             isCutDown = false;
             ani.SetBool("Axe", false);
         }
-        if (Input.GetMouseButtonDown(1) && playerAttack.canAttack && !isCutDown) { playerAttack.Attack(); }
-        
+        if (Input.GetMouseButtonDown(1) && playerAttack.canAttack && !isCutDown) { playerAttack.Attack(); }   
+    }
+    IEnumerator CheckTree()
+    {
+        isCutDown = true;
+        float checkTime = 1.0f, leftTime = checkTime;
+        while (isCutDown)
+        {
+            leftTime -= Time.deltaTime;
+            if(leftTime < 0) {
+                var hit = Physics2D.BoxCast(playerAttack.transform.position, Vector2.one*3, 0f, Vector2.right, 1f).transform.gameObject;
+                if (!hit.IsUnityNull() && hit.CompareTag("InteractiveObject"))
+                {
+                    Debug.Log(hit.name);
+                }
+                leftTime = checkTime;
+            };
+            yield return null;
+        }
     }
     void CheckKey()
     {
