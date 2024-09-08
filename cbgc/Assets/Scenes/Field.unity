@@ -2376,7 +2376,7 @@ MonoBehaviour:
   minX: -5
   maxY: 5
   minY: -5
-  BorderLength: 2
+  BorderLength: 0
 --- !u!1 &2075241377 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -2253911629886400664, guid: ed66bf7c3340a334ba97f94b3a097909, type: 3}
@@ -2477,7 +2477,7 @@ MonoBehaviour:
   minX: -80
   maxY: 80
   minY: -80
-  BorderLength: 77
+  BorderLength: 70
 --- !u!1 &2082086663
 GameObject:
   m_ObjectHideFlags: 0
@@ -2582,7 +2582,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 6
-  canMove: 0
 --- !u!4 &685669101750771499 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7120179776450460374, guid: b011c6f8826e9434cab94f163ba542db, type: 3}
