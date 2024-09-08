@@ -569,6 +569,51 @@ MonoBehaviour:
   canAttack: 1
   attackRange: 1
   attackDelay: 0.5
+--- !u!61 &217882914
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 217882904}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 1, y: 0.5}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.09090909, y: 0.27272728}
+    oldSize: {x: 2.0625, y: 2.0625}
+    newSize: {x: 2.0625, y: 2.0625}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 3, y: 4}
+  m_EdgeRadius: 0
 --- !u!1 &251067317
 GameObject:
   m_ObjectHideFlags: 0
@@ -2446,6 +2491,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseObj: {fileID: 687475315}
+  bgm: {fileID: 1795661003}
 --- !u!1 &1925520320
 GameObject:
   m_ObjectHideFlags: 0
@@ -3093,7 +3139,8 @@ PrefabInstance:
       propertyPath: bonfire
       value: 
       objectReference: {fileID: 456970983}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1925854393082396676, guid: b011c6f8826e9434cab94f163ba542db, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 7120179776450460374, guid: b011c6f8826e9434cab94f163ba542db, type: 3}
@@ -3106,6 +3153,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3771907737244827058, guid: b011c6f8826e9434cab94f163ba542db, type: 3}
       insertIndex: 1
       addedObject: {fileID: 217882909}
+    - targetCorrespondingSourceObject: {fileID: 3771907737244827058, guid: b011c6f8826e9434cab94f163ba542db, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 217882914}
   m_SourcePrefab: {fileID: 100100000, guid: b011c6f8826e9434cab94f163ba542db, type: 3}
 --- !u!4 &6375364614103149352
 Transform:
