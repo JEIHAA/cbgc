@@ -42,9 +42,9 @@ public class Controller : MonoBehaviour
         //add speed for knockback
         if (isPlayer) addVelocity = -(Player.playerTransform.position - transform.position).normalized * 10;
         else addVelocity = -Velocity * 10;
-        StartCoroutine(ResetAddVelocity(isPlayer));
+        StartCoroutine(SpeedAddVelocity(isPlayer));
     }
-    IEnumerator ResetAddVelocity(bool isPlayer = false)
+    IEnumerator SpeedAddVelocity(bool isPlayer = false)
     {
         yield return knockBackTime;
         addVelocity = Vector3.zero;
