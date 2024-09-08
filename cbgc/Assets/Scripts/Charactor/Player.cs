@@ -14,7 +14,7 @@ public class Player : MonoBehaviour, IDamagable
     [SerializeField] PlayerAttack playerAttack;
     [SerializeField] private SceneMoveManager scenemanager;
     public static Transform playerTransform;
-    private PlayerContorller contorller;
+    private Contorller contorller;
 
     public void OnDamage(float _damage) { GameOver(); }
     private void Start()
@@ -22,7 +22,7 @@ public class Player : MonoBehaviour, IDamagable
         //resource init
         ResourceData.Init();
         playerTransform = transform;
-        contorller = GetComponent<PlayerContorller>();
+        contorller = GetComponent<Contorller>();
     }
     public void GameOver()
     {
@@ -34,7 +34,7 @@ public class Player : MonoBehaviour, IDamagable
         //until animation end
         Invoke("StopGame", 1.4f);
         //player can not move
-        contorller.canMove = false;
+        contorller.CanMove = false;
         Debug.Log($"{gameObject.name} Is Dead.");
     }
     void StopGame() => scenemanager.LoadScene(SceneMoveManager.SceneName.GameOver);
@@ -58,6 +58,7 @@ public class Player : MonoBehaviour, IDamagable
         //check input
         CheckKey();
         CheckMouse();
+        contorller.MoveInput();
     }
     
     void CheckMouse()
@@ -68,7 +69,7 @@ public class Player : MonoBehaviour, IDamagable
         else
         {
             //axa animation stop
-            contorller.canMove = true;
+            contorller.CanMove = true;
             isCutDown = false;
             ani.SetBool("Axe", false);
         }
@@ -86,7 +87,6 @@ public class Player : MonoBehaviour, IDamagable
         else if (playerAttack.canAttack && !isCutDown)
         {
             ani.SetBool("Run", true);
-            if(xDir != 0) ani.gameObject.transform.localScale = new Vector3(xDir < 0 ? -1 : 1, 1, 1);
         }
         //attack
         if (Input.GetKeyDown(KeyCode.Z) && playerAttack.canAttack && !isCutDown) { playerAttack.Attack(); }
@@ -104,7 +104,7 @@ public class Player : MonoBehaviour, IDamagable
     void CutDown()
     {
         isCutDown = true;
-        contorller.canMove = false;
+        contorller.CanMove = false;
         //axa animation play
         ani.SetBool("Axe", true);
     }
