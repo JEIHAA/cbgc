@@ -3,32 +3,24 @@ using Unity.VisualScripting;
 using UnityEngine;
 public class Enemy : MonoBehaviour, IDamagable
 {
-    [SerializeField] private float speed;
     [SerializeField] private float health;
     [SerializeField] private float damage;
     [SerializeField] private float delay = 0.8f;
     [SerializeField] private ObjectPoolManager.Pool pool;
+    [SerializeField] private Controller controller;
     private SpriteRenderer sr;
     private Rigidbody2D rigid;
     private Animator ani;
-    private WaitForSeconds knockBackTime, attackCycle;
+    private WaitForSeconds attackCycle;
     public bool isUpdate;
-    private Vector2 addVelocity;
-    private Vector2 Velocity
-    {
-        get => rigid.velocity;
-        set { if(rigid.bodyType != RigidbodyType2D.Static) rigid.velocity = value + addVelocity; sr.flipX = value.x < 0 ? true : false; }
-    }
+    
     void Start()
     {
         //component
         rigid = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         ani = GetComponent<Animator>();
-
-        knockBackTime = new(0.125f);
         attackCycle = new WaitForSeconds(damage);
-
         if (isUpdate) StartCoroutine(ControlableUpdate());
     }
     //Update
@@ -39,21 +31,11 @@ public class Enemy : MonoBehaviour, IDamagable
         while (gameObject.activeSelf)
         {
             //chase more bright light
-            if (LightData.TorchIsBrightest) MoveToPlayer();
-            else MoveToCenter();
+            if (LightData.TorchIsBrightest) controller.MoveToPlayer();
+            else controller.MoveToCenter();
             yield return null;
         }
     }
-    //add speed for knockback
-    IEnumerator MoveBackToKnockBack(bool isPlayer = false)
-    {
-        if(isPlayer) addVelocity = -(Player.playerTransform.position - transform.position).normalized * 10;
-        else addVelocity = -Velocity * 10;
-        yield return knockBackTime;
-        addVelocity = Vector3.zero;
-    }
-    void MoveToPlayer() => Velocity = (Player.playerTransform.position - transform.position).normalized * speed;
-    void MoveToCenter() => Velocity = -transform.position.normalized * speed;
     public void OnDamage(float _damage) {
         health -= _damage;
         ani.SetTrigger("Hit");
@@ -61,7 +43,7 @@ public class Enemy : MonoBehaviour, IDamagable
     }
     IEnumerator Dying()
     {
-        rigid.bodyType = RigidbodyType2D.Static;
+        controller.CanMove = false;
         GetComponent<Collider2D>().enabled = false;
         float leftTime = 3;
         while (leftTime > 0)
@@ -90,12 +72,11 @@ public class Enemy : MonoBehaviour, IDamagable
             StartCoroutine(AttackingBonfire(_collision.gameObject));
         }
     }
-
     private IEnumerator AttackingBonfire(GameObject _go)
     {
         _go.GetComponent<Bonfire>()?.OnDamage(damage);
         KnockBack();
         yield return attackCycle;
     }
-    public void KnockBack(bool isPlayer = false) => StartCoroutine(MoveBackToKnockBack(isPlayer));
+    public void KnockBack(bool _isPlayer = false) => controller.KnockBack(_isPlayer);
 }
