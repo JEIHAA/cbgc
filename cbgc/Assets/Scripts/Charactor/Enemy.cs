@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour, IDamagable
     [SerializeField] private float damage;
     [SerializeField] private float delay = 0.8f;
     [SerializeField] private ObjectPoolManager.Pool pool;
-    [SerializeField] private Contorller controller;
+    [SerializeField] private Controller controller;
     private SpriteRenderer sr;
     private Rigidbody2D rigid;
     private Animator ani;

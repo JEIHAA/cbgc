@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Contorller : MonoBehaviour
+public class Controller : MonoBehaviour
 {
     private Rigidbody2D rigid;
     [SerializeField, Range(1,15)]

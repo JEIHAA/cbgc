@@ -14,7 +14,7 @@ public class Player : MonoBehaviour, IDamagable
     [SerializeField] PlayerAttack playerAttack;
     [SerializeField] private SceneMoveManager scenemanager;
     public static Transform playerTransform;
-    private Contorller contorller;
+    private Controller contorller;
 
     public void OnDamage(float _damage) { GameOver(); }
     private void Start()
@@ -22,7 +22,7 @@ public class Player : MonoBehaviour, IDamagable
         //resource init
         ResourceData.Init();
         playerTransform = transform;
-        contorller = GetComponent<Contorller>();
+        contorller = GetComponent<Controller>();
     }
     public void GameOver()
     {
