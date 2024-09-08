@@ -78,6 +78,7 @@ public class Player : MonoBehaviour, IDamagable
         }
         if (Input.GetMouseButtonDown(1) && playerAttack.canAttack && !isCutDown) { playerAttack.Attack(); }   
     }
+
     IEnumerator CheckTree()
     {
         isCutDown = true;
@@ -96,6 +97,7 @@ public class Player : MonoBehaviour, IDamagable
             yield return null;
         }
     }
+
     void CheckKey()
     {
         //dir
