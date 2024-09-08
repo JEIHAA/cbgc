@@ -1382,6 +1382,7 @@ Transform:
   - {fileID: 2082086665}
   - {fileID: 1536463749}
   - {fileID: 2077710087}
+  - {fileID: 2070046012}
   - {fileID: 1761771409}
   - {fileID: 1925520321}
   - {fileID: 405457631}
@@ -2325,6 +2326,57 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camRangeWidth: 270
   camRangeheight: 140
+--- !u!1 &2070046011
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2070046012}
+  - component: {fileID: 2070046013}
+  m_Layer: 0
+  m_Name: NearTreeGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2070046012
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2070046011}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.5809019, y: 0.9926597, z: 4.4341598}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 837399494}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2070046013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2070046011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 497d65015d8222d41bbbc02b8102e74d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pools: 02000000
+  maxNum: 3
+  maxX: 5
+  minX: -5
+  maxY: 5
+  minY: -5
+  BorderLength: 2
 --- !u!1 &2075241377 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -2253911629886400664, guid: ed66bf7c3340a334ba97f94b3a097909, type: 3}
