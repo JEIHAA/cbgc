@@ -26,7 +26,7 @@ public class ObjectPoolManager : MonoBehaviour
     {
         return poolsInfo[(int)pool].objectPools;
     }
-    private void Start()
+    private void Awake()
     {
         instance = this;
         //I dont know why using "for loop" makes index out error... :(
