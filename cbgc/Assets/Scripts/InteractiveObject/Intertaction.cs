@@ -11,6 +11,7 @@ public class Intertaction : MonoBehaviour
     private void Update()
     {
         InteractionProcess();
+        Debug.Log(timeElapsed);
     }
 
     public void InteractionProcess()
