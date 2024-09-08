@@ -110,18 +110,8 @@ public class Player : MonoBehaviour, IDamagable
         {
             ani.SetBool("Run", true);
         }
-        //attack
-        if (Input.GetKeyDown(KeyCode.Z) && playerAttack.canAttack && !isCutDown) { playerAttack.Attack(); }
-        
-        //using axe
-        if (Input.GetKey(KeyCode.X)) { CutDown(); }
-        //end using
-        else
-        {
-            //axa animation stop
-            isCutDown = false;
-            ani.SetBool("Axe", false);
-        }
+        //Pause
+        if (Input.GetKeyDown(KeyCode.Escape)) PauseManager.instance.IsPause = !PauseManager.instance.IsPause;
     }
     void CutDown()
     {
