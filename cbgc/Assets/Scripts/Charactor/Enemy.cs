@@ -43,7 +43,7 @@ public class Enemy : MonoBehaviour, IDamagable
     }
     IEnumerator Dying()
     {
-        rigid.bodyType = RigidbodyType2D.Static;
+        controller.CanMove = false;
         GetComponent<Collider2D>().enabled = false;
         float leftTime = 3;
         while (leftTime > 0)

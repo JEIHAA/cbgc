@@ -10,8 +10,15 @@ public class Controller : MonoBehaviour
     private int speed;
     public bool CanMove
     {
-        get => rigid.bodyType != RigidbodyType2D.Static;
-        set => rigid.bodyType = value ? RigidbodyType2D.Dynamic : RigidbodyType2D.Static;
+        get => rigid.bodyType != RigidbodyType2D.Kinematic;
+        set {
+            if (value) rigid.bodyType = RigidbodyType2D.Dynamic;
+            else
+            {
+                rigid.velocity = Vector3.zero;
+                rigid.bodyType = RigidbodyType2D.Kinematic;
+            }
+        }
     }
     [SerializeField, Range(1,15)]
     WaitForSeconds knockBackTime;
