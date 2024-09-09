@@ -29,7 +29,7 @@ public class Compass : MonoBehaviour
     void CompassSet()
     {
         //to campfire dir
-        var compassPos = -transform.position;
+        var compassPos = -Player.playerTransform.position;
         //close to campfire
         if (Mathf.Abs(compassPos.x) > 25 || Mathf.Abs(compassPos.y) > 12)
         {
@@ -53,8 +53,8 @@ public class Compass : MonoBehaviour
                 if (compassPos.y > 8) campFireDir.sprite = dirSprite[0];
                 if (compassPos.y < -8) campFireDir.sprite = dirSprite[1];
             }
-            campFireCompass.transform.localPosition = compassPos * dirArrowDistance;
-            campFireDir.transform.localPosition = compassPos;
+            campFireCompass.transform.position = Player.playerTransform.position + compassPos * dirArrowDistance;
+            campFireDir.transform.position = Player.playerTransform.position + compassPos;
             campFireCompass.sprite = campFireSR.sprite;
         }
         //too far (off compass)
