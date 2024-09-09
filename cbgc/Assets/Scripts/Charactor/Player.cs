@@ -1,8 +1,4 @@
-using System.Collections;
 using System.Linq;
-using System.Security.Cryptography;
-using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 public class Player : MonoBehaviour, IDamagable
 {
