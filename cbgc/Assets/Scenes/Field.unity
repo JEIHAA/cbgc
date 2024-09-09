@@ -2214,6 +2214,56 @@ Transform:
   m_Children: []
   m_Father: {fileID: 765072195}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1558880681
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1558880683}
+  - component: {fileID: 1558880682}
+  m_Layer: 0
+  m_Name: Compass
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1558880682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1558880681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f5d5ea75379e384e852323d2d249da6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  campFireSR: {fileID: 425161938}
+  dirSprite:
+  - {fileID: 21300000, guid: 6efd802a6affb1449b066bcd33cbb6d0, type: 3}
+  - {fileID: 21300000, guid: bef7e9d1297189e4a8c5a899d3de26a6, type: 3}
+  - {fileID: 21300000, guid: f51534f831da92d47beb2faf4902e7a1, type: 3}
+  - {fileID: 21300000, guid: 04924dd0083d5224587f8ae9ff67d5c8, type: 3}
+--- !u!4 &1558880683
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1558880681}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -12.31823, y: 3.1267204, z: 929.0711}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1761284392
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3145,6 +3195,7 @@ PrefabInstance:
       objectReference: {fileID: 456970983}
     m_RemovedComponents:
     - {fileID: 1925854393082396676, guid: b011c6f8826e9434cab94f163ba542db, type: 3}
+    - {fileID: 2937960842581754279, guid: b011c6f8826e9434cab94f163ba542db, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 7120179776450460374, guid: b011c6f8826e9434cab94f163ba542db, type: 3}
@@ -3282,3 +3333,4 @@ SceneRoots:
   - {fileID: 1795661004}
   - {fileID: 837399494}
   - {fileID: 1761284392}
+  - {fileID: 1558880683}
