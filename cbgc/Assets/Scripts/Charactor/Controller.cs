@@ -44,14 +44,14 @@ public class Controller : MonoBehaviour
     public void MoveInput() => Velocity = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized * speed + addVelocity;
     public void MoveToCenter() => Velocity = -transform.position.normalized * speed + addVelocity;
     public void MoveToPlayer() => Velocity = (Player.playerTransform.position - transform.position).normalized * speed + addVelocity;
-    public void KnockBack(bool isPlayer)
+    public void KnockBack(bool _isPlayer = false) => KnockBack(_isPlayer ? Player.playerTransform.position : Vector3.zero);    
+    public void KnockBack(Vector3 origin)
     {
         //add speed for knockback
-        if (isPlayer) addVelocity = -(Player.playerTransform.position - transform.position).normalized * 10;
-        else addVelocity = -Velocity * 10;
-        StartCoroutine(ResetAddVelocity(isPlayer));
+        addVelocity = -(origin - transform.position).normalized * 10;
+        StartCoroutine(ResetAddVelocity());
     }
-    IEnumerator ResetAddVelocity(bool isPlayer = false)
+    IEnumerator ResetAddVelocity()
     {
         yield return knockBackTime;
         addVelocity = Vector3.zero;

@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Linq;
 using System.Security.Cryptography;
 using TMPro;
 using Unity.VisualScripting;
@@ -7,14 +8,12 @@ public class Player : MonoBehaviour, IDamagable
 {
     private float deathTime = 0f, timeLimit = 2f;
     private bool isCutDown = false, isDead = false;
-    
     [SerializeField] Animator ani;
     [SerializeField] PlayerAttack playerAttack;
     [SerializeField] private SceneMoveManager scenemanager;
     private TorchLight torchLight;
     public static Transform playerTransform;
     private Controller contorller;
-
     private void Start()
     {
         //resource init
@@ -23,7 +22,7 @@ public class Player : MonoBehaviour, IDamagable
         contorller = GetComponent<Controller>();
         torchLight = GetComponentInChildren<TorchLight>();
     }
-    void Update()
+    private void Update()
     {
         if (isDead) return;
         CheckDarkphobia();
@@ -31,13 +30,14 @@ public class Player : MonoBehaviour, IDamagable
         CheckKey();
         CheckMouse();
         contorller.MoveInput();
+        PlayerDetectedByEnemy();
     }
-
     public void OnDamage(float _damage)
     {
+        Enemy[] near = NearEnemy(1f);
+        if (near.Length > 0) contorller.KnockBack(near[0].transform.position);
         torchLight.LeftTime -= (int)_damage;
     }
-
     private void CheckDarkphobia()
     {
         if (LightData.TorchLeftTime <= 0)
@@ -45,12 +45,8 @@ public class Player : MonoBehaviour, IDamagable
             deathTime += Time.deltaTime;
             if (deathTime > timeLimit) GameOver();
         }
-        else
-        {
-            deathTime = 0;
-        }
+        else deathTime = 0;
     }
-
     public void GameOver()
     {
         if (isDead) return;
@@ -64,63 +60,40 @@ public class Player : MonoBehaviour, IDamagable
         contorller.CanMove = false;
         Debug.Log($"{gameObject.name} Is Dead.");
     }
-    void StopGame() => scenemanager.LoadScene(SceneMoveManager.SceneName.GameOver);
-
-    void CheckMouse()
+    private void StopGame() => scenemanager.LoadScene(SceneMoveManager.SceneName.GameOver);
+    private void CheckMouse()
     {
         //using axe
-        //if (Input.GetMouseButtonDown(0)) { StartCoroutine(CheckTree()); }
         if (Input.GetMouseButton(0)) { CutDown(); }
         //end axe
         else
         {
             //axa animation stop
             contorller.CanMove = true;
-            isCutDown = false;
-            ani.SetBool("Axe", false);
+            ani.SetBool("Axe", isCutDown = false);
         }
-        if (Input.GetMouseButtonDown(1) && playerAttack.canAttack && !isCutDown) { playerAttack.Attack(); }   
+        if (Input.GetMouseButtonDown(1) && playerAttack.canAttack && !isCutDown) { playerAttack.Attack(); }
     }
-
-    IEnumerator CheckTree()
+    private void CheckKey()
     {
-        isCutDown = true;
-        float checkTime = 1.0f, leftTime = checkTime;
-        while (isCutDown)
-        {
-            leftTime -= Time.deltaTime;
-            if(leftTime < 0) {
-                var hit = Physics2D.BoxCast(playerAttack.transform.position, Vector2.one*3, 0f, Vector2.right, 1f).transform.gameObject;
-                if (!hit.IsUnityNull() && hit.CompareTag("InteractiveObject"))
-                {
-                    Debug.Log(hit.name);
-                }
-                leftTime = checkTime;
-            };
-            yield return null;
-        }
-    }
-    void CheckKey()
-    {
-        //dir
-        var xDir = Input.GetAxis("Horizontal");
-        var yDir = Input.GetAxis("Vertical");
         //not move
-        if (xDir == 0 && yDir == 0) ani.SetBool("Run", false);
+        if (Input.GetAxisRaw("Horizontal") == 0 && Input.GetAxisRaw("Vertical") == 0) ani.SetBool("Run", false);
         //move
-        else if (playerAttack.canAttack && !isCutDown)
-        {
-            ani.SetBool("Run", true);
-        }
+        else if (playerAttack.canAttack && !isCutDown) ani.SetBool("Run", true);
         //Pause
         if (Input.GetKeyDown(KeyCode.Escape)) PauseManager.instance.IsPause = !PauseManager.instance.IsPause;
     }
-
-    void CutDown()
+    private Enemy[] NearEnemy(float range) =>
+        Physics2D.OverlapCircleAll(transform.position, range)
+                  .Where(collider => collider.CompareTag("Monster"))
+                  .Select(enemyObj => enemyObj.GetComponent<Enemy>())
+                  .ToArray();
+    private void PlayerDetectedByEnemy() { foreach (var enemy in NearEnemy(10)) enemy.PlayerDetected(); }
+    private void CutDown()
     {
-        isCutDown = true;
-        contorller.CanMove = false;
         //axa animation play
-        ani.SetBool("Axe", true);
+        ani.SetBool("Axe", isCutDown = true);
+        //can't move while cut down
+        contorller.CanMove = false;
     }
 }
