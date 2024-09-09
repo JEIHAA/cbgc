@@ -3039,6 +3039,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1318558482367169569, guid: b011c6f8826e9434cab94f163ba542db, type: 3}
+      propertyPath: m_LinearDrag
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1925854393082396676, guid: b011c6f8826e9434cab94f163ba542db, type: 3}
       propertyPath: m_Radius
       value: 1.5
