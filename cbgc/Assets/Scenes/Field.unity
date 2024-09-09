@@ -2171,10 +2171,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pools: 0000000001000000
-  BorderLength: 0
-  maxNum: 40
-  width: 100
-  height: 100
+  BorderLength: 30
+  maxNum: 100
+  width: 160
+  height: 160
 --- !u!1 &1540144354
 GameObject:
   m_ObjectHideFlags: 0
@@ -2641,8 +2641,8 @@ MonoBehaviour:
   pools: 02000000
   BorderLength: 2
   maxNum: 3
-  width: 12
-  height: 12
+  width: 10
+  height: 10
 --- !u!1 &2075241377 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -2253911629886400664, guid: ed66bf7c3340a334ba97f94b3a097909, type: 3}
@@ -2738,10 +2738,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pools: 02000000
-  BorderLength: 40
+  BorderLength: 70
   maxNum: 300
-  width: 100
-  height: 100
+  width: 160
+  height: 160
 --- !u!1 &2082086663
 GameObject:
   m_ObjectHideFlags: 0
