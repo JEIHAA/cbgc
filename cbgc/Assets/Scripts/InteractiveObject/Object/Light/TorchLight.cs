@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class TorchLight : SetLightAnimator
+public class TorchLight : SetLightAnimator, IDamagable
 {
     [SerializeField] private Bonfire bonfire;
     private bool onFire = false;
@@ -20,7 +20,7 @@ public class TorchLight : SetLightAnimator
         if (collision.gameObject.CompareTag("BonfireLight"))
         {
             onFire = true;
-        }   
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -52,4 +52,10 @@ public class TorchLight : SetLightAnimator
         if (bonfire.LeftTime >= 1) return true;
         else return false;
     }
+
+    public void OnDamage(float _damage)
+    {
+        leftTime -= (int)_damage;
+    }
+
 }

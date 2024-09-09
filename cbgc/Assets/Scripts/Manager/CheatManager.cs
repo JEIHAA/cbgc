@@ -49,7 +49,6 @@ public class CheatManager : MonoBehaviour
 
     private void Invulnerability()
     {
-        if (player.Defense <= 0) player.Defense = 999;
-        else player.Defense = 0;
+        
     }
 }

@@ -5,27 +5,52 @@ using Unity.VisualScripting;
 using UnityEngine;
 public class Player : MonoBehaviour, IDamagable
 {
-    [SerializeField] private int health;
-    [SerializeField] private int defense = 0;
-    public int Defense { get => defense; set => defense = value; }
-    
     private float deathTime = 0f, timeLimit = 2f;
     private bool isCutDown = false, isDead = false;
     
     [SerializeField] Animator ani;
     [SerializeField] PlayerAttack playerAttack;
     [SerializeField] private SceneMoveManager scenemanager;
+    private TorchLight torchLight;
     public static Transform playerTransform;
     private Controller contorller;
 
-    public void OnDamage(float _damage) { GameOver(); }
     private void Start()
     {
         //resource init
         ResourceData.Init();
         playerTransform = transform;
         contorller = GetComponent<Controller>();
+        torchLight = GetComponentInChildren<TorchLight>();
     }
+    void Update()
+    {
+        if (isDead) return;
+        CheckDarkphobia();
+        //check input
+        CheckKey();
+        CheckMouse();
+        contorller.MoveInput();
+    }
+
+    public void OnDamage(float _damage)
+    {
+        torchLight.LeftTime -= (int)_damage;
+    }
+
+    private void CheckDarkphobia()
+    {
+        if (LightData.TorchLeftTime <= 0)
+        {
+            deathTime += Time.deltaTime;
+            if (deathTime > timeLimit) GameOver();
+        }
+        else
+        {
+            deathTime = 0;
+        }
+    }
+
     public void GameOver()
     {
         if (isDead) return;
@@ -41,32 +66,10 @@ public class Player : MonoBehaviour, IDamagable
     }
     void StopGame() => scenemanager.LoadScene(SceneMoveManager.SceneName.GameOver);
 
-    private void CheckDarkphobia()
-    {
-        if (LightData.TorchLeftTime <= 0)
-        {
-            deathTime += Time.deltaTime;
-            if (deathTime > timeLimit) GameOver();
-        }
-        else
-        {
-            deathTime = 0;
-        }
-    }
-    void Update()
-    {
-        if (isDead) return;
-        CheckDarkphobia();
-        //check input
-        CheckKey();
-        CheckMouse();
-        contorller.MoveInput();
-    }
-    
     void CheckMouse()
     {
         //using axe
-        if (Input.GetMouseButtonDown(0)) { StartCoroutine(CheckTree()); }
+        //if (Input.GetMouseButtonDown(0)) { StartCoroutine(CheckTree()); }
         if (Input.GetMouseButton(0)) { CutDown(); }
         //end axe
         else
@@ -97,7 +100,6 @@ public class Player : MonoBehaviour, IDamagable
             yield return null;
         }
     }
-
     void CheckKey()
     {
         //dir
@@ -113,6 +115,7 @@ public class Player : MonoBehaviour, IDamagable
         //Pause
         if (Input.GetKeyDown(KeyCode.Escape)) PauseManager.instance.IsPause = !PauseManager.instance.IsPause;
     }
+
     void CutDown()
     {
         isCutDown = true;
@@ -120,8 +123,4 @@ public class Player : MonoBehaviour, IDamagable
         //axa animation play
         ani.SetBool("Axe", true);
     }
-    
-    IUsable obj;
-    private void OnCollisionEnter2D(Collision2D collision) { collision.gameObject.TryGetComponent<IUsable>(out obj); }
-    private void OnCollisionExit2D(Collision2D collision) { if (collision.gameObject.TryGetComponent<IUsable>(out obj)) obj = null; }
 }

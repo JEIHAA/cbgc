@@ -54,24 +54,28 @@ public class Enemy : MonoBehaviour, IDamagable
         }
         ObjectPoolManager.instance.GetPool(pool).Release(gameObject);
     }
-    private void OnCollisionEnter2D(Collision2D _collision)
+
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (_collision.gameObject.CompareTag("Player"))
-            _collision.gameObject.GetComponent<Player>().OnDamage(100);
-    }
-    private void OnTriggerEnter2D(Collider2D _collision)
-    {
-        if (_collision.gameObject.CompareTag("Player") && !isUpdate) StartCoroutine(ControlableUpdate());
-        if (_collision.gameObject.CompareTag("PlayerAttack"))
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.gameObject.GetComponent<IDamagable>().OnDamage(damage);
+            KnockBack(); //юс╫ц
+        }
+        else if (collision.gameObject.layer == LayerMask.NameToLayer("Bonfire"))
+        {
+            StartCoroutine(AttackingBonfire(collision.gameObject));
+        }
+
+
+        if (collision.gameObject.CompareTag("Player") && !isUpdate) StartCoroutine(ControlableUpdate());
+        else if (collision.gameObject.CompareTag("PlayerAttack"))
         {
             OnDamage(5);
             if (gameObject.activeSelf) KnockBack(true);
         }
-        if (_collision.gameObject.layer == LayerMask.NameToLayer("Bonfire"))
-        {
-            StartCoroutine(AttackingBonfire(_collision.gameObject));
-        }
     }
+    
     private IEnumerator AttackingBonfire(GameObject _go)
     {
         _go.GetComponent<Bonfire>()?.OnDamage(damage);
