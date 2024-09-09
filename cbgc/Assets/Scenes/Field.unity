@@ -2639,10 +2639,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pools: 02000000
-  BorderLength: 2
-  maxNum: 3
-  width: 10
-  height: 10
+  BorderLength: 0
+  maxNum: 2
+  width: 13
+  height: 13
 --- !u!1 &2075241377 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -2253911629886400664, guid: ed66bf7c3340a334ba97f94b3a097909, type: 3}
