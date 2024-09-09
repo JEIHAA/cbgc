@@ -41,7 +41,7 @@ public class Controller : MonoBehaviour
         knockBackTime = new(0.125f);
         CanMove = true;
     }
-    public void MoveInput() => Velocity = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")) * speed + addVelocity;
+    public void MoveInput() => Velocity = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")) * speed + addVelocity;
     public void MoveToCenter() => Velocity = -transform.position.normalized * speed + addVelocity;
     public void MoveToPlayer() => Velocity = (Player.playerTransform.position - transform.position).normalized * speed + addVelocity;
     public void KnockBack(bool isPlayer)
