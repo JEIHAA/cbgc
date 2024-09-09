@@ -20,7 +20,7 @@ public class PlayTimeManager : MonoBehaviour
         {
             bestTime = nowPlayTime;
             PlayerPrefs.SetInt("BestTime", nowPlayTime);
-            playTime.color = Color.green;
+            bestTimeText.color = Color.green;
         }
         bestTimeText.text = $"{bestTime / 60:D2} : {bestTime % 60:D2}";
         playTime.text = $"{nowPlayTime / 60:D2} : {nowPlayTime % 60:D2}";
