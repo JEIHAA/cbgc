@@ -29,10 +29,7 @@ public class Tree : MonoBehaviour, IInteractiveObject
         if (_time > 1f)
         {
             DropFirewood();
-            if (axingCnt > 1)
-            {
-                Chop();
-            }
+            Chop();
         }
     }
 

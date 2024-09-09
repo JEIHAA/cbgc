@@ -2264,6 +2264,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2953835870317000475, guid: e472b6fd2f0a7eb41a96541e1bc74702, type: 3}
+      propertyPath: leftFirewood
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 6281578544985384098, guid: e472b6fd2f0a7eb41a96541e1bc74702, type: 3}
       propertyPath: m_Name
       value: Tree
