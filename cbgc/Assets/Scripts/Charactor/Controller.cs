@@ -52,7 +52,7 @@ public class Controller : MonoBehaviour
         Velocity = (Player.playerTransform.position - transform.position).normalized * speed + addVelocity;
         if (Velocity.x != 0) gameObject.transform.localScale = new Vector3(Velocity.x > 0 ? 1 : -1, 1, 1);
     }
-    public void KnockBack(bool _isPlayer = false) => KnockBack(_isPlayer ? Player.playerTransform.position : Vector3.zero);    
+    public void KnockBack() => KnockBack(Vector3.zero);
     public void KnockBack(Vector3 origin)
     {
         //add speed for knockback

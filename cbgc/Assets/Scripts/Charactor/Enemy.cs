@@ -38,7 +38,8 @@ public class Enemy : MonoBehaviour, IDamagable
         if (ani != null) ani.SetTrigger("Hit");
         if ((health -= _damage) <= 0 && gameObject.activeSelf) StartCoroutine(Dying());
     }
-    public void KnockBack(bool _isPlayer = false) => controller.KnockBack(_isPlayer);
+    public void KnockBack() => controller.KnockBack();
+    public void KnockBackFromPlayer() => controller.KnockBack(Player.playerTransform.position);
     private IEnumerator Dying()
     {
         controller.CanMove = false;
