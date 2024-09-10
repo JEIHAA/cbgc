@@ -1,30 +1,46 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections.Generic;
+using System;
 
 public class ResourceGenerator : MonoBehaviour
 {
-    [SerializeField] protected ObjectPoolManager.Pool[] pools;
-    [SerializeField] protected int BorderLength;
-    [SerializeField] protected int maxNum = 40;
     [SerializeField]
-    protected int width = 100, height = 100;
-                    
-    private void Start() => RandomGanerate();//Invoke("RandomGanerate",0.125f);
-    protected virtual void RandomGanerate()
+    private GenInfo[] generateList;
+    [Serializable]
+    public class GenInfo
     {
-        foreach (var pool in pools)
+        public ObjectPoolManager.Pool pool;
+        public int BorderLength, maxNum = 40, width = 100, height = 100;
+        public Vector2 offset;
+    }
+    GenInfo nowGenObj;
+    private HashSet<Vector2> usedPositions = new HashSet<Vector2>();
+    private void Start() => RandomGenerate();
+    private void RandomGenerate()
+    {
+        foreach (var obj in generateList)
         {
-            for (int i = 0; i < maxNum; ++i)
-            {
-                ObjectPoolManager.instance.GetPool(pool).Get().transform.position = SetRendomPosValue();
-            }
+            nowGenObj = obj;
+            for (int i = 0; i < obj.maxNum; ++i)
+                if (GenerateUniquePosition(out Vector2 newPos))
+                    ObjectPoolManager.instance.GetPool(obj.pool).Get().transform.position = newPos;
         }
     }
-    protected Vector3 SetRendomPosValue()
+    protected bool GenerateUniquePosition(out Vector2 newPos)
     {
-        return (Random.value > 0.5f ?
-                    new Vector3(Random.Range(width/2, width/2 - BorderLength) * (Random.value > 0.5f ? 1 : -1), Random.Range(height / 2, -height / 2)) :
-                    new Vector3(Random.Range(width/2, -width/2), Random.Range(height/2, height/2 - BorderLength) * (Random.value > 0.5f ? 1 : -1)));
+        int attempts = 0, maxAttempts = 25;
+        do newPos = SetRandomPosValue();
+        while (usedPositions.Contains(newPos) && ++attempts < maxAttempts);
+        if (attempts >= maxAttempts) return false;
+        usedPositions.Add(newPos);
+        return true;
     }
+    private Vector2 SetRandomPosValue() =>
+        nowGenObj.offset + (UnityEngine.Random.value > 0.5f ?
+            new Vector2(
+                UnityEngine.Random.Range(nowGenObj.width / 2 - nowGenObj.BorderLength, nowGenObj.width / 2) * (UnityEngine.Random.value > 0.5f ? 1 : -1),
+                UnityEngine.Random.Range(nowGenObj.height / 2, -nowGenObj.height / 2)) :
+            new Vector2(
+                UnityEngine.Random.Range(nowGenObj.width / 2, -nowGenObj.width / 2),
+                UnityEngine.Random.Range(nowGenObj.height / 2 - nowGenObj.BorderLength, nowGenObj.height / 2) * (UnityEngine.Random.value > 0.5f ? 1 : -1)));
 }

@@ -41,7 +41,7 @@ public class WaveMonsterGenerator : MonoBehaviour
                     }
                     var nowEnemySpawned = ObjectPoolManager.instance.GetPool(nowEnemy.spawnEnemy).Get();
                     nowEnemySpawned.transform.position = randomPos;
-                    nowEnemySpawned.GetComponent<Enemy>().isUpdate = true;
+                    nowEnemySpawned.GetComponent<Enemy>().StartUpdate();
                 }
             }
             loopCount += ++nowWave / waveData.Length;
