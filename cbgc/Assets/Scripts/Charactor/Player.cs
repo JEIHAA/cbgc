@@ -1,43 +1,42 @@
 using System.Collections;
+using System.Security.Cryptography;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 public class Player : MonoBehaviour, IDamagable
 {
-    [SerializeField] private int health;
-    [SerializeField] private int defense = 0;
-    public int Defense { get => defense; set => defense = value; }
-    
     private float deathTime = 0f, timeLimit = 2f;
     private bool isCutDown = false, isDead = false;
     
     [SerializeField] Animator ani;
     [SerializeField] PlayerAttack playerAttack;
     [SerializeField] private SceneMoveManager scenemanager;
+    private TorchLight torchLight;
     public static Transform playerTransform;
-    private PlayerContorller contorller;
+    private Controller contorller;
 
-    public void OnDamage(float _damage) { GameOver(); }
     private void Start()
     {
         //resource init
         ResourceData.Init();
         playerTransform = transform;
-        contorller = GetComponent<PlayerContorller>();
+        contorller = GetComponent<Controller>();
+        torchLight = GetComponentInChildren<TorchLight>();
     }
-    public void GameOver()
+    void Update()
     {
         if (isDead) return;
-        isDead = true;
-        ani.SetBool("Axe", false);
-        //death animation
-        ani?.SetTrigger("Dead");
-        //until animation end
-        Invoke("StopGame", 1.4f);
-        //player can not move
-        contorller.canMove = false;
-        Debug.Log($"{gameObject.name} Is Dead.");
+        CheckDarkphobia();
+        //check input
+        CheckKey();
+        CheckMouse();
+        contorller.MoveInput();
     }
-    void StopGame() => scenemanager.LoadScene(SceneMoveManager.SceneName.GameOver);
+
+    public void OnDamage(float _damage)
+    {
+        torchLight.LeftTime -= (int)_damage;
+    }
 
     private void CheckDarkphobia()
     {
@@ -51,29 +50,55 @@ public class Player : MonoBehaviour, IDamagable
             deathTime = 0;
         }
     }
-    void Update()
+
+    public void GameOver()
     {
         if (isDead) return;
-        CheckDarkphobia();
-        //check input
-        CheckKey();
-        CheckMouse();
+        isDead = true;
+        ani.SetBool("Axe", false);
+        //death animation
+        ani?.SetTrigger("Dead");
+        //until animation end
+        Invoke("StopGame", 1.4f);
+        //player can not move
+        contorller.CanMove = false;
+        Debug.Log($"{gameObject.name} Is Dead.");
     }
-    
+    void StopGame() => scenemanager.LoadScene(SceneMoveManager.SceneName.GameOver);
+
     void CheckMouse()
     {
         //using axe
+        //if (Input.GetMouseButtonDown(0)) { StartCoroutine(CheckTree()); }
         if (Input.GetMouseButton(0)) { CutDown(); }
         //end axe
         else
         {
             //axa animation stop
-            contorller.canMove = true;
+            contorller.CanMove = true;
             isCutDown = false;
             ani.SetBool("Axe", false);
         }
-        if (Input.GetMouseButtonDown(1) && playerAttack.canAttack && !isCutDown) { playerAttack.Attack(); }
-        
+        if (Input.GetMouseButtonDown(1) && playerAttack.canAttack && !isCutDown) { playerAttack.Attack(); }   
+    }
+
+    IEnumerator CheckTree()
+    {
+        isCutDown = true;
+        float checkTime = 1.0f, leftTime = checkTime;
+        while (isCutDown)
+        {
+            leftTime -= Time.deltaTime;
+            if(leftTime < 0) {
+                var hit = Physics2D.BoxCast(playerAttack.transform.position, Vector2.one*3, 0f, Vector2.right, 1f).transform.gameObject;
+                if (!hit.IsUnityNull() && hit.CompareTag("InteractiveObject"))
+                {
+                    Debug.Log(hit.name);
+                }
+                leftTime = checkTime;
+            };
+            yield return null;
+        }
     }
     void CheckKey()
     {
@@ -86,30 +111,16 @@ public class Player : MonoBehaviour, IDamagable
         else if (playerAttack.canAttack && !isCutDown)
         {
             ani.SetBool("Run", true);
-            if(xDir != 0) ani.gameObject.transform.localScale = new Vector3(xDir < 0 ? -1 : 1, 1, 1);
         }
-        //attack
-        if (Input.GetKeyDown(KeyCode.Z) && playerAttack.canAttack && !isCutDown) { playerAttack.Attack(); }
-        
-        //using axe
-        if (Input.GetKey(KeyCode.X)) { CutDown(); }
-        //end using
-        else
-        {
-            //axa animation stop
-            isCutDown = false;
-            ani.SetBool("Axe", false);
-        }
+        //Pause
+        if (Input.GetKeyDown(KeyCode.Escape)) PauseManager.instance.IsPause = !PauseManager.instance.IsPause;
     }
+
     void CutDown()
     {
         isCutDown = true;
-        contorller.canMove = false;
+        contorller.CanMove = false;
         //axa animation play
         ani.SetBool("Axe", true);
     }
-    
-    IUsable obj;
-    private void OnCollisionEnter2D(Collision2D collision) { collision.gameObject.TryGetComponent<IUsable>(out obj); }
-    private void OnCollisionExit2D(Collision2D collision) { if (collision.gameObject.TryGetComponent<IUsable>(out obj)) obj = null; }
 }

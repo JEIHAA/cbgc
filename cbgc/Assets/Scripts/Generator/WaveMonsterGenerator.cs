@@ -33,7 +33,12 @@ public class WaveMonsterGenerator : MonoBehaviour
             {   
                 for (int i = 0; i < nowEnemy.spawnAmount; i++)
                 {
-                    randomPos = UnityEngine.Random.insideUnitCircle.normalized * spawnDistanceFromCampFire;
+                    while (true)
+                    {
+                        randomPos = UnityEngine.Random.insideUnitCircle.normalized * spawnDistanceFromCampFire;
+                        if (((Vector2)Player.playerTransform.position - randomPos).magnitude > 3) break;
+                        yield return null;
+                    }
                     var nowEnemySpawned = ObjectPoolManager.instance.GetPool(nowEnemy.spawnEnemy).Get();
                     nowEnemySpawned.transform.position = randomPos;
                     nowEnemySpawned.GetComponent<Enemy>().isUpdate = true;

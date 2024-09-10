@@ -7,8 +7,10 @@ public class Tree : MonoBehaviour, IInteractiveObject
     [SerializeField] private ObjectPoolManager.Pool pool;
 
     [SerializeField] private int leftFirewood = 5;
+    [SerializeField] private int treeLevel = 3;
+    public int TreeLevel => treeLevel;
+
     private TreeEffect treeEffect;
-    
     private Animator animator;
     public Animator Anim => animator;
 
@@ -18,18 +20,7 @@ public class Tree : MonoBehaviour, IInteractiveObject
     {
         animator = GetComponent<Animator>();
         treeEffect = GetComponentInChildren<TreeEffect>();
-    }
-
-    public void Use()
-    {
-        --leftFirewood;
-        Debug.Log("Chop!");
-        ResourceData.LogAmount += 1;
-        if (leftFirewood <= 0)
-        {
-            Invoke("Delay", 0.4f);
-            ObjectPoolManager.instance.GetPool(pool).Release(gameObject);
-        }
+        animator.SetInteger("TreeLevel", treeLevel);
     }
 
     public void Interaction(float _time)
@@ -37,18 +28,34 @@ public class Tree : MonoBehaviour, IInteractiveObject
         if (_time > 90) return;
         if (_time > 1f)
         {
-            animator.SetTrigger("Hit");
-            //treeEffect.PlayRandomAnimation();
-            axingCnt++;
+            DropFirewood();
+            Chop();
         }
-
-        if (axingCnt > 1)
-        {
-            Use();
-            axingCnt = 0;
-        }
-
     }
+
+    private void DropFirewood()
+    {
+        animator.SetTrigger("Hit");
+        //treeEffect.PlayRandomAnimation();
+        axingCnt++;
+        Debug.Log(axingCnt);
+    }
+
+    private void Chop()
+    {
+        Debug.Log("Chop!");
+        --leftFirewood;
+        ResourceData.LogAmount += 1;
+        if (leftFirewood <= 0)
+        {
+            Invoke("Delay", 0.4f);
+            ObjectPoolManager.instance.GetPool(pool).Release(gameObject);
+        }
+        axingCnt = 0;
+        treeLevel -= 1;
+        animator.SetInteger("TreeLevel", treeLevel);
+    }
+
 
     private void Delay()
     {

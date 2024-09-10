@@ -5,18 +5,13 @@ using UnityEngine;
 public class ResourceGenerator : MonoBehaviour
 {
     [SerializeField] protected ObjectPoolManager.Pool[] pools;
+    [SerializeField] protected int BorderLength;
     [SerializeField] protected int maxNum = 40;
     [SerializeField]
-    protected float maxX = 9,
-                    minX = -9,
-                    maxY = 9,
-                    minY = -9;
-
-    protected float randomX;
-    protected float randomY;
-    protected Vector2 randomPos;
+    protected int width = 100, height = 100;
+                    
     private void Start() => RandomGanerate();//Invoke("RandomGanerate",0.125f);
-    protected void RandomGanerate()
+    protected virtual void RandomGanerate()
     {
         foreach (var pool in pools)
         {
@@ -26,11 +21,10 @@ public class ResourceGenerator : MonoBehaviour
             }
         }
     }
-    protected virtual Vector3 SetRendomPosValue()
+    protected Vector3 SetRendomPosValue()
     {
-        randomX = Random.Range(maxX, minX);
-        randomY = Random.Range(maxY, minY);
-        randomPos = new Vector3(randomX, randomY);
-        return randomPos;
+        return (Random.value > 0.5f ?
+                    new Vector3(Random.Range(width/2, width/2 - BorderLength) * (Random.value > 0.5f ? 1 : -1), Random.Range(height / 2, -height / 2)) :
+                    new Vector3(Random.Range(width/2, -width/2), Random.Range(height/2, height/2 - BorderLength) * (Random.value > 0.5f ? 1 : -1)));
     }
 }
