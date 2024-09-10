@@ -25,7 +25,7 @@ public class Controller : MonoBehaviour
         get => rigid.velocity;
         set { if (CanMove) rigid.velocity = value + addVelocity; }
     }
-    protected void Start()
+    void Start()
     {
         addVelocity = Vector2.zero;
         rigid = GetComponent<Rigidbody2D>();
