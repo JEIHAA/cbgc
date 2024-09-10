@@ -2187,6 +2187,7 @@ MonoBehaviour:
   maxNum: 100
   width: 160
   height: 160
+  offset: {x: 0, y: 0}
 --- !u!1 &1540144354
 GameObject:
   m_ObjectHideFlags: 0
@@ -2659,6 +2660,7 @@ MonoBehaviour:
   maxNum: 2
   width: 13
   height: 13
+  offset: {x: 0, y: 0}
 --- !u!1 &2075241377 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -2253911629886400664, guid: ed66bf7c3340a334ba97f94b3a097909, type: 3}
@@ -2758,6 +2760,7 @@ MonoBehaviour:
   maxNum: 300
   width: 160
   height: 160
+  offset: {x: 0, y: 0}
 --- !u!1 &2082086663
 GameObject:
   m_ObjectHideFlags: 0
@@ -3554,6 +3557,7 @@ MonoBehaviour:
   ani: {fileID: 7665412373423122753}
   playerAttack: {fileID: 217882909}
   scenemanager: {fileID: 1761771410}
+  closeChecker: {fileID: 886858407382957027}
 --- !u!1 &5328938551649997364
 GameObject:
   m_ObjectHideFlags: 0
