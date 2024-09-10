@@ -1459,63 +1459,6 @@ Transform:
   - {fileID: 1918430472}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &879734576
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 690650118628614905, guid: fd5799f574f09d3498c9c11e50ac6dfc, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -10.04
-      objectReference: {fileID: 0}
-    - target: {fileID: 690650118628614905, guid: fd5799f574f09d3498c9c11e50ac6dfc, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.1419623
-      objectReference: {fileID: 0}
-    - target: {fileID: 690650118628614905, guid: fd5799f574f09d3498c9c11e50ac6dfc, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 690650118628614905, guid: fd5799f574f09d3498c9c11e50ac6dfc, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 690650118628614905, guid: fd5799f574f09d3498c9c11e50ac6dfc, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 690650118628614905, guid: fd5799f574f09d3498c9c11e50ac6dfc, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 690650118628614905, guid: fd5799f574f09d3498c9c11e50ac6dfc, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 690650118628614905, guid: fd5799f574f09d3498c9c11e50ac6dfc, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 690650118628614905, guid: fd5799f574f09d3498c9c11e50ac6dfc, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 690650118628614905, guid: fd5799f574f09d3498c9c11e50ac6dfc, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5892825325086882388, guid: fd5799f574f09d3498c9c11e50ac6dfc, type: 3}
-      propertyPath: m_Name
-      value: FastMonster
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: fd5799f574f09d3498c9c11e50ac6dfc, type: 3}
 --- !u!1 &1057292121
 GameObject:
   m_ObjectHideFlags: 0
@@ -2182,13 +2125,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   generateList:
   - pool: 0
-    BorderLength: 70
+    BorderLength: 60
     maxNum: 100
     width: 160
     height: 160
     offset: {x: 0, y: 0}
   - pool: 1
-    BorderLength: 70
+    BorderLength: 60
     maxNum: 100
     width: 160
     height: 160
@@ -3985,4 +3928,3 @@ SceneRoots:
   - {fileID: 837399494}
   - {fileID: 1761284392}
   - {fileID: 1558880683}
-  - {fileID: 879734576}
