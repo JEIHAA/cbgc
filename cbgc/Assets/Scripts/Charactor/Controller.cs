@@ -3,7 +3,7 @@ using UnityEngine;
 public class Controller : MonoBehaviour
 {
     private Rigidbody2D rigid;
-    [SerializeField, Range(1,15)]
+    [SerializeField, Range(1, 15)]
     private int speed;
     public bool CanMove
     {
@@ -17,7 +17,7 @@ public class Controller : MonoBehaviour
             }
         }
     }
-    [SerializeField, Range(1,15)]
+    [SerializeField, Range(1, 15)]
     WaitForSeconds knockBackTime;
     private Vector3 addVelocity;
     private Vector3 Velocity
@@ -27,7 +27,6 @@ public class Controller : MonoBehaviour
             if (CanMove)
             {
                 rigid.velocity = value + addVelocity;
-                if (value.x != 0) gameObject.transform.localScale = new Vector3(value.x > 0 ? 1 : -1, 1, 1);
             }
         }
     }
@@ -38,9 +37,21 @@ public class Controller : MonoBehaviour
         knockBackTime = new(0.125f);
         CanMove = true;
     }
-    public void MoveInput() => Velocity = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized * speed + addVelocity;
-    public void MoveToCenter() => Velocity = -transform.position.normalized * speed + addVelocity;
-    public void MoveToPlayer() => Velocity = (Player.playerTransform.position - transform.position).normalized * speed + addVelocity;
+    public void MoveInput()
+    {
+        Velocity = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized * speed + addVelocity;
+        gameObject.transform.localScale = new Vector3((Player.playerTransform.position.x > Camera.main.ScreenToWorldPoint(Input.mousePosition).x ? -1 : 1), 1, 1);
+    }
+    public void MoveToCenter()
+    {
+        Velocity = -transform.position.normalized* speed + addVelocity;
+        if (Velocity.x != 0) gameObject.transform.localScale = new Vector3(Velocity.x > 0 ? 1 : -1, 1, 1);
+    }
+    public void MoveToPlayer()
+    {
+        Velocity = (Player.playerTransform.position - transform.position).normalized * speed + addVelocity;
+        if (Velocity.x != 0) gameObject.transform.localScale = new Vector3(Velocity.x > 0 ? 1 : -1, 1, 1);
+    }
     public void KnockBack(bool _isPlayer = false) => KnockBack(_isPlayer ? Player.playerTransform.position : Vector3.zero);    
     public void KnockBack(Vector3 origin)
     {
