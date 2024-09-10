@@ -66,7 +66,7 @@ public class Player : MonoBehaviour, IDamagable
     private void CheckMouse()
     {
         //using axe
-        if (Input.GetMouseButton(0)) { CutDown(); }
+        if (Input.GetMouseButton(0) && !closeChecker.NearestObject.IsUnityNull()) { CutDown(); }
         //end axe
         else
         {
@@ -93,7 +93,6 @@ public class Player : MonoBehaviour, IDamagable
     private void PlayerDetectedByEnemy() { foreach (var enemy in NearEnemy(10)) enemy.PlayerDetected(); }
     private void CutDown()
     {
-        if (closeChecker.NearestObject.IsUnityNull()) return;
         //axa animation play
         ani.SetBool("Axe", isCutDown = true);
         //can't move while cut down
