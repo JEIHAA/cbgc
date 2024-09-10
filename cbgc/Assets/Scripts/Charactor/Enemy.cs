@@ -3,9 +3,9 @@ using Unity.VisualScripting;
 using UnityEngine;
 public class Enemy : MonoBehaviour, IDamagable
 {
-    [SerializeField] private float health, damage, delay = 0.8f;
+    [SerializeField] private float health, damage;
     [SerializeField] private ObjectPoolManager.Pool pool;
-    [SerializeField] private Controller controller;
+    private EnemyController controller;
     private Animator ani;
     private WaitForSeconds attackCycle;
     public void StartUpdate() => StartCoroutine(ControlableUpdate());
@@ -15,14 +15,16 @@ public class Enemy : MonoBehaviour, IDamagable
         if(!ani.IsUnityNull()) yield break;
         //getComponent
         ani = GetComponent<Animator>();
+        controller = GetComponent<EnemyController>();
         attackCycle = new WaitForSeconds(damage);
         //delay
         yield return new WaitForSeconds(0.125f);
         while (gameObject.activeSelf)
         {
             //chase more bright light
-            if (LightData.TorchIsBrightest) controller.MoveToPlayer();
-            else controller.MoveToCenter();
+            if (LightData.TorchIsBrightest) controller.followPlayer = true;
+            else controller.followPlayer = false;
+            controller.Move();
             yield return null;
         }
     }

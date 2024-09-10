@@ -31,7 +31,7 @@ public class Player : MonoBehaviour, IDamagable
         //check input
         CheckKey();
         CheckMouse();
-        contorller.MoveInput();
+        contorller.Move();
         PlayerDetectedByEnemy();
     }
     public void OnDamage(float _damage)
