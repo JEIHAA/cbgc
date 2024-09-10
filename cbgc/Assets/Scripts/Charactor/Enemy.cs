@@ -35,7 +35,7 @@ public class Enemy : MonoBehaviour, IDamagable
     }
     public void OnDamage(float _damage)
     {
-        ani.SetTrigger("Hit");
+        if (ani != null) ani.SetTrigger("Hit");
         if ((health -= _damage) <= 0 && gameObject.activeSelf) StartCoroutine(Dying());
     }
     public void KnockBack(bool _isPlayer = false) => controller.KnockBack(_isPlayer);
