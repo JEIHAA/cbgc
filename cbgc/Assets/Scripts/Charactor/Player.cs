@@ -1,12 +1,18 @@
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 public class Player : MonoBehaviour, IDamagable
 {
     private float deathTime = 0f, timeLimit = 2f;
     private bool isCutDown = false, isDead = false;
-    [SerializeField] Animator ani;
-    [SerializeField] PlayerAttack playerAttack;
-    [SerializeField] private SceneMoveManager scenemanager;
+    [SerializeField] 
+    private Animator ani;
+    [SerializeField] 
+    private PlayerAttack playerAttack;
+    [SerializeField] 
+    private SceneMoveManager scenemanager;
+    [SerializeField] 
+    private CloseChecker closeChecker;
     private TorchLight torchLight;
     public static Transform playerTransform;
     private Controller contorller;
@@ -87,6 +93,7 @@ public class Player : MonoBehaviour, IDamagable
     private void PlayerDetectedByEnemy() { foreach (var enemy in NearEnemy(10)) enemy.PlayerDetected(); }
     private void CutDown()
     {
+        if (closeChecker.NearestObject.IsUnityNull()) return;
         //axa animation play
         ani.SetBool("Axe", isCutDown = true);
         //can't move while cut down
