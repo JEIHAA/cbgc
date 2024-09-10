@@ -85,7 +85,7 @@ public class Player : MonoBehaviour, IDamagable
         {
             //이팩트가 지속되는 동안 이팩트 바라보게
             controller.lookMouse = true;
-            Invoke("DontLookMouse", 0.5f);
+            Invoke("DontLookMouse", 0.6f);
             playerAttack.Attack();
         }
     }
@@ -119,7 +119,5 @@ public class Player : MonoBehaviour, IDamagable
         ani.SetBool("Axe", isCutDown = true);
         //can't move while cut down
         controller.CanMove = false;
-        //나무를 베는 동안 나무를 바라보게
-        controller.lookMouse = true;
     }
 }
