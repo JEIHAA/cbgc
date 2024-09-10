@@ -13,15 +13,17 @@ public class Player : MonoBehaviour, IDamagable
     private SceneMoveManager scenemanager;
     [SerializeField] 
     private CloseChecker closeChecker;
+    [SerializeField]
+    private SpriteRenderer sr;
     private TorchLight torchLight;
     public static Transform playerTransform;
-    private Controller contorller;
+    private PlayerController controller;
     private void Start()
     {
         //resource init
         ResourceData.Init();
         playerTransform = transform;
-        contorller = GetComponent<Controller>();
+        controller = GetComponent<PlayerController>();
         torchLight = GetComponentInChildren<TorchLight>();
     }
     private void Update()
@@ -31,13 +33,13 @@ public class Player : MonoBehaviour, IDamagable
         //check input
         CheckKey();
         CheckMouse();
-        contorller.Move();
+        controller.Move();
         PlayerDetectedByEnemy();
     }
     public void OnDamage(float _damage)
     {
         Enemy[] near = NearEnemy(1f);
-        if (near.Length > 0) contorller.KnockBack(near[0].transform.position);
+        if (near.Length > 0) controller.KnockBack(near[0].transform.position);
         torchLight.LeftTime -= (int)_damage;
     }
     private void CheckDarkphobia()
@@ -49,6 +51,7 @@ public class Player : MonoBehaviour, IDamagable
         }
         else deathTime = 0;
     }
+    //게임 종료시
     public void GameOver()
     {
         if (isDead) return;
@@ -59,23 +62,34 @@ public class Player : MonoBehaviour, IDamagable
         //until animation end
         Invoke("StopGame", 1.4f);
         //player can not move
-        contorller.CanMove = false;
+        controller.CanMove = false;
         Debug.Log($"{gameObject.name} Is Dead.");
     }
     private void StopGame() => scenemanager.LoadScene(SceneMoveManager.SceneName.GameOver);
+    //마우스 입력 감지(클릭)
     private void CheckMouse()
     {
-        //using axe
+        //벌목
         if (Input.GetMouseButton(0) && !closeChecker.NearestObject.IsUnityNull()) { CutDown(); }
-        //end axe
+        //벌목하지 않고 있는 상태
         else
         {
             //axa animation stop
-            contorller.CanMove = true;
+            controller.CanMove = true;
             ani.SetBool("Axe", isCutDown = false);
         }
-        if (Input.GetMouseButtonDown(1) && playerAttack.canAttack && !isCutDown) { playerAttack.Attack(); }
+        //벌목 종료 순간
+        if(Input.GetMouseButtonUp(0) && playerAttack.canAttack) controller.lookMouse = false;
+        //공격
+        if (Input.GetMouseButtonDown(1) && playerAttack.canAttack && !isCutDown)
+        {
+            //이팩트가 지속되는 동안 이팩트 바라보게
+            controller.lookMouse = true;
+            Invoke("DontLookMouse", 0.5f);
+            playerAttack.Attack();
+        }
     }
+    //키 입력 감지
     private void CheckKey()
     {
         //not move
@@ -85,17 +99,27 @@ public class Player : MonoBehaviour, IDamagable
         //Pause
         if (Input.GetKeyDown(KeyCode.Escape)) PauseManager.instance.IsPause = !PauseManager.instance.IsPause;
     }
+    //이팩트 끝나면 바라보지 않게
+    private void DontLookMouse()
+    {
+        controller.lookMouse = false;
+    }
+    //근처 적 반환하는 함수
     private Enemy[] NearEnemy(float range) =>
         Physics2D.OverlapCircleAll(transform.position, range)
                   .Where(collider => collider.CompareTag("Monster"))
                   .Select(enemyObj => enemyObj.GetComponent<Enemy>())
                   .ToArray();
+    //플레이어가 적에게 감지됨
     private void PlayerDetectedByEnemy() { foreach (var enemy in NearEnemy(10)) enemy.PlayerDetected(); }
+    //벌목
     private void CutDown()
     {
         //axa animation play
         ani.SetBool("Axe", isCutDown = true);
         //can't move while cut down
-        contorller.CanMove = false;
+        controller.CanMove = false;
+        //나무를 베는 동안 나무를 바라보게
+        controller.lookMouse = true;
     }
 }
