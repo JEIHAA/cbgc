@@ -119,7 +119,5 @@ public class Player : MonoBehaviour, IDamagable
         ani.SetBool("Axe", isCutDown = true);
         //can't move while cut down
         controller.CanMove = false;
-        //나무를 베는 동안 나무를 바라보게
-        controller.lookMouse = true;
     }
 }
