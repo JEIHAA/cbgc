@@ -1,18 +1,30 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System;
+
 public class ResourceGenerator : MonoBehaviour
 {
-    [SerializeField] protected ObjectPoolManager.Pool[] pools;
-    [SerializeField] protected int BorderLength, maxNum = 40, width = 100, height = 100;
-    [SerializeField] protected Vector2 offset;
+    [SerializeField]
+    private GenInfo[] generateList;
+    [Serializable]
+    public class GenInfo
+    {
+        public ObjectPoolManager.Pool pool;
+        public int BorderLength, maxNum = 40, width = 100, height = 100;
+        public Vector2 offset;
+    }
+    GenInfo nowGenObj;
     private HashSet<Vector2> usedPositions = new HashSet<Vector2>();
     private void Start() => RandomGenerate();
-    protected void RandomGenerate()
+    private void RandomGenerate()
     {
-        foreach (var pool in pools)
-            for (int i = 0; i < maxNum; ++i)
-                if (GenerateUniquePosition(out Vector2 newPos)) 
-                    ObjectPoolManager.instance.GetPool(pool).Get().transform.position = newPos;
+        foreach (var obj in generateList)
+        {
+            nowGenObj = obj;
+            for (int i = 0; i < obj.maxNum; ++i)
+                if (GenerateUniquePosition(out Vector2 newPos))
+                    ObjectPoolManager.instance.GetPool(obj.pool).Get().transform.position = newPos;
+        }
     }
     protected bool GenerateUniquePosition(out Vector2 newPos)
     {
@@ -23,12 +35,12 @@ public class ResourceGenerator : MonoBehaviour
         usedPositions.Add(newPos);
         return true;
     }
-    protected Vector2 SetRandomPosValue() =>
-        offset + (Random.value > 0.5f ?
+    private Vector2 SetRandomPosValue() =>
+        nowGenObj.offset + (UnityEngine.Random.value > 0.5f ?
             new Vector2(
-                Random.Range(width / 2 - BorderLength, width / 2) * (Random.value > 0.5f ? 1 : -1),
-                Random.Range(height / 2, -height / 2)) :
+                UnityEngine.Random.Range(nowGenObj.width / 2 - nowGenObj.BorderLength, nowGenObj.width / 2) * (UnityEngine.Random.value > 0.5f ? 1 : -1),
+                UnityEngine.Random.Range(nowGenObj.height / 2, -nowGenObj.height / 2)) :
             new Vector2(
-                Random.Range(width / 2, -width / 2),
-                Random.Range(height / 2 - BorderLength, height / 2) * (Random.value > 0.5f ? 1 : -1)));
+                UnityEngine.Random.Range(nowGenObj.width / 2, -nowGenObj.width / 2),
+                UnityEngine.Random.Range(nowGenObj.height / 2 - nowGenObj.BorderLength, nowGenObj.height / 2) * (UnityEngine.Random.value > 0.5f ? 1 : -1)));
 }
