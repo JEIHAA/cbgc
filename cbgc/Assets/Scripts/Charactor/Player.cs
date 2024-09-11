@@ -112,12 +112,11 @@ public class Player : MonoBehaviour, IDamagable
 
         if (Input.GetMouseButtonDown(1) && playerAttack.canAttack && !isCutDown)
         {
-            controller.lookMouse = true; // 공격 중 마우스 시선 처리
-            Invoke("StopLookingMouse", 0.5f); // 공격 이펙트 종료 후 시선 처리
+            // 플레이어가 강제로 공격 방향을 바라보게 시선 처리
+            controller.ForceLookInDirectionToMouse(0.55f);
             playerAttack.Attack();
         }
     }
-
     private void HandleKeyInput()
     {
         // 이동 중일 때 애니메이션 설정
@@ -135,11 +134,6 @@ public class Player : MonoBehaviour, IDamagable
         {
             PauseManager.instance.IsPause = !PauseManager.instance.IsPause;
         }
-    }
-
-    private void StopLookingMouse()
-    {
-        controller.lookMouse = false; // 공격 이펙트 종료 후 마우스 시선 처리
     }
 
     private Enemy[] FindNearbyEnemies(float range)
