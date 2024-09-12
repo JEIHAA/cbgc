@@ -22,7 +22,7 @@ public class PlayerAttack : MonoBehaviour
             if (item.transform.CompareTag("Monster") && item.transform.TryGetComponent<Enemy>(out Enemy nowEnemy))
             {
                 nowEnemy.OnDamage(5);
-                nowEnemy.KnockBack(true);
+                nowEnemy.KnockBackFromPlayer();
             }
     }
     IEnumerator AttackObjectOff()

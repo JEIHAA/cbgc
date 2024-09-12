@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6278472590945057405}
   - component: {fileID: 1233102404248382987}
   - component: {fileID: 4624427485269744315}
-  - component: {fileID: -7225558535341442342}
+  - component: {fileID: -4786875602845226592}
   - component: {fileID: 2600653414342133247}
   - component: {fileID: 5625086725789065863}
   - component: {fileID: 7413011067179324820}
@@ -105,9 +105,8 @@ MonoBehaviour:
   damage: 5
   delay: 1
   pool: 1
-  controller: {fileID: -7225558535341442342}
-  isUpdate: 0
---- !u!114 &-7225558535341442342
+  controller: {fileID: 0}
+--- !u!114 &-4786875602845226592
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -116,10 +115,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1113434160653165264}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40cf06a397391d74ca67b0c2f9de3cc7, type: 3}
+  m_Script: {fileID: 11500000, guid: 38233cdfae8a9c44893f559c50d0c57f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 3
+  followPlayer: 0
 --- !u!58 &2600653414342133247
 CircleCollider2D:
   m_ObjectHideFlags: 0

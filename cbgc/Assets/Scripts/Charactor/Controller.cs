@@ -4,7 +4,7 @@ public class Controller : MonoBehaviour
 {
     private Rigidbody2D rigid;
     [SerializeField, Range(1, 15)]
-    private int speed;
+    protected int speed;
     public bool CanMove
     {
         get => rigid.bodyType != RigidbodyType2D.Kinematic;
@@ -19,16 +19,11 @@ public class Controller : MonoBehaviour
     }
     [SerializeField, Range(1, 15)]
     WaitForSeconds knockBackTime;
-    private Vector3 addVelocity;
-    private Vector3 Velocity
+    protected Vector3 addVelocity;
+    protected Vector3 Velocity
     {
         get => rigid.velocity;
-        set {
-            if (CanMove)
-            {
-                rigid.velocity = value + addVelocity;
-            }
-        }
+        set { if (CanMove) rigid.velocity = value + addVelocity; }
     }
     void Start()
     {
@@ -37,29 +32,15 @@ public class Controller : MonoBehaviour
         knockBackTime = new(0.125f);
         CanMove = true;
     }
-    public void MoveInput()
-    {
-        Velocity = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized * speed + addVelocity;
-        gameObject.transform.localScale = new Vector3((Player.playerTransform.position.x > Camera.main.ScreenToWorldPoint(Input.mousePosition).x ? -1 : 1), 1, 1);
-    }
-    public void MoveToCenter()
-    {
-        Velocity = -transform.position.normalized* speed + addVelocity;
-        if (Velocity.x != 0) gameObject.transform.localScale = new Vector3(Velocity.x > 0 ? 1 : -1, 1, 1);
-    }
-    public void MoveToPlayer()
-    {
-        Velocity = (Player.playerTransform.position - transform.position).normalized * speed + addVelocity;
-        if (Velocity.x != 0) gameObject.transform.localScale = new Vector3(Velocity.x > 0 ? 1 : -1, 1, 1);
-    }
-    public void KnockBack(bool _isPlayer = false) => KnockBack(_isPlayer ? Player.playerTransform.position : Vector3.zero);    
+    public virtual void Move() { }
+    public virtual void KnockBack() { }
     public void KnockBack(Vector3 origin)
     {
         //add speed for knockback
         addVelocity = -(origin - transform.position).normalized * 10;
         StartCoroutine(ResetAddVelocity());
     }
-    IEnumerator ResetAddVelocity()
+    protected IEnumerator ResetAddVelocity()
     {
         yield return knockBackTime;
         addVelocity = Vector3.zero;
