@@ -6,7 +6,7 @@ public class PlayerFollowCamera : MonoBehaviour
     private float cameraRangeWidth = 270f;    // 카메라가 이동할 수 있는 가로 범위
     [SerializeField]
     private float cameraRangeHeight = 140f;   // 카메라가 이동할 수 있는 세로 범위
-    const float screenWidth = 40f, screenHeight = 24f; // 스크린 사이즈
+    private const float screenWidth = 40f, screenHeight = 24f; // 스크린 사이즈
     private const float DefaultCameraZ = -10f;  // 카메라의 Z 위치 값, 기본값 설정
     private void Update()
     {
