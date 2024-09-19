@@ -9,9 +9,10 @@ public class Tree : MonoBehaviour, IInteractiveObject
     [SerializeField] private int treeLevel = 3;
     public int TreeLevel => treeLevel;
 
-    private CapsuleCollider2D coll;
     private Animator animator;
     public Animator Anim => animator;
+    private SpriteRenderer spriteRenderer;
+    private CapsuleCollider2D coll;
 
     private int axingCnt=0;
 
@@ -20,6 +21,12 @@ public class Tree : MonoBehaviour, IInteractiveObject
         coll = GetComponent<CapsuleCollider2D>();
         animator = GetComponent<Animator>();
         animator.SetInteger("TreeLevel", treeLevel);
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    private void Update()
+    {
+        
     }
 
     public void Interaction(float _time)
@@ -35,20 +42,24 @@ public class Tree : MonoBehaviour, IInteractiveObject
     private void DropFirewood()
     {
         animator.SetTrigger("Hit");
-        axingCnt++;
-        Debug.Log(axingCnt);
     }
 
     private void Chop()
     {
         Debug.Log("Chop!");
         ResourceData.LogAmount += 1;
+        treeLevel -= 1;
+        SetTreeLevel();
         if (treeLevel <= 0)
         {
+            Debug.Log(TreeLevel);
             Destroy(coll);
+            spriteRenderer.sortingOrder = -1;
         }
-        axingCnt = 0;
-        treeLevel -= 1;
+    }
+
+    private void SetTreeLevel()
+    {
         animator.SetInteger("TreeLevel", treeLevel);
     }
 }

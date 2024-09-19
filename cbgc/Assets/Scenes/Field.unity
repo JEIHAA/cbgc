@@ -1457,6 +1457,8 @@ Transform:
   - {fileID: 1925520321}
   - {fileID: 405457631}
   - {fileID: 1918430472}
+  - {fileID: 1795661004}
+  - {fileID: 1515295433}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1057292121
@@ -1594,6 +1596,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1057292121}
   m_CullTransparentMesh: 1
+--- !u!1001 &1118030165
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6281578544985384098, guid: ba2fb8d6510cd694fbfa293eddbdb877, type: 3}
+      propertyPath: m_Name
+      value: GoldenTree
+      objectReference: {fileID: 0}
+    - target: {fileID: 7240497031005053089, guid: ba2fb8d6510cd694fbfa293eddbdb877, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 7240497031005053089, guid: ba2fb8d6510cd694fbfa293eddbdb877, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 7240497031005053089, guid: ba2fb8d6510cd694fbfa293eddbdb877, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7240497031005053089, guid: ba2fb8d6510cd694fbfa293eddbdb877, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7240497031005053089, guid: ba2fb8d6510cd694fbfa293eddbdb877, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7240497031005053089, guid: ba2fb8d6510cd694fbfa293eddbdb877, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7240497031005053089, guid: ba2fb8d6510cd694fbfa293eddbdb877, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7240497031005053089, guid: ba2fb8d6510cd694fbfa293eddbdb877, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7240497031005053089, guid: ba2fb8d6510cd694fbfa293eddbdb877, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7240497031005053089, guid: ba2fb8d6510cd694fbfa293eddbdb877, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ba2fb8d6510cd694fbfa293eddbdb877, type: 3}
 --- !u!1 &1168128645
 GameObject:
   m_ObjectHideFlags: 0
@@ -2072,12 +2131,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1515295429}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -4.046758, y: 0.24029307, z: -0.06635191}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 837399494}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1536463747
 GameObject:
@@ -2237,26 +2296,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1036469962653375688, guid: e472b6fd2f0a7eb41a96541e1bc74702, type: 3}
-      propertyPath: m_Size.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1036469962653375688, guid: e472b6fd2f0a7eb41a96541e1bc74702, type: 3}
-      propertyPath: m_Size.y
-      value: 1.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1036469962653375688, guid: e472b6fd2f0a7eb41a96541e1bc74702, type: 3}
-      propertyPath: m_Offset.x
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1036469962653375688, guid: e472b6fd2f0a7eb41a96541e1bc74702, type: 3}
-      propertyPath: m_Offset.y
-      value: -1.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2953835870317000475, guid: e472b6fd2f0a7eb41a96541e1bc74702, type: 3}
-      propertyPath: leftFirewood
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 6281578544985384098, guid: e472b6fd2f0a7eb41a96541e1bc74702, type: 3}
       propertyPath: m_Name
       value: Tree
@@ -2474,12 +2513,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1795661002}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -3.3, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -4.046758, y: -3.059707, z: -0.06635191}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 837399494}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1918430471
 GameObject:
@@ -2585,8 +2624,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34eb1945032d3354fb6d1abaf8351c96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camRangeWidth: 270
-  camRangeheight: 140
+  cameraRangeWidth: 270
+  cameraRangeHeight: 140
 --- !u!1 &2075241377 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -2253911629886400664, guid: ed66bf7c3340a334ba97f94b3a097909, type: 3}
@@ -3623,6 +3662,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 6
+  lookMouse: 0
 --- !u!212 &7071192444500055689
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3936,11 +3976,10 @@ SceneRoots:
   - {fileID: 6375364614103149352}
   - {fileID: 3081241245539746776}
   - {fileID: 190495624}
-  - {fileID: 1515295433}
   - {fileID: 1485522030}
   - {fileID: 456970982}
   - {fileID: 491379185}
-  - {fileID: 1795661004}
   - {fileID: 837399494}
-  - {fileID: 1761284392}
   - {fileID: 1558880683}
+  - {fileID: 1118030165}
+  - {fileID: 1761284392}
