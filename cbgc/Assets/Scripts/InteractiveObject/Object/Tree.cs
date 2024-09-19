@@ -7,7 +7,10 @@ public class Tree : MonoBehaviour, IInteractiveObject
     [SerializeField] private ObjectPoolManager.Pool pool;
 
     [SerializeField] private int treeLevel = 3;
-    public int TreeLevel => treeLevel;
+    public int TreeLevel {
+        get => treeLevel;
+        set => treeLevel = value;
+    }
 
     private Animator animator;
     public Animator Anim => animator;
@@ -15,11 +18,14 @@ public class Tree : MonoBehaviour, IInteractiveObject
     private CapsuleCollider2D coll;
 
     private int axingCnt=0;
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
 
     private void Start()
     {
         coll = GetComponent<CapsuleCollider2D>();
-        animator = GetComponent<Animator>();
         animator.SetInteger("TreeLevel", treeLevel);
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
