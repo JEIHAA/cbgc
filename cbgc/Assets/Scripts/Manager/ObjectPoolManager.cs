@@ -18,6 +18,7 @@ public class ObjectPoolManager : MonoBehaviour
         FastMonster,
         EyeMonster,
         Tree,
+        GoldenTree
     }
     public ObjectPool<GameObject> GetPool(Pool pool) => poolsInfo[(int)pool].objectPools;
     private void Awake()

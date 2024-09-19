@@ -824,6 +824,8 @@ MonoBehaviour:
     initialPoolSize: 150
   - prefeb: {fileID: 6281578544985384098, guid: e472b6fd2f0a7eb41a96541e1bc74702, type: 3}
     initialPoolSize: 150
+  - prefeb: {fileID: 6281578544985384098, guid: ba2fb8d6510cd694fbfa293eddbdb877, type: 3}
+    initialPoolSize: 50
 --- !u!212 &425161938 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 6692200789408182783, guid: af7b71c77e05e78429c9c62f630c7321, type: 3}
@@ -2207,6 +2209,12 @@ MonoBehaviour:
     maxNum: 2
     width: 15
     height: 15
+    offset: {x: 0, y: 0}
+  - pool: 3
+    BorderLength: 10
+    maxNum: 30
+    width: 160
+    height: 160
     offset: {x: 0, y: 0}
 --- !u!114 &1536463751
 MonoBehaviour:
