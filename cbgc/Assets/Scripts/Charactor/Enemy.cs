@@ -6,6 +6,14 @@ public class Enemy : MonoBehaviour, IDamagable
     [SerializeField] private float health, damage;
     [SerializeField] private ObjectPoolManager.Pool pool;
     private EnemyController controller;
+    private EnemyController Controller
+    {
+        get {
+            if (controller == null)
+                controller = GetComponent<EnemyController>();
+            return controller;
+        }
+    }
     private Animator ani;
     private WaitForSeconds attackCycle;
     public void StartUpdate() => StartCoroutine(ControlableUpdate());
@@ -15,16 +23,16 @@ public class Enemy : MonoBehaviour, IDamagable
         if (!ani.IsUnityNull()) yield break;
         //getComponent
         ani = GetComponent<Animator>();
-        controller = GetComponent<EnemyController>();
+        
         attackCycle = new WaitForSeconds(damage);
         //delay
         yield return new WaitForSeconds(0.125f);
         while (gameObject.activeSelf)
         {
             //chase more bright light
-            if (LightData.TorchIsBrightest) controller.followPlayer = true;
-            else controller.followPlayer = false;
-            controller.Move();
+            if (LightData.TorchIsBrightest) Controller.followPlayer = true;
+            else Controller.followPlayer = false;
+            Controller.Move();
             yield return null;
         }
     }
@@ -41,13 +49,12 @@ public class Enemy : MonoBehaviour, IDamagable
         if ((health -= _damage) <= 0 && gameObject.activeSelf) StartCoroutine(Dying());
     }
     public void KnockBack(){
-        if(controller == null) controller = GetComponent<EnemyController>();
-        controller.KnockBack();
+        Controller.KnockBack();
     }
-    public void KnockBackFromPlayer() => controller.KnockBack(Player.playerTransform.position);
+    public void KnockBackFromPlayer() => Controller.KnockBack(Player.playerTransform.position);
     private IEnumerator Dying()
     {
-        controller.CanMove = false;
+        Controller.CanMove = false;
         GetComponent<Collider2D>().enabled = false;
         var sr = GetComponent<SpriteRenderer>();
         float leftTime = 3;
