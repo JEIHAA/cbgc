@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour, IDamagable
     //Update
     IEnumerator ControlableUpdate()
     {
-        if(!ani.IsUnityNull()) yield break;
+        if (!ani.IsUnityNull()) yield break;
         //getComponent
         ani = GetComponent<Animator>();
         controller = GetComponent<EnemyController>();
@@ -40,7 +40,10 @@ public class Enemy : MonoBehaviour, IDamagable
         if (ani != null) ani.SetTrigger("Hit");
         if ((health -= _damage) <= 0 && gameObject.activeSelf) StartCoroutine(Dying());
     }
-    public void KnockBack() => controller.KnockBack();
+    public void KnockBack(){
+        if(controller == null) controller = GetComponent<EnemyController>();
+        controller.KnockBack();
+    }
     public void KnockBackFromPlayer() => controller.KnockBack(Player.playerTransform.position);
     private IEnumerator Dying()
     {
