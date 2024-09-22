@@ -23,7 +23,20 @@ public class ResourceGenerator : MonoBehaviour
             nowGenObj = obj;
             for (int i = 0; i < obj.maxNum; ++i)
                 if (GenerateUniquePosition(out Vector2 newPos))
-                    ObjectPoolManager.instance.GetPool(obj.pool).Get().transform.position = newPos;
+                {
+                    GameObject nowObject = ObjectPoolManager.instance.GetPool(obj.pool).Get();
+                    nowObject.transform.position = newPos;
+                    if (obj.pool == ObjectPoolManager.Pool.Tree)
+                    {
+                        Tree nowTree = nowObject.GetComponent<Tree>();
+                        if (newPos.magnitude < 10) nowTree.TreeLevel = 1;//일정 거리 내의 나무는 레벨 1로 설정
+                        else 
+                            nowTree.TreeLevel =
+                            1 + (int)Mathf.Lerp(0, 2.99f, //거리 비례해서 1~3의 값 나오도록
+                            newPos.magnitude / Mathf.Sqrt(Mathf.Pow(obj.width/2, 2) + Mathf.Pow(obj.width/2, 2)));//중앙으로부터 얼마나 떨어졌는지 0~1 값으로
+                    }
+                }
+                    
         }
     }
     protected bool GenerateUniquePosition(out Vector2 newPos)

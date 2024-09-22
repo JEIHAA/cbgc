@@ -201,8 +201,8 @@ Transform:
   m_GameObject: {fileID: 14994675}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -135, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 250, z: 1}
+  m_LocalPosition: {x: -80, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 200, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 133657254}
@@ -376,8 +376,8 @@ Transform:
   m_GameObject: {fileID: 119362877}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 70, z: 0}
-  m_LocalScale: {x: 1, y: 350, z: 1}
+  m_LocalPosition: {x: 0, y: 80, z: 0}
+  m_LocalScale: {x: 1, y: 200, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 465088367}
@@ -824,6 +824,8 @@ MonoBehaviour:
     initialPoolSize: 150
   - prefeb: {fileID: 6281578544985384098, guid: e472b6fd2f0a7eb41a96541e1bc74702, type: 3}
     initialPoolSize: 150
+  - prefeb: {fileID: 6281578544985384098, guid: ba2fb8d6510cd694fbfa293eddbdb877, type: 3}
+    initialPoolSize: 50
 --- !u!212 &425161938 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 6692200789408182783, guid: af7b71c77e05e78429c9c62f630c7321, type: 3}
@@ -1415,8 +1417,8 @@ Transform:
   m_GameObject: {fileID: 765072192}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 135, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 250, z: 1}
+  m_LocalPosition: {x: 80, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 200, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1540144355}
@@ -1777,8 +1779,8 @@ Transform:
   m_GameObject: {fileID: 1168128645}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -70, z: 0}
-  m_LocalScale: {x: 1, y: 350, z: 1}
+  m_LocalPosition: {x: 0, y: -80, z: 0}
+  m_LocalScale: {x: 1, y: 200, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 549565454}
@@ -2148,6 +2150,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1536463749}
   - component: {fileID: 1536463750}
+  - component: {fileID: 1536463751}
   m_Layer: 0
   m_Name: Generator
   m_TagString: Untagged
@@ -2207,6 +2210,29 @@ MonoBehaviour:
     width: 15
     height: 15
     offset: {x: 0, y: 0}
+  - pool: 3
+    BorderLength: 10
+    maxNum: 30
+    width: 160
+    height: 160
+    offset: {x: 0, y: 0}
+--- !u!114 &1536463751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1536463747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d06ae0e2ba1d80448fc5e55c483587f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  regions:
+  - {fileID: 8007177215160943968, guid: 6e189af78fdf02442a47e419f9163045, type: 3}
+  - {fileID: 8007177215160943968, guid: 7a4e8dfcf95196249a328ef705e34fc9, type: 3}
+  - {fileID: 8007177215160943968, guid: e436a728723f62d42884975ab9c6dd05, type: 3}
+  radius: 50
 --- !u!1 &1540144354
 GameObject:
   m_ObjectHideFlags: 0
@@ -2624,8 +2650,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34eb1945032d3354fb6d1abaf8351c96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraRangeWidth: 270
-  cameraRangeHeight: 140
+  cameraRangeWidth: 160
+  cameraRangeHeight: 160
 --- !u!1 &2075241377 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -2253911629886400664, guid: ed66bf7c3340a334ba97f94b3a097909, type: 3}
