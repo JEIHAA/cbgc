@@ -13,7 +13,7 @@ public class PlayerFollowCamera : MonoBehaviour
         // 특정 키가 눌려 있을 때 카메라를 ((0, 0),캠프 파이어)로 이동시킵니다.
         if (Input.GetKey(KeyCode.C) || Input.GetKey(KeyCode.E))
         {
-            transform.position = Vector3.back * DefaultCameraZ;
+            transform.position = Vector3.forward * DefaultCameraZ;
         }
         else
         {
