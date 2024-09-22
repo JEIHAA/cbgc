@@ -2158,7 +2158,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1536463749}
   - component: {fileID: 1536463750}
-  - component: {fileID: 1536463751}
   m_Layer: 0
   m_Name: Generator
   m_TagString: Untagged
@@ -2224,23 +2223,6 @@ MonoBehaviour:
     width: 160
     height: 160
     offset: {x: 0, y: 0}
---- !u!114 &1536463751
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1536463747}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d06ae0e2ba1d80448fc5e55c483587f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  regions:
-  - {fileID: 8007177215160943968, guid: 6e189af78fdf02442a47e419f9163045, type: 3}
-  - {fileID: 8007177215160943968, guid: 7a4e8dfcf95196249a328ef705e34fc9, type: 3}
-  - {fileID: 8007177215160943968, guid: e436a728723f62d42884975ab9c6dd05, type: 3}
-  radius: 50
 --- !u!1 &1540144354
 GameObject:
   m_ObjectHideFlags: 0
